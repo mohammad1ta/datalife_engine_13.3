@@ -1,4 +1,5 @@
 /.idea
+/backup/*.gz
 /engine/cache/system/banned.php
 /engine/cache/system/banners.php
 /engine/cache/system/category.php
