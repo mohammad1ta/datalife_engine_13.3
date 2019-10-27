@@ -1,75 +1,75 @@
 <ul class="foot_menu">
 	<li>
 		<b data-toggle="collapse" data-target="#fmenu_1" aria-expanded="false" class="collapsed">
-			<i></i> News
+			<i></i> اخبار
 		</b>
 		<div class="collapse" id="fmenu_1">
 			<nav>
-				<a href="#">Special report</a>
-				<a href="#">Strategy</a>
-				<a href="#">Insurance</a>
-				<a href="#">Territory</a>
-				<a href="#">Technology housing</a>
-				<a href="#">Transport</a>
+				<a href="#">لینک اخبار</a>
+				<a href="#">لینک اخبار</a>
+				<a href="#">لینک اخبار</a>
+				<a href="#">لینک اخبار</a>
+				<a href="#">لینک اخبار</a>
+				<a href="#">لینک اخبار</a>
 			</nav>
 		</div>
 	</li>
 	<li>
 		<b data-toggle="collapse" data-target="#fmenu_2" aria-expanded="false" class="collapsed">
-			<i></i> Articles
+			<i></i> مقالات
 		</b>
 		<div class="collapse" id="fmenu_2">
 			<nav>
-				<a href="#">Facts</a>
-				<a href="#">Financial strategy</a>
-				<a href="#">Legislative power</a>
-				<a href="#">The Church</a>
-				<a href="#">Detective</a>
-				<a href="#">Economy</a>
+				<a href="#">لینک</a>
+				<a href="#">لینک</a>
+				<a href="#">لینک</a>
+				<a href="#">لینک</a>
+				<a href="#">لینک</a>
+				<a href="#">لینک</a>
 			</nav>
 		</div>
 	</li>
 	<li>
 		<b data-toggle="collapse" data-target="#fmenu_3" aria-expanded="false" class="collapsed">
-			<i></i> Users
+			<i></i> کاربران
 		</b>
 		<div class="collapse" id="fmenu_3">
 			<nav>
-				<a href="/">Main</a>
-				<a href="/statistics.html">Statistics</a>
-				<a href="/lastnews">Latest news</a>
-				<a href="/index.php?do=lastcomments">Recent comments</a>
-				<a href="/index.php?do=register">Registration</a>
-				<a href="/index.php?do=feedback">Contacts</a>
+				<a href="/">خانه</a>
+				<a href="/statistics.html">آمار</a>
+				<a href="/lastnews">آخرین مطالب</a>
+				<a href="/index.php?do=lastcomments">آخرین نظرات</a>
+				<a href="/index.php?do=register">عضویت</a>
+				<a href="/index.php?do=feedback">تماس با ما</a>
 			</nav>
 		</div>
 	</li>
 	<li>
 		<b data-toggle="collapse" data-target="#fmenu_4" aria-expanded="false" class="collapsed">
-			<i></i> Support
+			<i></i> پشتیبانی
 		</b>
 		<div class="collapse" id="fmenu_4">
 			<nav>
-				<a href="http://dle-news.com/" target="_blank" rel="nofollow">DLE Website</a>
-				<a href="http://dle-news.com/" target="_blank" rel="nofollow">Technical Support</a>
-				<a href="http://forum.dle-news.ru/" target="_blank" rel="nofollow">Forum</a>
-				<a href="http://dle-news.com/lastnews/" target="_blank" rel="nofollow">Blog</a>
-				<a href="http://dle-news.com/faq.html" target="_blank" rel="nofollow">FAQ</a>
-				<a href="http://dle-news.com/price.html" target="_blank" rel="nofollow">Buy the script</a>
+				<a href="http://datalifeengine.ir/" target="_blank" rel="nofollow">دیتالایف انجین</a>
+				<a href="http://datalifeengine.ir/" target="_blank" rel="nofollow">پشتیبانی دیتالایف</a>
+				<a href="http://datalifeengine.ir/forum" target="_blank" rel="nofollow">انجمن</a>
+				<a href="http://datalifeengine.ir/lastnews/" target="_blank" rel="nofollow">بلاگ</a>
+				<a href="http://datalifeengine.ir/faq.html" target="_blank" rel="nofollow">سوال و جواب</a>
+				<a href="http://datalifeengine.ir/" target="_blank" rel="nofollow">دریافت دیتالایف انجین</a>
 			</nav>
 		</div>
 	</li>
 	<li>
 		<b data-toggle="collapse" data-target="#fmenu_5" aria-expanded="false" class="collapsed">
-			<i></i> Customer
+			<i></i> مشتری ها
 		</b>
 		<div class="collapse" id="fmenu_5">
 			<nav>
-				<a href="/">Main</a>
-				<a href="/index.php?do=feedback">Contacts</a>
-				<a href="/rules.html">Rules</a>
-				<a href="/index.php?do=register">Registration</a>
-				<a href="/statistics.html">Statistics</a>
+				<a href="/">خانه</a>
+				<a href="/index.php?do=feedback">تماس با ما</a>
+				<a href="/rules.html">قوانین</a>
+				<a href="/index.php?do=register">عضویت</a>
+				<a href="/statistics.html">آمار</a>
 			</nav>
 		</div>
 	</li>

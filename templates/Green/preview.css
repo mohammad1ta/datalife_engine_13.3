@@ -1,5 +1,4 @@
-/* =========== © 2016 Centroarts.com =========== */
-@import url(../../templates/Green/fonts/font.css);
+/* =========== 2016 DatalifeEngine.ir =========== */
 
 /* Сброс */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline } article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block } body { line-height: 1 } ol, ul { list-style: none } blockquote, q { quotes: none } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none } table { border-collapse: collapse; border-spacing: 0 }
@@ -9,10 +8,11 @@ html, html a { -webkit-font-smoothing: antialiased; }
 
 /* Настройка основной типографии */
 body, select, input, textarea, button {
-	font: normal 14px/1.5 "GothaPro", Arial, Helvetica, sans-serif;
+	font: normal 13px/1.5 tahoma;
 	letter-spacing: 0.012em;
 	color: #1a1a1a;
 	outline: none;
+	direction: rtl
 }
 	a { 
 		outline: none;
@@ -264,84 +264,4 @@ body { background: #ededed; }
 
 	.hide { background-color: #f0f0f0; padding: 5px; color: #4c6d0f; margin: 0 0 1em 0 }
 	.hide a { text-decoration: underline; } .hide a:hover { text-decoration: none }
-/*---показ оригинальной картинки загруженной на сайт из уменьшенной копии---*/
-.xfieldimagegallery {
-  margin: 0;
-  padding: 0;  
-  list-style: none;
-  clear: both;
-}
-
-.xfieldimagegallery li {
-	list-style: none;
-	margin: 0;
-	padding: 0;  
-}
-
-.xfieldimagegallery li img {
-  float: left;
-  margin-right: 5px;
-  border: 5px solid #fff;
-  width: 100px;
-  height: 100px;
-  transition: box-shadow 0.5s ease;
-}
-
-.xfieldimagegallery li img:hover {
-  box-shadow: 0px 0px 7px rgba(0,0,0,0.4);
-}
-
-.highslide-wrapper, .highslide-outline { background: #fff }
-	.highslide-image { border: 2px solid #fff }
-	.highslide-active-anchor { visibility: hidden } 
-	.highslide-active-anchor img { visibility: hidden }
-	.highslide-dimming { background-color: black }
-	.highslide-html { background-color: white }
-	.highslide-loading { display: block; color: white; font-size: 9px; font-weight: bold; text-decoration: none; padding: 3px; border: 1px solid white; background-color: black }
-	a.highslide-full-expand { background: url(../dleimages/fullexpand.gif) no-repeat; display: block; margin: 0 10px 10px 0; width: 34px; height: 34px }
-	.highslide-display-block { display: block }
-	.highslide-display-none { display: none }
-	.highslide-caption { display: none; padding: 5px; background: white }
-	.highslide-controls { width: 195px; height: 40px; background: url(../../../engine/classes/highslide/graphics/controlbar-black-border.gif) no-repeat 0 -90px; margin-right: 15px; margin-bottom: 10px; margin-top: 10px }
-	.highslide-controls ul { position: relative; left: 15px; height: 40px; list-style: none; margin: 0; padding: 0; background: url(../../../engine/classes/highslide/graphics/controlbar-black-border.gif) no-repeat 100% -90px }
-	.highslide-controls li { float: left; padding: 5px 0; }
-	.highslide-controls a { background: url(../../../engine/classes/highslide/graphics/controlbar-black-border.gif); display: block; float: left; height: 30px; width: 30px; outline: none }
-	.highslide-controls a.disabled { cursor: default }
-	.highslide-controls a span { display: none }
- 
-/*---The CSS sprites for the controlbar---*/
-.highslide-controls .highslide-previous a { background-position: 0 0 }
-	.highslide-controls .highslide-previous a:hover { background-position: 0 -30px }
-	.highslide-controls .highslide-previous a.disabled { background-position: 0 -60px !important }
-	.highslide-controls .highslide-play a { background-position: -30px 0 }
-	.highslide-controls .highslide-play a:hover { background-position: -30px -30px }
-	.highslide-controls .highslide-play a.disabled { background-position: -30px -60px !important }
-	.highslide-controls .highslide-pause a { background-position: -60px 0 }
-	.highslide-controls .highslide-pause a:hover { background-position: -60px -30px }
-	.highslide-controls .highslide-next a { background-position: -90px 0 }
-	.highslide-controls .highslide-next a:hover { background-position: -90px -30px }
-	.highslide-controls .highslide-next a.disabled { background-position: -90px -60px !important }
-	.highslide-controls .highslide-move a { background-position: -120px 0 }
-	.highslide-controls .highslide-move a:hover { background-position: -120px -30px }
-	.highslide-controls .highslide-full-expand a { background-position: -150px 0 }
-	.highslide-controls .highslide-full-expand a:hover { background-position: -150px -30px }
-	.highslide-controls .highslide-full-expand a.disabled { background-position: -150px -60px !important }
-	.highslide-controls .highslide-close a { background-position: -180px 0 }
-	.highslide-controls .highslide-close a:hover { background-position: -180px -30px }
-
-/*---Подсветка кода в теге [code]---*/
-pre code { display: block; padding: 0.5em; background: #f9fafa; border: 1px solid #dce7e7; overflow:auto; white-space: pre; }
-	pre .comment, pre .template_comment, pre .diff .header, pre .doctype, pre .lisp .string, pre .javadoc { padding: 0; margin: 0; border:none; box-shadow: none; background-color: inherit; color: #93a1a1; font-style: italic; }
-	pre .keyword, pre .css .rule .keyword, pre .winutils, pre .javascript .title, pre .method, pre .addition, pre .css .tag, pre .lisp .title { color: #859900; }
-	pre .number, pre .command, pre .string, pre .tag .value, pre .phpdoc, pre .tex .formula, pre .regexp, pre .hexcolor { color: #2aa198; }
-	pre .title, pre .localvars, pre .function .title, pre .chunk, pre .decorator,
-	pre .builtin, pre .built_in, pre .lisp .title, pre .identifier, pre .title .keymethods, pre .id { color: #268bd2; }
-	pre .tag .title, pre .rules .property, pre .django .tag .keyword { font-weight: bold;font-size: 1.08em !important;  }
-	pre .attribute, pre .variable, pre .instancevar, pre .lisp .body, pre .smalltalk .number, pre .constant, pre .class .title,
-	pre .parent, pre .haskell .label { color: #b58900; }
-	pre .preprocessor, pre .pi, pre .shebang, pre .symbol,
-	pre .diff .change, pre .special, pre .keymethods, pre .attr_selector, pre .important, pre .subst, pre .cdata { color: #cb4b16; }
-	pre .deletion { color: #dc322f; }
-	pre .tex .formula { background: #eee8d5; }
-	pre .comment:hover {background-color: inherit;box-shadow: none;}
 	

@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: functions.inc.php
 =====================================================
@@ -18,6 +18,8 @@ if( !defined( 'DATALIFEENGINE' ) ) {
 	header ( 'Location: ../../../' );
 	die( "Hacking attempt!" );
 }
+
+require_once ENGINE_DIR . '/classes/jdate.php';
 
 if ( $config['auth_domain'] ) {
 
@@ -470,9 +472,9 @@ function deletecommentsbyuserid( $id, $ip = false ) {
 
 function formatsize($file_size) {
 	
-	if( !$file_size OR $file_size < 1) return '0 b';
+	if( !$file_size OR $file_size < 1) return '0 بایت';
 	
-    $prefix = array("b", "Kb", "Mb", "Gb", "Tb");
+    $prefix = array("بایت", "کیلوبایت", "مگابایت", "گیگابایت", "ترابایت");
     $exp = floor(log($file_size, 1024)) | 0;
 	
     return round($file_size / (pow(1024, $exp)), 2).' '.$prefix[$exp];
@@ -762,27 +764,29 @@ function totranslit($var, $lower = true, $punkt = true) {
 }
 
 function langdate($format, $stamp, $servertime = false ) {
-	global $langdate, $member_id;
+    global $lang, $member_id;
 
-	$timezones = array('Pacific/Midway','US/Samoa','US/Hawaii','US/Alaska','US/Pacific','America/Tijuana','US/Arizona','US/Mountain','America/Chihuahua','America/Mazatlan','America/Mexico_City','America/Monterrey','US/Central','US/Eastern','US/East-Indiana','America/Lima','America/Caracas','Canada/Atlantic','America/La_Paz','America/Santiago','Canada/Newfoundland','America/Buenos_Aires','America/Godthab','Atlantic/Stanley','Atlantic/Azores','Africa/Casablanca','Europe/Dublin','Europe/Lisbon','Europe/London','Europe/Amsterdam','Europe/Belgrade','Europe/Berlin','Europe/Bratislava','Europe/Brussels','Europe/Budapest','Europe/Copenhagen','Europe/Madrid','Europe/Paris','Europe/Prague','Europe/Rome','Europe/Sarajevo','Europe/Stockholm','Europe/Vienna','Europe/Warsaw','Europe/Zagreb','Europe/Athens','Europe/Bucharest','Europe/Helsinki','Europe/Istanbul','Asia/Jerusalem','Europe/Kiev','Europe/Minsk','Europe/Riga','Europe/Sofia','Europe/Tallinn','Europe/Vilnius','Asia/Baghdad','Asia/Kuwait','Africa/Nairobi','Asia/Tehran','Europe/Kaliningrad','Europe/Moscow','Europe/Volgograd','Europe/Samara','Asia/Baku','Asia/Muscat','Asia/Tbilisi','Asia/Yerevan','Asia/Kabul','Asia/Yekaterinburg','Asia/Tashkent','Asia/Kolkata','Asia/Kathmandu','Asia/Almaty','Asia/Novosibirsk','Asia/Jakarta','Asia/Krasnoyarsk','Asia/Hong_Kong','Asia/Kuala_Lumpur','Asia/Singapore','Asia/Taipei','Asia/Ulaanbaatar','Asia/Urumqi','Asia/Irkutsk','Asia/Seoul','Asia/Tokyo','Australia/Adelaide','Australia/Darwin','Asia/Yakutsk','Australia/Brisbane','Pacific/Port_Moresby','Australia/Sydney','Asia/Vladivostok','Asia/Sakhalin','Asia/Magadan','Pacific/Auckland','Pacific/Fiji');
+    $timezones = array('Pacific/Midway','US/Samoa','US/Hawaii','US/Alaska','US/Pacific','America/Tijuana','US/Arizona','US/Mountain','America/Chihuahua','America/Mazatlan','America/Mexico_City','America/Monterrey','US/Central','US/Eastern','US/East-Indiana','America/Lima','America/Caracas','Canada/Atlantic','America/La_Paz','America/Santiago','Canada/Newfoundland','America/Buenos_Aires','Greenland','Atlantic/Stanley','Atlantic/Azores','Africa/Casablanca','Europe/Dublin','Europe/Lisbon','Europe/London','Europe/Amsterdam','Europe/Belgrade','Europe/Berlin','Europe/Bratislava','Europe/Brussels','Europe/Budapest','Europe/Copenhagen','Europe/Madrid','Europe/Paris','Europe/Prague','Europe/Rome','Europe/Sarajevo','Europe/Stockholm','Europe/Vienna','Europe/Warsaw','Europe/Zagreb','Europe/Athens','Europe/Bucharest','Europe/Helsinki','Europe/Istanbul','Asia/Jerusalem','Europe/Kiev','Europe/Minsk','Europe/Riga','Europe/Sofia','Europe/Tallinn','Europe/Vilnius','Asia/Baghdad','Asia/Kuwait','Africa/Nairobi','Asia/Tehran','Europe/Kaliningrad','Europe/Moscow','Europe/Volgograd','Europe/Samara','Asia/Baku','Asia/Muscat','Asia/Tbilisi','Asia/Yerevan','Asia/Kabul','Asia/Yekaterinburg','Asia/Tashkent','Asia/Kolkata','Asia/Kathmandu','Asia/Almaty','Asia/Novosibirsk','Asia/Jakarta','Asia/Krasnoyarsk','Asia/Hong_Kong','Asia/Kuala_Lumpur','Asia/Singapore','Asia/Taipei','Asia/Ulaanbaatar','Asia/Urumqi','Asia/Irkutsk','Asia/Seoul','Asia/Tokyo','Australia/Adelaide','Australia/Darwin','Asia/Yakutsk','Australia/Brisbane','Pacific/Port_Moresby','Australia/Sydney','Asia/Vladivostok','Asia/Sakhalin','Asia/Magadan','Pacific/Auckland','Pacific/Fiji');
 
-	if (!$stamp) { $stamp = time(); }
-	
-	$local = new DateTime('@'.$stamp);
+    if (!$stamp) { $stamp = time(); }
 
-	if ($member_id['timezone'] AND !$servertime) {
-		$localzone = $member_id['timezone'];
+    $local = new DateTime('@'.$stamp);
 
-	} else {
+    if ($member_id['timezone'] AND !$servertime) {
+        $localzone = $member_id['timezone'];
 
-		$localzone = date_default_timezone_get();
-	}
+    } else {
 
-	if (!in_array($localzone, $timezones)) $localzone = 'Europe/Moscow';
+        $localzone = date_default_timezone_get();
+    }
 
-	$local->setTimeZone(new DateTimeZone($localzone));
+    if (!in_array($localzone, $timezones)) $localzone = 'Europe/Moscow';
 
-	return strtr( $local->format($format), $langdate );
+    $local->setTimeZone(new DateTimeZone($localzone));
+
+    $get_local = get_object_vars($local);
+
+    return strtr( jdate($format, strtotime($get_local['date'])), $lang['date'] );
 
 }
 
@@ -1574,19 +1578,6 @@ function generate_pin(){
     return $pin;
 }
 
-function send_activation( $query ) {
-	
-	$data = http_get_contents("https://dle-news.ru/extras/activate2009.php?".$query);
-
-	if( $data !== false ) {	
-		if( stripos( $data, "antw:activated" ) !== false ) return "1";
-		elseif( stripos( $data, "antw:denied;expires" ) !== false ) return "-4";
-		elseif( stripos( $data, "antw:denied" ) !== false ) return "0";
-	}
-
-	return "-1";
-}
-
 function get_domen_hash() {
 	$domen_md5 = explode( '.', $_SERVER['HTTP_HOST'] );
 	$count_key = count( $domen_md5 ) - 1;
@@ -1595,87 +1586,6 @@ function get_domen_hash() {
 	$domen_md5 = $domen_md5[$count_key - 1];
 	$domen_md5 = md5( md5( $domen_md5 . "780918" ) );
 	return $domen_md5;
-}
-
-function dle_activation($key, $domen_md5, $config, $offline = false) {	
-	global $lang;
-	
-	$domain = urlencode( strip_tags( $_SERVER['HTTP_HOST'] ) );
-	$key = trim( strip_tags( $key ) );
-	@header( "Content-type: text/html; charset=utf-8" );
-
-	if ( $offline ) {
-
-		if( $key == md5( $domen_md5 . DINITVERSION ) ) {
-			
-			$buffer = "1";
-		
-		} else {
-			
-			$buffer = "-2";
-		
-		}
-
-	} else {
-
-		if( strlen( $key ) == 32 ) {
-
-			$buffer = "-3";
-
-		} else {
-
-			$buffer = send_activation( "domain={$domain}&key={$key}&site_key={$domen_md5}&c_id=" . VERSIONID );
-
-		}
-	}
-
-	switch ($buffer) {
-		
-		case "-4" :
-			$buffer = $lang['trial_act7'];
-			break;
-		
-		case "-3" :
-			$buffer = $lang['trial_act6']." ".$lang['key_format']." <b>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</b>";
-			break;
-		
-		case "-2" :
-			$buffer = $lang['trial_act5'];
-			break;
-		
-		case "-1" :
-			$buffer = $lang['trial_act1'] . $lang['get_offline_key'] . " <a href=\"https://dle-news.ru/index.php?do=offlinekey&domain={$domain}&key={$key}&site_key={$domen_md5}&c_id=" . VERSIONID . "\" class=\"status-error\" target=\"_blank\">" . $lang['get_key'] . "</a> " . $lang['key_activation'];
-			$buffer .= "<br /><br /><b>$lang[site_code]</b><span class=\"sitecodefield\"><input class=\"classic width-400 mr-10 ml-10\" type=\"text\" name=\"sitecode\" id=\"sitecode\"> <button onclick=\"dle_activation( 'code' ); return false;\" class=\"btn bg-teal btn-raised btn-sm\">{$lang['trial_act']}</button></span><div id=\"result_info\" style=\"color:red;\"></div>";
-			break;
-		
-		case "0" :
-			$buffer = $lang['trial_act2'];
-			break;
-		
-		case "1" :
-			$config['key'] = md5( $domen_md5 . DINITVERSION );
-			
-			$handler = fopen( ENGINE_DIR . '/data/config.php', "w" );
-			fwrite( $handler, "<?PHP \n\n//System Configurations\n\n\$config = array (\n\n" );
-			foreach ( $config as $name => $value ) {
-				fwrite( $handler, "'{$name}' => \"{$value}\",\n\n" );
-			}
-			fwrite( $handler, ");\n\n?>" );
-			fclose( $handler );
-			
-			if (function_exists('opcache_reset')) {
-				opcache_reset();
-			}
-			
-			$buffer = $lang['trial_act3'];
-			break;
-		
-		default :
-			$buffer = $lang['trial_act4'] . $lang['get_offline_key'] . " <a href=\"https://dle-news.ru/index.php?do=offlinekey&domain={$domain}&key={$key}&site_key={$domen_md5}&c_id=" . VERSIONID . "\" >" . $lang['get_key'] . "</a> " . $lang['key_activation'];
-	}
-	
-	echo $buffer;
-	die();
 }
 
 function normalize_name($var, $punkt = true) {

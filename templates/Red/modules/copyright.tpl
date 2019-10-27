@@ -1,13 +1,7 @@
 <div class="foot grey">
-	<!-- Копирайт -->
-	<div class="copyright grid_1_2">
-		Copyright © 2004&ndash;2019 <a href="https://dle-news.com/" target="_blank"><b>SoftNews Media Group</b></a> All Rights Reserved.<br>Powered by DataLife Engine © 2019
+	<div class="copyleft grid_1_2">
+		<span>© 2019</span> کپی رایت <a href="http://www.datalifeengine.ir/?utm_source=customers&utm_medium=cpc&utm_campaign=copyright" target="_blank"><b>دیتالایف انجین</b></a>.<br>با افتخار قدرت یافته از دیتالایف انجین فارسی
 	</div>
-	<!-- / Копирайт -->
-	<a class="ca" href="http://centroarts.ru" target="_blank" rel="nofollow" title="Дизайн Centroarts">
-		<span><svg class="icon icon-ca"><use xlink:href="#icon-ca"></use></svg></span>
-		<div>Design <b>Centroarts</b></div>
-	</a>
 	<ul class="counters">
 		<li>
 			{changeskin}

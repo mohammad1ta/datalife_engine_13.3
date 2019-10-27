@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: editusers.php
 -----------------------------------------------------
@@ -105,11 +105,11 @@ if( $action == "list" ) {
 			<div class="row">
 				<div class="col-sm-6">
 					<label>{$lang['user_name']}</label>
-					<input name="regusername" type="text" class="form-control" maxlength="40" required>
+					<input name="regusername" type="text" class="form-control ltr" maxlength="40" required>
 				</div>
 				<div class="col-sm-6">
 					<label>{$lang['user_pass']}</label>
-					<input name="regpassword" type="text" class="form-control" maxlength="70" required>
+					<input name="regpassword" type="text" class="form-control ltr" maxlength="70" required>
 				</div>
 			</div>
 		</div>
@@ -117,7 +117,7 @@ if( $action == "list" ) {
 			<div class="row">
 				<div class="col-sm-6">
 					<label>{$lang['user_mail']}</label>
-					<input name="regemail" type="text" class="form-control" maxlength="50" required>
+					<input name="regemail" type="text" class="form-control ltr" maxlength="50" required>
 				</div>
 				<div class="col-sm-6">
 					<label>{$lang['user_acc']}</label>
@@ -172,21 +172,27 @@ if( $action == "list" ) {
 		<div class="form-group">
 		  <label class="control-label col-sm-4">{$lang['edit_regdate']}</label>
 		  <div class="col-sm-4">
-			{$lang['edit_fdate']}&nbsp;<input data-rel="calendardate" type="text" name="fromregdate" id="fromregdate" class="form-control" style="width:140px;" value="" autocomplete="off">
+			{$lang['edit_fdate']}&nbsp;<input id="PersianDate_A" type="text" name="fromregdate" id="fromregdate" size="17" maxlength="16" value="{$fromregdate}" class="form-control ltr" style="width:140px;">
 		  </div>
 		  <div class="col-sm-4">
-			{$lang['edit_tdate']}&nbsp;<input data-rel="calendardate" type="text" name="toregdate" id="toregdate" class="form-control" style="width:135px;" value="" autocomplete="off">
+			{$lang['edit_tdate']}&nbsp;<input id="PersianDate_B" type="text" name="toregdate" id="toregdate" size="17" maxlength="16" value="{$toregdate}" class="form-control ltr" style="width:140px;">
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-sm-4">{$lang['edit_entedate']}</label>
 		  <div class="col-sm-4">
-			{$lang['edit_fdate']}&nbsp;<input data-rel="calendardate" type="text" name="fromentdate" id="fromentdate" class="form-control" style="width:140px;" value="" autocomplete="off">
+			{$lang['edit_fdate']}&nbsp;<input id="PersianDate_C" type="text" name="fromentdate" id="fromentdate" size="17" maxlength="16" value="{$fromentdate}" class="form-control ltr" style="width:140px;">
 		  </div>
 		  <div class="col-sm-4">
-			{$lang['edit_tdate']}&nbsp;<input data-rel="calendardate" type="text" name="toentdate" id="toentdate" class="form-control" style="width:135px;" value="" autocomplete="off">
+			{$lang['edit_tdate']}&nbsp;<input id="PersianDate_D" type="text" name="toentdate" id="toentdate" size="17" maxlength="16" value="{$toentdate}" class="form-control ltr" style="width:140px;">
 		  </div>
 		 </div>
+ <script type="text/javascript">
+ Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+ Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+ Calendar.setup({inputField:"PersianDate_C",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+ Calendar.setup({inputField:"PersianDate_D",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+ </script>
 		<div class="form-group">
 		  <div class="col-sm-6">
 			<label class="radio-inline"><input class="icheck" type="radio" name="format" value="csv" checked>{$lang['u_export_title_5']}</label>
@@ -280,7 +286,7 @@ HTML;
 		  <label class="control-label col-md-2">{$lang['user_name']}</label>
 		  <div class="col-md-10">
 		    <div class="input-group">
-			  <input class="form-control" type="text" name="search_name" id="search_name" value="{$search_name}">
+			  <input class="form-control ltr" type="text" name="search_name" id="search_name" value="{$search_name}">
 			  <span class="input-group-addon"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_user']}" ></i></span>
 		    </div>
 		  </div>
@@ -289,7 +295,7 @@ HTML;
 		  <label class="control-label col-md-2">{$lang['user_mail']}</label>
 		  <div class="col-md-10">
 		    <div class="input-group">
-			  <input class="form-control" type="text" name="search_mail" id="search_mail" value="{$search_mail}">
+			  <input class="form-control ltr" type="text" name="search_mail" id="search_mail" value="{$search_mail}">
 			  <span class="input-group-addon"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_mail']}" ></i></span>
 			</div>
 		  </div>
@@ -319,17 +325,25 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-4">{$lang['edit_regdate']}</label>
 		  <div class="col-md-8">
-			{$lang['edit_fdate']}&nbsp;<input class="form-control" style="width:140px;" data-rel="calendardate" type="text" name="fromregdate" id="fromregdate" value="{$fromregdate}" autocomplete="off">
-			{$lang['edit_tdate']}&nbsp;<input class="form-control" style="width:140px;" data-rel="calendardate" type="text" name="toregdate" id="toregdate" value="{$toregdate}" autocomplete="off">
+			{$lang['edit_fdate']}&nbsp;<input id="PersianDate_E" class="form-control ltr" style="width:140px;" type="text" name="fromregdate" value="{$fromregdate}">
+		  	{$lang['edit_tdate']}&nbsp;<input id="PersianDate_F" class="form-control ltr" style="width:140px;" type="text" name="toregdate" value="{$toregdate}">
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-4">{$lang['edit_entedate']}</label>
 		  <div class="col-md-8">
-			{$lang['edit_fdate']}&nbsp;<input class="form-control" style="width:140px;" data-rel="calendardate" type="text" name="fromentdate" id="fromentdate" value="{$fromentdate}" autocomplete="off">
-			{$lang['edit_tdate']}&nbsp;<input class="form-control" style="width:140px;" data-rel="calendardate" type="text" name="toentdate" id="toentdate" value="{$toentdate}" autocomplete="off">
+			{$lang['edit_fdate']}&nbsp;<input id="PersianDate_G" class="form-control ltr" style="width:140px;" type="text" name="fromentdate" value="{$fromentdate}">
+			{$lang['edit_tdate']}&nbsp;<input id="PersianDate_H" class="form-control ltr" style="width:140px;" type="text" name="toentdate" value="{$toentdate}">
 		  </div>
 	    </div>
+
+	    <script type="text/javascript">
+			 Calendar.setup({inputField:"PersianDate_E",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+			 Calendar.setup({inputField:"PersianDate_F",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+			 Calendar.setup({inputField:"PersianDate_G",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+			 Calendar.setup({inputField:"PersianDate_H",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+		 </script>
+		 
 		<div class="form-group">
  	   <label class="control-label col-md-4">{$lang['edit_newsnum']}</label>
 		  <div class="col-md-8">
@@ -419,16 +433,16 @@ HTML;
 		$where[] = "banned='$search_banned'";
 	}
 	if( ! empty( $fromregdate ) ) {
-		$where[] = "reg_date>='" . strtotime( $fromregdate ) . "'";
+		$where[] = "reg_date>='" . jstrtotime( $fromregdate ) . "'";
 	}
 	if( ! empty( $toregdate ) ) {
-		$where[] = "reg_date<='" . strtotime( $toregdate ) . "'";
+		$where[] = "reg_date<='" . jstrtotime( $toregdate ) . "'";
 	}
 	if( ! empty( $fromentdate ) ) {
-		$where[] = "lastdate>='" . strtotime( $fromentdate ) . "'";
+		$where[] = "lastdate>='" . jstrtotime( $fromentdate ) . "'";
 	}
 	if( ! empty( $toentdate ) ) {
-		$where[] = "lastdate<='" . strtotime( $toentdate ) . "'";
+		$where[] = "lastdate<='" . jstrtotime( $toentdate ) . "'";
 	}
 	if( ! empty( $search_news_f ) ) {
 		$search_news_f = intval( $search_news_f );
@@ -803,7 +817,7 @@ HTML;
 	  </tbody>
 	</table>
 	<div class="panel-footer hidden-xs">
-		<div class="pull-right">
+		<div class="pull-left">
 		<select class="uniform" name="action">
 <option value="">{$lang['edit_selact']}</option>
 <option value="mass_move_to_group">{$lang['massusers_group']}</option>
@@ -1121,7 +1135,7 @@ HTML;
 	$cat_allow_addnews_list = CategoryNewsSelection( explode( ',', $row['cat_allow_addnews'] ), 0, false );
 	$cat_add_list = CategoryNewsSelection( explode( ',', $row['cat_add'] ), 0, false );
 	
-	if( $row['time_limit'] != "" ) $row['time_limit'] = date( $langformatdatefull, $row['time_limit'] );
+	if( $row['time_limit'] != "" ) $row['time_limit'] = jdate( $langformatdatefull, $row['time_limit'] );
 
 	if ( ($row['lastdate'] + 1200) > time() ) {
 
@@ -1302,7 +1316,7 @@ $(function(){
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['user_mail']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control width-200 position-left" maxlength="50" type="text" name="editmail" value="{$row['email']}"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_mail" value="1" {$mailbox}>{$lang['no_mail']}</label>
+					<input class="form-control width-200 position-left ltr" maxlength="50" type="text" name="editmail" value="{$row['email']}"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_mail" value="1" {$mailbox}>{$lang['no_mail']}</label>
 				  </div>
 				 </div>
 				<div class="form-group">
@@ -1319,7 +1333,7 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['user_newlogin']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control width-300" maxlength="40" type="text" name="editlogin">
+					<input class="form-control width-300 ltr" maxlength="40" type="text" name="editlogin">
 				  </div>
 				 </div>
 HTML;
@@ -1330,7 +1344,7 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['user_newpass']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control width-300" maxlength="70" type="text" name="editpass">
+					<input class="form-control width-300 ltr" maxlength="70" type="text" name="editpass">
 				  </div>
 				 </div>
 				<div class="list-group-divider"></div>
@@ -1348,7 +1362,8 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['user_gtlimit']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control" type="text" style="width:220px;" data-rel="calendardatetime" name="time_limit" id="time_limit" value="{$row['time_limit']}" autocomplete="off">
+					<input id="PersianDate_A" class="form-control ltr" type="text" style="width:220px;" name="time_limit" id="time_limit" value="{$row['time_limit']}">
+					<script type="text/javascript">Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});</script>
 				  </div>
 				 </div>
 				<div class="list-group-divider"></div>
@@ -1361,7 +1376,7 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['ban_date']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control" style="width:50px;" type="text" name="banned_date" value="{$row['days']}"> {$endban}
+					<input class="form-control ltr" style="width:50px;" type="text" name="banned_date" value="{$row['days']}"> {$endban}
 				  </div>
 				 </div>
 				<div class="form-group">
@@ -1380,7 +1395,7 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['restricted_date']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control" style="width:50px;" name="restricted_days" type="text" value="{$row['restricted_days']}"> {$end_restricted}
+					<input class="form-control ltr" style="width:50px;" name="restricted_days" type="text" value="{$row['restricted_days']}"> {$end_restricted}
 				  </div>
 				 </div>
 				<div class="list-group-divider"></div>
@@ -1408,7 +1423,7 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">Gravatar:</label>
 				  <div class="col-md-9 col-sm-9">
-					<input class="form-control width-300" maxlength="50" type="text" name="gravatar" value="{$gravatar}">
+					<input class="form-control width-300 ltr" maxlength="50" type="text" name="gravatar" value="{$gravatar}">
 				  </div>
 				 </div>
 				<div class="form-group">
@@ -1446,7 +1461,7 @@ echo <<<HTML
 				<div class="form-group">
 				  <label class="control-label col-md-3 col-sm-3">{$lang['allowed_ip']}</label>
 				  <div class="col-md-9 col-sm-9">
-					<textarea style="width:100%; height:70px;" name="allowed_ip" class="classic">{$row['allowed_ip']}</textarea>
+					<textarea style="width:100%; height:70px;" name="allowed_ip" class="classic ltr">{$row['allowed_ip']}</textarea>
 				  </div>
 				 </div>
 				<div class="form-group">
@@ -1529,8 +1544,8 @@ echo <<<HTML
 			</div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-sm-6">E-Mail</div>
-					<div class="col-sm-6 tip" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;" data-original-title="{$row['email']}">{$row['email']}</div>
+					<div class="col-sm-6">ایمیل</div>
+					<div class="col-sm-6 tip ltr" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;" data-original-title="{$row['email']}">{$row['email']}</div>
 				</div>
 			</div>
 			<div class="panel-body">
@@ -1614,14 +1629,12 @@ HTML;
 	
 	echo <<<HTML
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fa" lang="fa">
 <head>
 <meta content="text/html; charset={$config['charset']}" http-equiv="content-type" />
 <title>{$lang['user_edhead']}</title>
 <link rel="stylesheet" type="text/css" href="{$css_path}">
-<link rel="stylesheet" type="text/css" media="all" href="engine/classes/calendar/calendar.css" />
 <script src="engine/classes/js/jquery.js"></script>
-<script src="engine/classes/calendar/calendar.js"></script>
 </head>
 <body>
 <script>
@@ -1711,7 +1724,10 @@ HTML;
     </tr>
     <tr>
         <td style="padding:4px;">{$lang['user_gtlimit']}</td>
-        <td colspan="2"><input data-rel="calendardatetime" type="text" size="40" name="time_limit" id="time_limit" class="edit bk" value="{$row['time_limit']}" autocomplete="off"></td>
+        <td colspan="2">
+            <input id="PersianDate_A" type="text" size="40" name="time_limit" id="time_limit" class="edit bk ltr" value="{$row['time_limit']}">
+            <script type="text/javascript">Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});</script>
+        </td>
     </tr>
     <tr>
         <td colspan="3"><hr></td>
@@ -1932,7 +1948,7 @@ HTML;
 		
 		$sets[] = "user_group='{$editlevel}'";
 		
-		$time_limit = trim( $_POST['time_limit'] ) ? strtotime( $_POST['time_limit'] ) : "";
+		$time_limit = trim( $_POST['time_limit'] ) ? jstrtotime( $_POST['time_limit'] ) : "";
 		
 		if( !$user_group[$editlevel]['time_limit'] ) $time_limit = "";
 		

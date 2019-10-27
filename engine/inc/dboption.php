@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: dboption.php
 -----------------------------------------------------
@@ -85,7 +85,7 @@ echo <<<HTML
   <div class="panel-body">
 	
 	  <div class="col-md-3">
-		<select style="width:100%;" size="7" name="ta[]" multiple="multiple">{$tabellen}</select>
+		<select style="width:100%;" size="7" name="ta[]" class="ltr" multiple="multiple">{$tabellen}</select>
 		<br /><br /><input type="submit" id="rest" class="btn bg-slate-600 btn-sm btn-raised" value="{$lang['db_action']}" />
 	  </div>
 	  
@@ -93,14 +93,14 @@ echo <<<HTML
 		<table width="100%">
           <tr>
             <td style="width:70px;"><i class="fa fa-retweet" style="font-size:500%"></i></td>
-            <td width="5%" nowrap="nowrap"><div align="left">
+            <td width="5%" nowrap="nowrap"><div align="right">
                 <input style="border:0px" type="radio" name="whattodo" checked="checked" value="optimize" class="icheck" />
               </div></td>
             <td class="option"><h5 class="text-semibold">{$lang['db_opt']}</h5><span class="text-muted text-size-small">{$lang['db_opt_i']}</span></td>
           </tr>
           <tr>
             <td><i class="fa fa-magic" style="font-size:400%"></i></td>
-            <td width="5%" nowrap="nowrap"><div align="left">
+            <td width="5%" nowrap="nowrap"><div align="right">
                 <input style="border:0px" type="radio" name="whattodo" value="repair" class="icheck" />
               </div></td>
             <td class="option"><h5 class="text-semibold">{$lang['db_re']}</h5><span class="text-muted text-size-small">{$lang['db_re_i']}</span></td>

@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: options.php
 -----------------------------------------------------
@@ -232,7 +232,17 @@ if( $action == "options" or $action == '' ) {
 	
 	
 	$options['others'] = array (
-								array (
+
+                                array (
+                                            'name' => $lang['opt_obmen'],
+                                            'url' => "?mod=obmen",
+                                            'descr' => $lang['opt_obmenc'],
+                                            'image' => "obmen.png",
+                                            'access' => $user_group[$member_id['user_group']]['admin_static']
+                                ),
+
+
+                                array (
 											'name' => $lang['opt_rules'], 
 											'url' => "?mod=static&action=doedit&page=rules", 
 											'descr' => $lang['opt_rulesc'], 
@@ -489,9 +499,14 @@ HTML;
         </tr>";
 	}
 	
-	function makeDropDown($options, $name, $selected) {
-		$output = "<select class=\"uniform\" name=\"$name\">\r\n";
-		foreach ( $options as $value => $description ) {
+	function makeDropDown($options, $name, $selected, $ltr = false) {
+
+        if ( $ltr )
+            $output = "<select class=\"uniform ltr\" name=\"$name\">\r\n";
+        else
+            $output = "<select class=\"uniform\" name=\"$name\">\r\n";
+
+        foreach ( $options as $value => $description ) {
 			$output .= "<option value=\"$value\"";
 			if( $selected == $value ) {
 				$output .= " selected ";
@@ -635,7 +650,7 @@ HTML;
 HTML;
 	
 	showRow( $lang['opt_sys_ht'], $lang['opt_sys_htd'], "<input type=\"text\" class=\"form-control\" name=\"save_con[home_title]\" value=\"{$config['home_title']}\">", "white-line" );
-	showRow( $lang['opt_sys_hu'], $lang['opt_sys_hud'], "<input type=\"text\" class=\"form-control\" name=\"save_con[http_home_url]\" value=\"{$config['http_home_url']}\"><a href=\"#\" onclick=\"change_domain(); return false;\">{$lang['change_domain']}</a>" );
+	showRow( $lang['opt_sys_hu'], $lang['opt_sys_hud'], "<input type=\"text\" class=\"form-control ltr\" name=\"save_con[http_home_url]\" value=\"{$config['http_home_url']}\">" );
 	showRow( $lang['opt_sys_https'], $lang['opt_sys_httpsd'], makeCheckBox( "save_con[only_ssl]", "{$config['only_ssl']}" ) );
 	showRow( $lang['opt_sys_descr'], $lang['opt_sys_descrd'], "<input type=\"text\" class=\"form-control\" name=\"save_con[description]\" value=\"{$config['description']}\">" );
 	showRow( $lang['opt_sys_key'], $lang['opt_sys_keyd'], "<textarea class=\"classic\" style=\"width:100%;height:100px;\" name=\"save_con[keywords]\">{$config['keywords']}</textarea>" );
@@ -668,20 +683,20 @@ HTML;
   <table class="table table-striped">
 HTML;
 	
-	showRow( $lang['opt_sys_path'], $lang['opt_sys_pathd'], "<input type=\"text\" name=\"save_con[admin_path]\" value=\"{$config['admin_path']}\" class=\"form-control\">", "white-line" );
+	showRow( $lang['opt_sys_path'], $lang['opt_sys_pathd'], "<input type=\"text\" name=\"save_con[admin_path]\" value=\"{$config['admin_path']}\" class=\"form-control ltr\">", "white-line" );
 	showRow( $lang['opt_sys_logextra'], $lang['opt_sys_logextrad'], makeDropDown( array ("0" => $lang['opt_sys_stdm'], "1" => $lang['opt_sys_extram'] ), "save_con[extra_login]", "{$config['extra_login']}" ) );
 	showRow( $lang['opt_sys_dfc'], $lang['opt_sys_dfcd'], makeCheckBox( "save_con[disable_frame]", "{$config['disable_frame']}" ) );
-	showRow( $lang['opt_sys_ownip'], $lang['opt_sys_ownipd'].get_ip(), "<input type=\"text\" name=\"save_con[own_ip]\" value=\"{$config['own_ip']}\" class=\"form-control\">");
-	showRow( $lang['opt_sys_iprest'], $lang['opt_sys_iprestd'], "<textarea class=\"classic\" style=\"width:100%;height:100px;\" name=\"save_con[admin_allowed_ip]\">{$config['admin_allowed_ip']}</textarea>" );
-	showRow( $lang['opt_sys_llog'], $lang['opt_sys_llogd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[login_log]\" value=\"{$config['login_log']}\">" );
-	showRow( $lang['opt_sys_tban'], $lang['opt_sys_tband'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[login_ban_timeout]\" value=\"{$config['login_ban_timeout']}\">" );
+	showRow( $lang['opt_sys_ownip'], $lang['opt_sys_ownipd'].get_ip(), "<input type=\"text\" name=\"save_con[own_ip]\" value=\"{$config['own_ip']}\" class=\"form-control ltr\">");
+	showRow( $lang['opt_sys_iprest'], $lang['opt_sys_iprestd'], "<textarea class=\"classic ltr\" style=\"width:100%;height:100px;\" name=\"save_con[admin_allowed_ip]\">{$config['admin_allowed_ip']}</textarea>" );
+	showRow( $lang['opt_sys_llog'], $lang['opt_sys_llogd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\" name=\"save_con[login_log]\" value=\"{$config['login_log']}\">" );
+	showRow( $lang['opt_sys_tban'], $lang['opt_sys_tband'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\" name=\"save_con[login_ban_timeout]\" value=\"{$config['login_ban_timeout']}\">" );
 	showRow( $lang['opt_sys_ip'], $lang['opt_sys_ipd'], makeDropDown( array ("0" => $lang['opt_sys_ipn'], "1" => $lang['opt_sys_ipm'], "2" => $lang['opt_sys_iph'] ), "save_con[ip_control]", "{$config['ip_control']}" ) );
 	showRow( $lang['opt_sys_loghash'], $lang['opt_sys_loghashd'], makeCheckBox( "save_con[log_hash]", "{$config['log_hash']}" ) );
-	showRow( $lang['opt_sys_recapt'], $lang['opt_sys_recaptd'], makeDropDown( array ("0" => $lang['opt_sys_gd2'], "1" => 'reCAPTCHA v2', "2" => 'reCAPTCHA v3' ), "save_con[allow_recaptcha]", "{$config['allow_recaptcha']}" ) );
-	showRow( $lang['opt_sys_recaptpub'], $lang['opt_sys_recaptpubd'], "<input  type=\"text\" class=\"form-control\" name=\"save_con[recaptcha_public_key]\" value=\"{$config['recaptcha_public_key']}\">" );
-	showRow( $lang['opt_sys_recaptpriv'], $lang['opt_sys_recaptpubd'], "<input  type=\"text\" class=\"form-control\" name=\"save_con[recaptcha_private_key]\" value=\"{$config['recaptcha_private_key']}\">" );
+	showRow( $lang['opt_sys_recapt'], $lang['opt_sys_recaptd'], makeDropDown( array ("0" => $lang['opt_sys_gd2'], "1" => $lang['opt_sys_recaptcha'] ), "save_con[allow_recaptcha]", "{$config['allow_recaptcha']}" ) );
+	showRow( $lang['opt_sys_recaptpub'], $lang['opt_sys_recaptpubd'], "<input  type=\"text\" class=\"form-control ltr\" name=\"save_con[recaptcha_public_key]\" value=\"{$config['recaptcha_public_key']}\">" );
+	showRow( $lang['opt_sys_recaptpriv'], $lang['opt_sys_recaptpubd'], "<input  type=\"text\" class=\"form-control ltr\" name=\"save_con[recaptcha_private_key]\" value=\"{$config['recaptcha_private_key']}\">" );
 	showRow( $lang['opt_sys_recapttheme'], $lang['opt_sys_recaptthemed'], makeDropDown( array ("light" => "Light", "dark" => "Dark" ), "save_con[recaptcha_theme]", "{$config['recaptcha_theme']}" ) );
-	showRow( $lang['opt_sys_mdl'], $lang['opt_sys_mdld'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[adminlog_maxdays]\" value=\"{$config['adminlog_maxdays']}\">" );
+	showRow( $lang['opt_sys_mdl'], $lang['opt_sys_mdld'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\" name=\"save_con[adminlog_maxdays]\" value=\"{$config['adminlog_maxdays']}\">" );
 	
 	echo "</table></div></div>";
 	
@@ -694,20 +709,20 @@ HTML;
   <table class="table table-striped">
 HTML;
 	
-	showRow( $lang['opt_sys_newc'], $lang['opt_sys_newd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[news_number]\" value=\"{$config['news_number']}\">", "white-line" );
-	showRow( $lang['opt_sys_snumc'], $lang['opt_sys_snumd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[search_number]\" value=\"{$config['search_number']}\">" );
-	showRow( $lang['opt_sys_findr'], $lang['opt_sys_findrd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[search_pages]\" value=\"{$config['search_pages']}\">" );
-	
+	showRow( $lang['opt_sys_newc'], $lang['opt_sys_newd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[news_number]\" value=\"{$config['news_number']}\">", "white-line" );
+	showRow( $lang['opt_sys_snumc'], $lang['opt_sys_snumd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[search_number]\" value=\"{$config['search_number']}\">" );
+	showRow( $lang['opt_sys_findr'], $lang['opt_sys_findrd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[search_pages]\" value=\"{$config['search_pages']}\">" );
+
 	showRow( $lang['opt_sys_minsearch'], $lang['opt_sys_minsearchd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[search_length_min]\" value=\"{$config['search_length_min']}\">" );
 
-	showRow( $lang['opt_sys_related_num'], $lang['opt_sys_related_numd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[related_number]\" value=\"{$config['related_number']}\">" );
-	showRow( $lang['opt_sys_top_num'], $lang['opt_sys_top_numd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[top_number]\" value=\"{$config['top_number']}\">" );
-	showRow( $lang['opt_sys_cloud_num'], $lang['opt_sys_cloud_numd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[tags_number]\" value=\"{$config['tags_number']}\">" );
-	showRow( $lang['opt_sys_max_mod'], $lang['opt_sys_max_modd'], "<input type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[max_moderation]\" value=\"{$config['max_moderation']}\">" );
-	showRow( $lang['group_n_restr'], $lang['group_n_restrd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[news_restricted]\" value=\"{$config['news_restricted']}\">" );
-	showRow( $lang['opt_sys_cls'], $lang['opt_sys_clsd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[category_separator]\" value=\"{$config['category_separator']}\">" );
-	showRow( $lang['opt_sys_spbs'], $lang['opt_sys_spbsd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[speedbar_separator]\" value=\"{$config['speedbar_separator']}\">" );
-	showRow( $lang['opt_sys_am'], $lang['opt_sys_amd'], "<input  type=\"text\" class=\"form-control\"  name=\"save_con[smilies]\" value=\"{$config['smilies']}\" >" );
+	showRow( $lang['opt_sys_related_num'], $lang['opt_sys_related_numd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[related_number]\" value=\"{$config['related_number']}\">" );
+	showRow( $lang['opt_sys_top_num'], $lang['opt_sys_top_numd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[top_number]\" value=\"{$config['top_number']}\">" );
+	showRow( $lang['opt_sys_cloud_num'], $lang['opt_sys_cloud_numd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[tags_number]\" value=\"{$config['tags_number']}\">" );
+	showRow( $lang['opt_sys_max_mod'], $lang['opt_sys_max_modd'], "<input type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[max_moderation]\" value=\"{$config['max_moderation']}\">" );
+	showRow( $lang['group_n_restr'], $lang['group_n_restrd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[news_restricted]\" value=\"{$config['news_restricted']}\">" );
+	showRow( $lang['opt_sys_cls'], $lang['opt_sys_clsd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[category_separator]\" value=\"{$config['category_separator']}\">" );
+	showRow( $lang['opt_sys_spbs'], $lang['opt_sys_spbsd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[speedbar_separator]\" value=\"{$config['speedbar_separator']}\">" );
+	showRow( $lang['opt_sys_am'], $lang['opt_sys_amd'], "<input  type=\"text\" class=\"form-control ltr\"  name=\"save_con[smilies]\" value=\"{$config['smilies']}\" >" );
 	showRow( $lang['opt_sys_an'], "<a onclick=\"javascript:Help('date'); return false;\" href=\"#\">$lang[opt_sys_and]</a>", "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[timestamp_active]\" value=\"{$config['timestamp_active']}\">" );
 	showRow( $lang['opt_sys_navi'], $lang['opt_sys_navid'], makeDropDown( array ("0" => $lang['opt_sys_navi_1'], "1" => $lang['opt_sys_navi_2'], "2" => $lang['opt_sys_navi_3'], "3" => $lang['opt_sys_navi_4'] ), "save_con[news_navigation]", "{$config['news_navigation']}" ) );
 	showRow( $lang['opt_sys_sort'], $lang['opt_sys_sortd'], makeDropDown( array ("date" => $lang['opt_sys_sdate'], "rating" => $lang['opt_sys_srate'], "news_read" => $lang['opt_sys_sview'], "title" => $lang['opt_sys_salph'], "comm_num" => $lang['opt_sys_scnum'] ), "save_con[news_sort]", "{$config['news_sort']}" ) );
@@ -744,19 +759,19 @@ HTML;
 HTML;
 	showRow( $lang['opt_sys_alc'], $lang['opt_sys_alcd'], makeCheckBox( "save_con[allow_comments]", "{$config['allow_comments']}" ), "white-line" );
 	showRow( $lang['opt_sys_trc'], $lang['opt_sys_trcd'], makeCheckBox( "save_con[tree_comments]", "{$config['tree_comments']}" ) );
-	showRow( $lang['opt_sys_trcl'], $lang['opt_sys_trcld'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[tree_comments_level]\" value=\"{$config['tree_comments_level']}\">" );
+	showRow( $lang['opt_sys_trcl'], $lang['opt_sys_trcld'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[tree_comments_level]\" value=\"{$config['tree_comments_level']}\">" );
 	showRow( $lang['opt_sys_trcf'], $lang['opt_sys_trcfd'], makeCheckBox( "save_con[simple_reply]", "{$config['simple_reply']}" ) );
-	showRow( $lang['group_c_restr'], $lang['group_c_restrd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[comments_restricted]\" value=\"{$config['comments_restricted']}\">" );
+	showRow( $lang['group_c_restr'], $lang['group_c_restrd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name=\"save_con[comments_restricted]\" value=\"{$config['comments_restricted']}\">" );
 	showRow( $lang['opt_sys_subs'], $lang['opt_sys_subsd'], makeCheckBox( "save_con[allow_subscribe]", "{$config['allow_subscribe']}" ) );
 	showRow( $lang['opt_sys_comb'], $lang['opt_sys_combd'], makeCheckBox( "save_con[allow_combine]", "{$config['allow_combine']}" ) );
-	showRow( $lang['opt_sys_mcommd'], $lang['opt_sys_mcommdd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_comments_days]' value=\"{$config['max_comments_days']}\">" );
-	showRow( $lang['opt_sys_minc'], $lang['opt_sys_mincd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[comments_minlen]' value=\"{$config['comments_minlen']}\">" );
-	showRow( $lang['opt_sys_maxc'], $lang['opt_sys_maxcd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[comments_maxlen]' value=\"{$config['comments_maxlen']}\">" );
-	showRow( $lang['opt_sys_cpm'], $lang['opt_sys_cpmd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[comm_nummers]' value=\"{$config['comm_nummers']}\">" );
+	showRow( $lang['opt_sys_mcommd'], $lang['opt_sys_mcommdd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_comments_days]' value=\"{$config['max_comments_days']}\">" );
+	showRow( $lang['opt_sys_minc'], $lang['opt_sys_mincd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[comments_minlen]' value=\"{$config['comments_minlen']}\">" );
+	showRow( $lang['opt_sys_maxc'], $lang['opt_sys_maxcd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[comments_maxlen]' value=\"{$config['comments_maxlen']}\">" );
+	showRow( $lang['opt_sys_cpm'], $lang['opt_sys_cpmd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[comm_nummers]' value=\"{$config['comm_nummers']}\">" );
 	showRow( $lang['opt_sys_clazy'], $lang['opt_sys_clazyd'], makeCheckBox( "save_con[comments_lazyload]", "{$config['comments_lazyload']}" ) );
 	showRow( $lang['opt_sys_csort'], $lang['opt_sys_csortd'], makeDropDown( array ("DESC" => $lang['opt_sys_mminus'], "ASC" => $lang['opt_sys_mplus'] ), "save_con[comm_msort]", "{$config['comm_msort']}" ) );
-	showRow( $lang['opt_sys_af'], $lang['opt_sys_afd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[flood_time]' value=\"{$config['flood_time']}\">" );
-	showRow( $lang['opt_sys_aw'], $lang['opt_sys_awd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[auto_wrap]' value=\"{$config['auto_wrap']}\">" );
+	showRow( $lang['opt_sys_af'], $lang['opt_sys_afd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[flood_time]' value=\"{$config['flood_time']}\">" );
+	showRow( $lang['opt_sys_aw'], $lang['opt_sys_awd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[auto_wrap]' value=\"{$config['auto_wrap']}\">" );
 	showRow( $lang['opt_sys_ct'], "<a onclick=\"javascript:Help('date'); return false;\" href=\"#\">$lang[opt_sys_and]</a>", "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name='save_con[timestamp_comment]' value=\"{$config['timestamp_comment']}\">" );
 	showRow( $lang['opt_sys_asc'], $lang['opt_sys_ascd'], makeCheckBox( "save_con[allow_search_link]", "{$config['allow_search_link']}" ) );
 	showRow( $lang['opt_sys_cmail'], $lang['opt_sys_cmaild'], makeCheckBox( "save_con[mail_comments]", "{$config['mail_comments']}" ) );	
@@ -775,11 +790,11 @@ HTML;
   <table class="table table-striped">
 HTML;
 	showRow( $lang['opt_sys_cac'], $lang['opt_sys_cad'], makeCheckBox( "save_con[allow_cache]", "{$config['allow_cache']}" ), "white-line" );
-	showRow( $lang['opt_sys_cc'], $lang['opt_sys_ccd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[clear_cache]\" value=\"{$config['clear_cache']}\">" );
-	showRow( $lang['opt_sys_mcac'], $lang['opt_sys_mcacd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[max_cache_pages]\" value=\"{$config['max_cache_pages']}\">" );
-	showRow( $lang['opt_sys_fc'], $lang['opt_sys_fcd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\" name=\"save_con[fullcache_days]\" value=\"{$config['fullcache_days']}\">" );
+	showRow( $lang['opt_sys_cc'], $lang['opt_sys_ccd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\" name=\"save_con[clear_cache]\" value=\"{$config['clear_cache']}\">" );
+	showRow( $lang['opt_sys_mcac'], $lang['opt_sys_mcacd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\" name=\"save_con[max_cache_pages]\" value=\"{$config['max_cache_pages']}\">" );
+	showRow( $lang['opt_sys_fc'], $lang['opt_sys_fcd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\" name=\"save_con[fullcache_days]\" value=\"{$config['fullcache_days']}\">" );
 	showRow( $lang['opt_sys_ctype'], $lang['opt_sys_ctyped'], makeDropDown( array ("0" => $lang['opt_sys_filec'], "1" => "Memcache" ), "save_con[cache_type]", "{$config['cache_type']}" ) );
-	showRow( $lang['opt_sys_memserv'], $lang['opt_sys_memservd'], "<input  type=\"text\" name=\"save_con[memcache_server]\" value=\"{$config['memcache_server']}\" class=\"form-control\">" );
+	showRow( $lang['opt_sys_memserv'], $lang['opt_sys_memservd'], "<input  type=\"text\" name=\"save_con[memcache_server]\" value=\"{$config['memcache_server']}\" class=\"form-control ltr\">" );
 	showRow( $lang['opt_sys_ccache'], $lang['opt_sys_ccached'], makeCheckBox( "save_con[allow_comments_cache]", "{$config['allow_comments_cache']}" ) );
 	showRow( $lang['opt_sys_ag'], $lang['opt_sys_agd'], makeCheckBox( "save_con[allow_gzip]", "{$config['allow_gzip']}" ) );
 	showRow( $lang['opt_sys_ajsm'], $lang['opt_sys_ajsmd'], makeCheckBox( "save_con[js_min]", "{$config['js_min']}" ) );
@@ -824,7 +839,7 @@ HTML;
 HTML;
 	
 	showRow( $lang['opt_sys_file'], $lang['opt_sys_filed'], makeCheckBox( "save_con[files_allow]", "{$config['files_allow']}" ), "white-line" );
-	showRow( $lang['opt_sys_maxfilec'], $lang['opt_sys_maxfilecd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_file_count]' value=\"{$config['max_file_count']}\">" );
+	showRow( $lang['opt_sys_maxfilec'], $lang['opt_sys_maxfilecd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_file_count]' value=\"{$config['max_file_count']}\">" );
 	showRow( $lang['opt_sys_file4'], $lang['opt_sys_file4d'], makeCheckBox( "save_con[files_force]", "{$config['files_force']}" ) );
 	showRow( $lang['opt_sys_file3'], $lang['opt_sys_file3d'], makeCheckBox( "save_con[files_antileech]", "{$config['files_antileech']}" ) );
 	showRow( $lang['opt_sys_file2'], $lang['opt_sys_file2d'], makeCheckBox("save_con[files_count]", "{$config['files_count']}" ) );
@@ -840,16 +855,16 @@ HTML;
   <table class="table table-striped">
 HTML;
 
-	showRow( $lang['opt_sys_amail'], $lang['opt_sys_amaild'], "<input  type=\"text\" name='save_con[admin_mail]' value='{$config['admin_mail']}' class=\"form-control\" style=\"width:100%;max-width:250px\">", "white-line" );
-	showRow( $lang['opt_sys_mt'], $lang['opt_sys_mtd'], "<input  type=\"text\" name='save_con[mail_title]' value=\"{$config['mail_title']}\" class=\"form-control\" style=\"width:100%;max-width:250px\">" );
+	showRow( $lang['opt_sys_amail'], $lang['opt_sys_amaild'], "<input  type=\"text\" name='save_con[admin_mail]' value='{$config['admin_mail']}' class=\"form-control ltr\" style=\"width:100%;max-width:250px\">", "white-line" );
+	showRow( $lang['opt_sys_mt'], $lang['opt_sys_mtd'], "<input  type=\"text\" name='save_con[mail_title]' value=\"{$config['mail_title']}\" class=\"form-control ltr\" style=\"width:100%;max-width:250px\">" );
 
 	showRow( $lang['opt_sys_mm'], $lang['opt_sys_mmd'], makeDropDown( array ("php" => "PHP Mail()", "smtp" => "SMTP" ), "save_con[mail_metod]", "{$config['mail_metod']}" ) );
-	showRow( $lang['opt_sys_smtph'], $lang['opt_sys_smtphd'], "<input  type=\"text\" name='save_con[smtp_host]' value=\"{$config['smtp_host']}\" class=\"form-control\" style=\"width:100%;max-width:250px\">" );
+	showRow( $lang['opt_sys_smtph'], $lang['opt_sys_smtphd'], "<input  type=\"text\" name='save_con[smtp_host]' value=\"{$config['smtp_host']}\" class=\"form-control ltr\" style=\"width:100%;max-width:250px\">" );
 	showRow( $lang['opt_sys_smtpp'], $lang['opt_sys_smtppd'], "<input  type=\"text\" name='save_con[smtp_port]' class=\"form-control\" style=\"max-width:150px; text-align: center;\" value=\"{$config['smtp_port']}\">" );
-	showRow( $lang['opt_sys_smtup'], $lang['opt_sys_smtpud'], "<input  type=\"text\" name='save_con[smtp_user]' value=\"{$config['smtp_user']}\" class=\"form-control\" style=\"width:100%;max-width:250px\">" );
-	showRow( $lang['opt_sys_smtupp'], $lang['opt_sys_smtpupd'], "<input  type=\"text\" name='save_con[smtp_pass]' value=\"{$config['smtp_pass']}\" class=\"form-control\" style=\"width:100%;max-width:250px\">" );
+	showRow( $lang['opt_sys_smtup'], $lang['opt_sys_smtpud'], "<input  type=\"text\" name='save_con[smtp_user]' value=\"{$config['smtp_user']}\" class=\"form-control ltr\" style=\"width:100%;max-width:250px\">" );
+	showRow( $lang['opt_sys_smtupp'], $lang['opt_sys_smtpupd'], "<input  type=\"text\" name='save_con[smtp_pass]' value=\"{$config['smtp_pass']}\" class=\"form-control ltr\" style=\"width:100%;max-width:250px\">" );
 	showRow( $lang['opt_sys_msec'], $lang['opt_sys_msecd'], makeDropDown( array ("" => $lang['opt_sys_no'], "ssl" => "SSL", "tls" => "TLS" ), "save_con[smtp_secure]", "{$config['smtp_secure']}" ) );
-	showRow( $lang['opt_sys_smtpm'], $lang['opt_sys_smtpmd'], "<input  type=\"text\" name='save_con[smtp_mail]' value=\"{$config['smtp_mail']}\" class=\"form-control\" style=\"width:100%;max-width:250px\">" );
+	showRow( $lang['opt_sys_smtpm'], $lang['opt_sys_smtpmd'], "<input  type=\"text\" name='save_con[smtp_mail]' value=\"{$config['smtp_mail']}\" class=\"form-control ltr\" style=\"width:100%;max-width:250px\">" );
 	showRow( $lang['opt_sys_mbcc'], $lang['opt_sys_mbccd'], makeCheckBox( "save_con[mail_bcc]", "{$config['mail_bcc']}" ) );
 	
 	echo "</table></div></div>";
@@ -868,7 +883,7 @@ HTML;
 	showRow( $lang['opt_sys_reggroup'], $lang['opt_sys_reggroupd'], makeDropDown( $sys_group_arr, "save_con[reg_group]", $config['reg_group'] ) );
 	showRow( $lang['opt_sys_ut'], $lang['opt_sys_utd'], makeDropDown( array ("0" => $lang['opt_sys_reg'], "1" => $lang['opt_sys_reg_1'] ), "save_con[registration_type]", "{$config['registration_type']}" ) );
 	showRow( $lang['opt_sys_addsec'], $lang['opt_sys_addsecd'], makeDropDown( array ( "0" => $lang['opt_sys_r1'], "3" => $lang['opt_sys_r6'], "2" => $lang['opt_sys_r4'], "1" => $lang['opt_sys_r5'] ), "save_con[sec_addnews]", "{$config['sec_addnews']}" ) );
-	showRow( $lang['opt_sys_sapi'], $lang['opt_sys_sapid'], "<input type=\"text\" name=\"save_con[spam_api_key]\" value=\"{$config['spam_api_key']}\" class=\"form-control\">" );
+	showRow( $lang['opt_sys_sapi'], $lang['opt_sys_sapid'], "<input type=\"text\" name=\"save_con[spam_api_key]\" value=\"{$config['spam_api_key']}\" class=\"form-control ltr\">" );
 	showRow( $lang['opt_sys_pn'], $lang['opt_sys_pnd'], makeCheckBox( "save_con[profile_news]", "{$config['profile_news']}" ) );
 	showRow( $lang['opt_sys_soc'], $lang['opt_sys_socd'], makeCheckBox( "save_con[allow_social]", "{$config['allow_social']}" ) );
 	showRow( $lang['opt_sys_rsc'], $lang['opt_sys_rscd'], makeCheckBox( "save_con[auth_only_social]", "{$config['auth_only_social']}" ) );
@@ -881,8 +896,8 @@ HTML;
 	showRow( $lang['opt_sys_question'], $lang['opt_sys_questiond'], makeCheckBox( "save_con[reg_question]", "{$config['reg_question']}" ) );
 	showRow( $lang['opt_sys_sc'], $lang['opt_sys_scd'], makeCheckBox( "save_con[allow_skin_change]", "{$config['allow_skin_change']}" ) );
 	showRow( $lang['opt_sys_pmail'], $lang['opt_sys_pmaild'], makeCheckBox( "save_con[mail_pm]", "{$config['mail_pm']}" ) );
-	showRow( $lang['opt_sys_um'], $lang['opt_sys_umd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_users]' value=\"{$config['max_users']}\">" );
-	showRow( $lang['opt_sys_ud'], $lang['opt_sys_udd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_users_day]' value=\"{$config['max_users_day']}\">" );
+	showRow( $lang['opt_sys_um'], $lang['opt_sys_umd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_users]' value=\"{$config['max_users']}\">" );
+	showRow( $lang['opt_sys_ud'], $lang['opt_sys_udd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_users_day]' value=\"{$config['max_users_day']}\">" );
 	
 	echo "</table></div></div>";
 	
@@ -895,22 +910,22 @@ HTML;
   <table class="table table-striped">
 HTML;
 
-	showRow( $lang['opt_sys_minside'], $lang['opt_sys_minsided'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[min_up_side]' value=\"{$config['min_up_side']}\" >", "white-line" );
+	showRow( $lang['opt_sys_minside'], $lang['opt_sys_minsided'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[min_up_side]' value=\"{$config['min_up_side']}\" >", "white-line" );
 	
-	showRow( $lang['opt_sys_maxside'], $lang['opt_sys_maxsided'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_up_side]' value=\"{$config['max_up_side']}\" >" );
+	showRow( $lang['opt_sys_maxside'], $lang['opt_sys_maxsided'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_up_side]' value=\"{$config['max_up_side']}\" >" );
 	showRow( $lang['opt_sys_sdefm'], $lang['opt_sys_sdefmd'], makeDropDown( array ("0" => $lang['upload_t_seite_1'], "1" => $lang['upload_t_seite_2'], "2" => $lang['upload_t_seite_3'] ), "save_con[o_seite]", "{$config['o_seite']}" ) );
-	showRow( $lang['opt_sys_maxsize'], $lang['opt_sys_maxsized'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_up_size]' value=\"{$config['max_up_size']}\">" );
-	showRow( $lang['opt_sys_dim'], $lang['opt_sys_dimd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_image_days]' value=\"{$config['max_image_days']}\">" );
+	showRow( $lang['opt_sys_maxsize'], $lang['opt_sys_maxsized'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_up_size]' value=\"{$config['max_up_size']}\">" );
+	showRow( $lang['opt_sys_dim'], $lang['opt_sys_dimd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_image_days]' value=\"{$config['max_image_days']}\">" );
 	showRow( $lang['opt_sys_iw'], $lang['opt_sys_iwd'], makeCheckBox( "save_con[allow_watermark]", "{$config['allow_watermark']}" ) );
-	showRow( $lang['opt_sys_im'], $lang['opt_sys_imd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_watermark]' value=\"{$config['max_watermark']}\">" );
+	showRow( $lang['opt_sys_im'], $lang['opt_sys_imd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_watermark]' value=\"{$config['max_watermark']}\">" );
 	showRow( $lang['opt_sys_wms'], $lang['opt_sys_wmsd'], makeDropDown( array ("1" => $lang['opt_sys_wms_1'], "2" => $lang['opt_sys_wms_2'], "3" => $lang['opt_sys_wms_3'], "4" => $lang['opt_sys_wms_4'] ), "save_con[watermark_seite]", "{$config['watermark_seite']}" ) );
-	showRow( $lang['opt_sys_ia'], $lang['opt_sys_iad'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_image]' value=\"{$config['max_image']}\">" );
-	showRow( $lang['opt_sys_mi'], $lang['opt_sys_mid'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[medium_image]' value=\"{$config['medium_image']}\">" );
+	showRow( $lang['opt_sys_ia'], $lang['opt_sys_iad'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[max_image]' value=\"{$config['max_image']}\">" );
+	showRow( $lang['opt_sys_mi'], $lang['opt_sys_mid'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[medium_image]' value=\"{$config['medium_image']}\">" );
 	showRow( $lang['opt_sys_sdef'], $lang['opt_sys_sdefd'], makeDropDown( array ("0" => $lang['upload_t_seite_1'], "1" => $lang['upload_t_seite_2'], "2" => $lang['upload_t_seite_3'] ), "save_con[t_seite]", "{$config['t_seite']}" ) );
-	showRow( $lang['opt_sys_ij'], $lang['opt_sys_ijd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[jpeg_quality]' value=\"{$config['jpeg_quality']}\">" );
-	showRow( $lang['opt_sys_av'], $lang['opt_sys_avd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[avatar_size]' value=\"{$config['avatar_size']}\">" );
+	showRow( $lang['opt_sys_ij'], $lang['opt_sys_ijd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[jpeg_quality]' value=\"{$config['jpeg_quality']}\">" );
+	showRow( $lang['opt_sys_av'], $lang['opt_sys_avd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[avatar_size]' value=\"{$config['avatar_size']}\">" );
 
-	showRow( $lang['opt_sys_imw'], $lang['opt_sys_imwd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[tag_img_width]' value=\"{$config['tag_img_width']}\">" );
+	showRow( $lang['opt_sys_imw'], $lang['opt_sys_imwd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[tag_img_width]' value=\"{$config['tag_img_width']}\">" );
 	showRow( $lang['opt_sys_align'], $lang['opt_sys_alignd'], makeDropDown( array ("" => $lang['opt_sys_none'], "left" => $lang['opt_sys_left'], "center" => $lang['opt_sys_center'], "right" => $lang['opt_sys_right'] ), "save_con[image_align]", "{$config['image_align']}" ) );
 	showRow( $lang['opt_sys_dimm'], $lang['opt_sys_dimmd'], makeCheckBox( "save_con[thumb_dimming]", "{$config['thumb_dimming']}" ) );
 	showRow( $lang['opt_sys_gall'], $lang['opt_sys_galld'], makeCheckBox( "save_con[thumb_gallery]", "{$config['thumb_gallery']}" ) );
@@ -933,7 +948,7 @@ HTML;
 	showRow( $lang['opt_sys_sm_im'], $lang['opt_sys_sm_imd'], makeCheckBox( "save_con[allow_smart_images]", "{$config['allow_smart_images']}" ) );
 	showRow( $lang['opt_sys_sm_iv'], $lang['opt_sys_sm_ivd'], makeCheckBox( "save_con[allow_smart_video]", "{$config['allow_smart_video']}" ) );
 	showRow( $lang['opt_sys_sm_fm'], $lang['opt_sys_sm_fmd'], makeCheckBox( "save_con[allow_smart_format]", "{$config['allow_smart_format']}" ) );
-	showRow( $lang['opt_sys_sm_n'], $lang['opt_sys_sm_nd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[mobile_news]' value=\"{$config['mobile_news']}\">" );
+	showRow( $lang['opt_sys_sm_n'], $lang['opt_sys_sm_nd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[mobile_news]' value=\"{$config['mobile_news']}\">" );
 	
 	echo "</table></div></div>";
 
@@ -949,7 +964,7 @@ HTML;
 	
 	showRow( $lang['opt_sys_arss'], $lang['opt_sys_arssd'], makeCheckBox( "save_con[allow_rss]", "{$config['allow_rss']}" ), "white-line" );
 	showRow( $lang['opt_sys_trss'], $lang['opt_sys_trssd'], makeDropDown( array ("0" => $lang['opt_sys_rss_type_0'], "1" => $lang['opt_sys_rss_type_1'] ), "save_con[rss_mtype]", "{$config['rss_mtype']}" ) );
-	showRow( $lang['opt_sys_nrss'], $lang['opt_sys_nrssd'], "<input  type=\"text\" class=\"form-control\" style=\"max-width:150px; text-align: center;\"  name='save_con[rss_number]' value=\"{$config['rss_number']}\">" );
+	showRow( $lang['opt_sys_nrss'], $lang['opt_sys_nrssd'], "<input  type=\"text\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\"  name='save_con[rss_number]' value=\"{$config['rss_number']}\">" );
 	showRow( $lang['opt_sys_frss'], $lang['opt_sys_frssd'], makeDropDown( array ("0" => $lang['opt_sys_rss_type_2'], "1" => $lang['opt_sys_rss_type_3'], "2" => $lang['opt_sys_rss_type_4'] ), "save_con[rss_format]", "{$config['rss_format']}" ) );
 	
 	echo "</table></div></div>";

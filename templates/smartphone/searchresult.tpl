@@ -1,20 +1,20 @@
 [searchposts]
 [fullresult]
 <article class="post">
-	<h2 class="title">[full-link]{title}[/full-link]</h2>
+	<h2 class="title">[result-link]{result-title}[/result-link]</h2>
 	<ul class="post-info">
-		<li class="iauthor ico">[profile]{login}[/profile]</li>
-		<li class="idate ico">{date}</li>
+		<li class="iauthor ico"><b>{result-author}</b></li>
+		<li class="idate ico">{result-date}</li>
 		<li class="iviews ico">{views}</li>
 	</ul>
 	<p class="icat ico">{link-category}</p>
 	<div class="post-cont clrfix">
-		{short-story}
+		{result-text}
 	</div>
 	<div class="panel clrfix">
-		<b class="com-num ico" title="Comments - {comments-num}">[com-link]{comments-num}[/com-link]</b>
-		<b class="more">[full-link]More[/full-link]</b>
-	</div> 
+		<b class="com-num ico" title="نظرات - {comments-num}">{result-comments}</b>
+		<b class="more">[result-link]ادامه مطلب[/result-link]</b>
+	</div>
 </article>
 [/fullresult]
 [/searchposts]

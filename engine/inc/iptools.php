@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: iptools.php
 -----------------------------------------------------
@@ -54,9 +54,9 @@ echo <<<HTML
     {$lang['opt_iptoolsc']}
   </div>
   <div class="panel-body">
-	{$lang['opt_iptoolsc']}<br /><input class="form-control width-350 position-left" type="text" name="ip" value="{$ip}"><input type="submit" value="{$lang['b_find']}" class="btn bg-primary-600 btn-sm btn-raised">
+	{$lang['opt_iptoolsc']}<br /><input class="form-control width-350 position-left ltr" type="text" name="ip" value="{$ip}"><input type="submit" value="{$lang['b_find']}" class="btn bg-primary-600 btn-sm btn-raised">
 	 <div class="text-muted text-size-small mb-20"><i class="fa fa-exclamation-circle"></i> {$lang['opt_ipfe']}</div>
-	 {$lang['opt_iptoolsname']}<br /><input class="form-control width-350 position-left" type="text" name="name" value="{$name}"><input type="submit" value="{$lang['b_find']}" class="btn bg-primary-600 btn-sm btn-raised">
+	 {$lang['opt_iptoolsname']}<br /><input class="form-control width-350 position-left ltr" type="text" name="name" value="{$name}"><input type="submit" value="{$lang['b_find']}" class="btn bg-primary-600 btn-sm btn-raised">
   </div>
 </div>
 

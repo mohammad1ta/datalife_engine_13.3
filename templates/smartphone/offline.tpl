@@ -11,11 +11,11 @@
 	.errorWrap { padding: 20px; }
 	.errorTitle { margin: 0; font-size: 32px; line-height: normal; letter-spacing: -0.02em }
 </style>
-<title>This website is temporarily disabled</title>
+<title>سايت غيرفعال است</title>
 </head>
 <body>
 	<div class="errorWrap">
-		<h2 class="errorTitle">This website is temporarily disabled</h2>
+		<h2 class="errorTitle">در حال حاضر دسترسی به سايت امکان پذير نمی‌باشد</h2>
 		<p>{reason}</p>
 	</div>
 </body>

@@ -12,7 +12,7 @@
 				[sort]
 					<div id="sort">
 						<svg class="icon icon-sort"><use xlink:href="#icon-sort"></use></svg>
-						<b class="sort_label grey">Sort by</b>
+						<b class="sort_label grey">انتخاب</b>
 						{sort}
 					</div>
 				[/sort]
@@ -25,7 +25,7 @@
 			</div>
 			<div class="grid_1_4 grid_last">
 				<a class="tags_btn grey collapsed" aria-expanded="false" href="#toptags" data-toggle="collapse">
-					<svg class="icon icon-tags"><use xlink:href="#icon-tags"></use></svg>Popular tags<svg class="icon icon-arrow_down"><use xlink:href="#icon-arrow_down"></use></svg>
+					<svg class="icon icon-tags"><use xlink:href="#icon-tags"></use></svg>برچسب ها<svg class="icon icon-arrow_down"><use xlink:href="#icon-arrow_down"></use></svg>
 				</a>
 			</div>
 			[/not-available]

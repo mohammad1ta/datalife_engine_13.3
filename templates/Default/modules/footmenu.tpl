@@ -10,36 +10,39 @@
 		<ul class="foot_menu">
 			<li>
 				<b role="button" data-toggle="collapse" data-target="#fmenu_1" aria-expanded="false" class="collapsed">
-					Categories<i></i>
+					دسته بندی<i></i>
 				</b>
 				<div class="collapse" id="fmenu_1">
 					<nav>
-						<a href="/index.php?do=search&amp;mode=advanced">Advanced search</a>
-						<a href="/index.php?do=lastnews">Latest news</a>
-						<a href="/index.php?do=lastcomments">Latest comments</a>
-						<a href="/index.php?action=mobile" rel="nofollow">Mobile version of Website</a>
+						<a href="#">تکنولوژی</a>
+						<a href="#">ورزشی</a>
+						<a href="#">اقتصادی</a>
+						<a href="#">فرهنگی</a>
+						<a href="#">پزشکی</a>
 					</nav>
 				</div>
 			</li>
 			<li>
-				<b role="button" data-toggle="collapse" data-target="#fmenu_2" aria-expanded="false" class="collapsed">Support<i></i></b>
+				<b role="button" data-toggle="collapse" data-target="#fmenu_2" aria-expanded="false" class="collapsed">پشتیبانی<i></i></b>
 				<div class="collapse" id="fmenu_2">
 					<nav>
-						<a href="http://dle-news.com/" target="_blank" rel="nofollow">Developers Website</a>
-						<a href="http://forum.dle-news.ru/" target="_blank">Support forum</a>
-						<a href="http://dle-news.com/price.html" target="_blank">Buy Engine</a>
-						<a href="/index.php?do=feedback">Contacts</a>
+						<a href="http://datalifeengine.ir/" target="_blank" rel="nofollow">وب سایت توسعه دهنده</a>
+						<a href="http://forum.datalifeengine.ir/" target="_blank" rel="nofollow">انجمن توسعه دهنده</a>
+						<a href="/index.php?do=search&amp;mode=advanced">جستجوی پیشرفته</a>
+						<a href="/index.php?do=lastnews">آخرین اخبار</a>
+						<a href="/index.php?do=lastcomments">آخرین نظرات</a>
 					</nav>
 				</div>
 			</li>
 			<li>
-				<b role="button" data-toggle="collapse" data-target="#fmenu_3" aria-expanded="false" class="collapsed">Customers<i></i></b>
+				<b role="button" data-toggle="collapse" data-target="#fmenu_3" aria-expanded="false" class="collapsed">صفحات داخلی<i></i></b>
 				<div class="collapse" id="fmenu_3">
 					<nav>
-						<a href="/">Homepage</a>
-						<a href="/rules.html">Rules</a>
-						<a href="/index.php?do=register">Registration</a>
-						<a href="/statistics.html">Statistics</a>
+						<a href="/">صفحه نخست</a>
+						<a href="/index.php?do=feedback">تماس با ما</a>
+						<a href="/rules.html">قوانین سایت</a>
+						<a href="/index.php?do=register">ثبت نام</a>
+						<a href="/statistics.html">آمار سایت</a>
 					</nav>
 				</div>
 			</li>

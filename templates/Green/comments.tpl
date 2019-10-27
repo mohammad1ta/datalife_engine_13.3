@@ -1,6 +1,6 @@
 <div class="comment[online] online[/online]" id="{comment-id}">
-	[online]<span class="status online">Online</span>[/online]
-	<span class="status offline">Offline</span>
+	[online]<span class="status online">آنلاین</span>[/online]
+	<span class="status offline">آفلاین</span>
 	<div class="com_info">
 		<div class="avatar">
 			[profile]<span class="cover" style="background-image: url({foto});">{login}</span>[/profile]
@@ -22,17 +22,17 @@
 			[/rating-type-2]
 			[rating-type-3]
 			<div class="rate_like-dislike">
-				[rating-plus]<span class="plus_icon" title="Like"><span>+</span></span>[/rating-plus]
+				[rating-plus]<span class="plus_icon" title="خوشم آمد"><span>+</span></span>[/rating-plus]
 				{rating}
-				[rating-minus]<span class="plus_icon minus" title="Dislike"><span>-</span></span>[/rating-minus]
+				[rating-minus]<span class="plus_icon minus" title="خوشم نیامد!"><span>-</span></span>[/rating-minus]
 			</div>
 			[/rating-type-3]
 			[rating-type-4]
 			<div class="rate_like-dislike">
 				<span class="ratingtypeplusminus ignore-select ratingplus">{likes}</span>
-				[rating-plus]<span class="plus_icon" title="Like"><span>+</span></span>[/rating-plus]
+				[rating-plus]<span title="دوست داشتم"><svg class="icon icon-like"><use xlink:href="#icon-like"></use></svg></span>[/rating-plus]
 				<span class="ratingtypeplusminus ratingminus ignore-select">{dislikes}</span>
-				[rating-minus]<span class="plus_icon minus" title="Dislike"><span>-</span></span>[/rating-minus]
+				[rating-minus]<span title="دوست نداشتم"><svg class="icon icon-dislike"><use xlink:href="#icon-dislike"></use></svg></span>[/rating-minus]
 			</div>
 			[/rating-type-4]
 		</div>
@@ -48,17 +48,19 @@
 		<div class="mass">{mass-action}</div>
 		<span class="edit_btn">
 		[com-edit]
-			<i title="Edit">Edit</i>
+			<i title="Edit">ویرایش</i>
 		[/com-edit]
 		</span>
 	[/not-group]
 		<div class="com_tools_links grey">
-			[fast]<svg class="icon icon-reply"><use xlink:href="#icon-reply"></use></svg><span>Quote</span>[/fast]
+			[fast]<svg class="icon icon-reply"><use xlink:href="#icon-reply"></use></svg><span>نقل قول</span>[/fast]
 			[treecomments] 
-			[reply]<svg class="icon icon-reply"><use xlink:href="#icon-reply"></use></svg><span>Reply</span>[/reply]
+			[reply]<svg class="icon icon-reply"><use xlink:href="#icon-reply"></use></svg><span>پاسخ</span>[/reply]
 			[/treecomments] 
-			[complaint]<svg class="icon icon-compl"><use xlink:href="#icon-compl"></use></svg><span>Complaint</span>[/complaint]
-			[com-del]<svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg><span>Delete</span>[/com-del]
+			[not-group=5]
+			[complaint]<svg class="icon icon-compl"><use xlink:href="#icon-compl"></use></svg><span>گزارش</span>[/complaint]
+			[com-del]<svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg><span>حذف</span>[/com-del]
+			[/not-group]
 		</div>
 	</div>
 </div>

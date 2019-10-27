@@ -1,1 +1,1 @@
-<a href="{link}" class="ico">{title}</a>
+<a href="#" class="ico">{title}</a>

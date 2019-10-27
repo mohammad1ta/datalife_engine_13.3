@@ -3,10 +3,13 @@
 <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
 <style>
 body{ 
-	font-family: Verdana, Tahoma, Arial, Trebuchet MS, Sans-Serif, Georgia, Courier, Times New Roman, Serif;
+	direction: rtl;
+	font-family: Tahoma;
 	font-size: 11px;
 	margin: 0;
 	padding: 0; /* required for Opera to have 0 margin */
+	text-align:right;
+	direction:rtl
 }
 .errorwrap {
 	background: #F2DDDD;
@@ -38,7 +41,7 @@ body{
 	font-size: 11px;
 }
 </style>
-<title>Account is disabled</title>
+<title>شما از سایت اخراج شده اید !</title>
 </head>
 <body>
 <br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -46,11 +49,11 @@ body{
 <tr>
 <td width="100%">
 <div class="errorwrap">
-<h4>Your account on the site is disabled:</h4>
-<p>Your account on this site was disabled by the administrator. Thus the following reasons were specified:</p>
+<h4>حساب کاربری شما در سایت مسدود شده است :</h4>
+<p>حساب کاربری شما به دلایل زیر توسط مدیر مسدود شده است :</p>
 <p>{description}</p>
-<p>Lock completion date: {end}</p>
-<p>It is completely automatic process of lock and from you it isn't required to do anything for its acceleration or extinction.</p>
+<p>تاریخ اتمام : {end}</p>
+<p>این عمل به طور اتوماتیک انجام می گیرد.</p>
 </div>
 </td>
 </tr>

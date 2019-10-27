@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: find_relates.php
 -----------------------------------------------------
@@ -45,13 +45,13 @@ if ( $mode ) {
 if( $id ) $where = " AND id != '" . $id . "'";
 else $where = "";
 
-$db->query( "SELECT id, title, date, category, alt_name, MATCH (title, short_story, full_story, xfields) AGAINST ('$title') as score FROM " . PREFIX . "_post WHERE MATCH (title, short_story, full_story, xfields) AGAINST ('$title') AND approve='1'" . $where . " ORDER BY score DESC, date DESC LIMIT 5" );
+$db->query( "SELECT id, title, date, category, alt_name FROM " . PREFIX . "_post WHERE `title` LIKE '%{$title}%' OR `alt_name` LIKE '%{$title}%' AND approve='1'" . $where . " ORDER BY date DESC LIMIT 5" );
 
 while ( $related = $db->get_row() ) {
 	
 	$related['date'] = strtotime( $related['date'] );
 	$related['category'] = intval( $related['category'] );
-	$news_date = date( 'd-m-Y', $related['date'] );
+	$news_date = jdate( 'Y-m-d', $related['date'] );
 	
 	if( $config['allow_alt_url'] ) {
 		
@@ -69,7 +69,7 @@ while ( $related = $db->get_row() ) {
 		
 		} else {
 			
-			$full_link = $config['http_home_url'] . date( 'Y/m/d/', $related['date'] ) . $related['alt_name'] . ".html";
+			$full_link = $config['http_home_url'] . jdate( 'Y/m/d/', $related['date'] ) . $related['alt_name'] . ".html";
 		}
 	
 	} else {

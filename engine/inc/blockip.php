@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: blockip.php
 -----------------------------------------------------
@@ -68,7 +68,7 @@ if ($_REQUEST['action'] == "edit") {
 	$ip_add = $db->safesql(trim($ip_add));
 	$banned_descr = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['descr'] ), false ) );
 
-	if( !trim( $_POST['date'] ) OR (($_POST['date'] = strtotime( $_POST['date'] )) === - 1) OR !$_POST['date']) {
+	if( !trim( $_POST['date'] ) OR (($_POST['date'] = jstrtotime( $_POST['date'] )) === - 1) OR !$_POST['date']) {
 		$this_time = 0;
 		$days = 0;
 	} else {
@@ -99,7 +99,7 @@ if( $_REQUEST['action'] == "add" ) {
 	
 	$banned_descr = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['descr'] ), false ) );
 	
-	if( !trim( $_POST['date'] ) OR (($_POST['date'] = strtotime( $_POST['date'] )) === - 1) OR !$_POST['date']) {
+	if( !trim( $_POST['date'] ) OR (($_POST['date'] = jstrtotime( $_POST['date'] )) === - 1) OR !$_POST['date']) {
 		$this_time = 0;
 		$days = 0;
 	} else {
@@ -180,7 +180,10 @@ echo <<<HTML
 		<div class="form-group">
 		  <label class="control-label col-sm-4">{$lang['ban_date']}</label>
 		  <div class="col-sm-8">
-			<input  class="form-control" style="width:190px;" data-rel="calendar" type="text" name="date" autocomplete="off">
+			<input  class="form-control ltr" style="width:190px;" id="PersianDate_A" type="text" name="date" >
+            <script type="text/javascript">
+                Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:false,singleClick:true});
+            </script>
 		  </div>
 		 </div>
 		<div class="form-group">
@@ -239,7 +242,7 @@ while ( $row = $db->get_row() ) {
 	
 	if( $row['date'] ) {
 		$endban = langdate( $langformatdatefull, $row['date'] );
-		$editendban = date( "Y-m-d H:i:s", $row['date'] );
+		$editendban = jdate( "Y-m-d H:i:s", $row['date'] );
 	} else {
 		$endban = $lang['banned_info'];
 		$editendban = "";
@@ -278,9 +281,9 @@ echo <<<HTML
 	</table>
   </div>
 <div class="panel-footer">
-	<button class="btn bg-teal btn-sm btn-raised position-left" onclick="$('#newblock').modal(); return false;"><i class="fa fa-plus-circle position-left"></i>{$lang['news_add']}</button>
-	<div class="pull-right">
-	<select class="uniform position-left" name="action">
+	<button class="btn bg-teal btn-sm btn-raised position-right" onclick="$('#newblock').modal(); return false;"><i class="fa fa-plus-circle position-left"></i>{$lang['news_add']}</button>
+	<div class="pull-left">
+	<select class="uniform position-right" name="action">
 	<option value="">{$lang['edit_selact']}</option>
 	<option value="mass_delete">{$lang['ip_unblock']}</option>
 	</select><input class="btn bg-brown-600 btn-sm btn-raised" type="submit" value="{$lang['b_start']}">
@@ -324,8 +327,10 @@ echo <<<HTML
 	
 			$("#dlepopup").remove();
 
-			$("body").append("<div id='dlepopup' title='{$lang['ip_add']}' style='display:none'><form id='editip' method='post'><input type='hidden' name='id' value='"+ipid+"'><input type='hidden' name='mod' value='blockip'><input type='hidden' name='action' value='edit'><input type='hidden' name='user_hash' value='{$dle_login_hash}'>{$lang['title_filter']}<br><input type='text' name='ip_add' id='dle-promt-ip' class='classic' style='width:100%;' value='"+ip+"'/><br><br>{$lang['ban_date']}<br /><input type='text' name='date' class='form-control' data-rel='calendar' style='width:190px;' value='"+date+"' autocomplete='off'><br><br>{$lang['ban_descr']}<br><textarea name='descr' class='classic' style='width:100%;' rows='5'>"+description+"</textarea></form></div>");
+			$("body").append("<div id='dlepopup' title='{$lang['ip_add']}' style='display:none'><form id='editip' method='post'><input type='hidden' name='id' value='"+ipid+"'><input type='hidden' name='mod' value='blockip'><input type='hidden' name='action' value='edit'><input type='hidden' name='user_hash' value='{$dle_login_hash}'>{$lang['title_filter']}<br><input type='text' name='ip_add' id='dle-promt-ip' class='classic' style='width:100%;' value='"+ip+"'/><br><br>{$lang['ban_date']}<br /><input  class='form-control ltr' style='width:190px;' id='PersianDate_B' type='text' name='date' value='"+date+"'><br><br>{$lang['ban_descr']}<br><textarea name='descr' class='classic' style='width:100%;' rows='5'>"+description+"</textarea></form></div>");
 		
+            Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:false,singleClick:true});
+          
 			$('#dlepopup').dialog({
 				autoOpen: true,
 				width: 600,

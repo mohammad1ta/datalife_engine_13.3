@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: antivirus.class.php
 -----------------------------------------------------
@@ -49,6 +49,13 @@ class antivirus
 	);
 
 	var $good_files       = array(
+	"./engine/cache/system/obmen.php",
+	"./engine/ajax/ranksite.php",
+	"./engine/classes/jdate.php",
+	"./engine/modules/3news.php",
+	"./engine/modules/category.php",
+	"./engine/modules/obmen.php",
+	"./engine/inc/obmen.php",
 	"./.htaccess",
 	"./backup/.htaccess",
 	"./engine/cache/.htaccess",
@@ -422,7 +429,7 @@ class antivirus
 
 							if ($this->track_files[$folder . $this->dir_split . $file] != $file_crc AND !in_array($folder . $this->dir_split . $file, $this->cache_files) AND !$contin) {
 
-								$file_date = date("d.m.Y H:i:s", filectime($dir . $this->dir_split . $file));
+								$file_date = jdate("Y/m/d - H:i:s", filectime($dir . $this->dir_split . $file));
 								$file_size = filesize($dir . $this->dir_split . $file);
 
 								$this->bad_files[] = array( 'file_path' => $folder . $this->dir_split . $file,
@@ -435,7 +442,7 @@ class antivirus
 					    } else { 
 
 							 if (!in_array($folder . $this->dir_split . $file, $this->good_files)) {
-								$file_date = date("d.m.Y H:i:s", filectime($dir . $this->dir_split . $file));
+								$file_date = jdate("Y/m/d - H:i:s", filectime($dir . $this->dir_split . $file));
 								$file_size = filesize($dir . $this->dir_split . $file);
 
 							 	$this->bad_files[] = array( 'file_path' => $folder . $this->dir_split . $file,

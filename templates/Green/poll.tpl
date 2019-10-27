@@ -5,11 +5,11 @@
 			{list}
 		</div>
 	[voted]
-		<div class="vote_votes grey">Total votes: {votes}</div>
+		<div class="vote_votes grey">کل آرا: {votes}</div>
 	[/voted]
 	[not-voted]
-		<button title="Vote" class="btn" type="submit" onclick="doPoll('vote', '{news-id}'); return false;" ><b>Vote</b></button>
-		<button title="Results" class="btn" type="button" onclick="doPoll('results', '{news-id}'); return false;" ><b>Results</b></button>
+		<button title="Vote" class="btn" type="submit" onclick="doPoll('vote', '{news-id}'); return false;" ><b>ثبت</b></button>
+		<button title="Results" class="btn" type="button" onclick="doPoll('results', '{news-id}'); return false;" ><b>نتایج</b></button>
 	[/not-voted]
 	</div>
 </div>

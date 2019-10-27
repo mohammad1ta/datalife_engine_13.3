@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: addnews.php
 -----------------------------------------------------
@@ -370,7 +370,7 @@ if( $action == "addnews" ) {
 
 	if( $member_id['user_group'] == 1 ) {
 		
-		$author_info = "<span class=\"position-left visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs\">{$lang['edit_eau']}</span><input type=\"text\" name=\"new_author\" class=\"form-control\" style=\"width:190px;\" value=\"{$member_id['name']}\">";
+		$author_info = "<span class=\"position-left visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs\">{$lang['edit_eau']}</span><input type=\"text\" name=\"new_author\" class=\"form-control ltr\" style=\"width:190px;\" value=\"{$member_id['name']}\">";
 	
 	} else {
 		
@@ -410,10 +410,11 @@ echo <<<HTML
 							 <div class="form-group">
 							  <label class="control-label col-sm-2">{$lang['addnews_date']}</label>
 							  <div class="col-sm-10">
-								<input data-rel="calendar" type="text" name="newdate" class="form-control" style="width:190px;" autocomplete="off"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_calendar']}" ></i>{$author_info}
-							  </div>
+								<input id="PersianDate_A" type="text" name="newdate" class="form-control ltr" style="width:190px;"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang[hint_calendar]}" ></i>{$author_info}
+ 							  </div>
 							</div>
-							
+							<script type="text/javascript">Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});</script>
+
 							 <div class="form-group">
 							  <label class="control-label col-sm-2">{$lang['addnews_cat']}</label>
 							  <div class="col-sm-10">
@@ -561,13 +562,13 @@ echo <<<HTML
 							<div class="form-group">
 							  <label class="control-label col-md-2 col-sm-3">{$lang['catalog_url']}</label>
 							  <div class="col-md-10 col-sm-9">
-								<input type="text" name="catalog_url" class="form-control" maxlength="3" style="width:55px;"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['catalog_hint_url']}" ></i>
+								<input type="text" name="catalog_url" class="form-control ltr" maxlength="3" style="width:55px;"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['catalog_hint_url']}" ></i>
 							  </div>
 							 </div>
 							<div class="form-group">
 							  <label class="control-label col-md-2 col-sm-3">{$lang['addnews_url']}</label>
 							  <div class="col-md-10 col-sm-9">
-								<input type="text" name="alt_name" class="form-control width-500" maxlength="190"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_url']}" ></i>
+								<input type="text" name="alt_name" class="form-control width-500 ltr" maxlength="190"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_url']}" ></i>
 							  </div>
 							 </div>
 							<div class="form-group">
@@ -579,9 +580,11 @@ echo <<<HTML
 							<div class="form-group">
 							  <label class="control-label col-md-2 col-sm-3">{$lang['date_expires']}</label>
 							  <div class="col-md-10 col-sm-9">
-								<input type="text" name="expires" data-rel="calendardate" class="form-control" style="width:200px;" autocomplete="off"><span class="position-right position-left">{$lang['cat_action']}</span><select class="uniform" name="expires_action" onchange="moveCategoryChange(this)"><option value="0">{$lang['mass_noact']}</option><option value="1">{$lang['edit_dnews']}</option><option value="2" >{$lang['mass_edit_notapp']}</option><option value="3" >{$lang['mass_edit_notmain']}</option><option value="4" >{$lang['mass_edit_notfix']}</option><option value="5" >{$lang['m_cat_list_2']}</option></select><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_expires']}" ></i>
-							  </div>
+								<input type="text" name="expires" id="PersianDate_B" class="form-control ltr" style="width:200px;"><span class="position-right position-left">{$lang['cat_action']}</span><select class="uniform" name="expires_action" onchange="moveCategoryChange(this)"><option value="0">{$lang['mass_noact']}</option><option value="1">{$lang['edit_dnews']}</option><option value="2" >{$lang['mass_edit_notapp']}</option><option value="3" >{$lang['mass_edit_notmain']}</option><option value="4" >{$lang['mass_edit_notfix']}</option><option value="5" >{$lang['m_cat_list_2']}</option></select><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_expires']}" ></i>
+ 							  </div>
 							 </div>
+							 <script type="text/javascript">Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",showsTime:false,singleClick:true});</script>
+
 							 <div class="form-group" id="movecatlist" style="display:none;">
 							  <label class="control-label col-sm-2">{$lang['m_cat_list_1']}</label>
 							  <div class="col-sm-10">
@@ -798,8 +801,8 @@ elseif( $action == "doaddnews" ) {
 
 	$alt_name = trim($_POST['alt_name']);
 	
-	if(!$alt_name) $alt_name = totranslit( stripslashes( $title ), true, false );
-	else $alt_name = totranslit( stripslashes( $alt_name ), true, false );
+	if(!$alt_name) $alt_name = fatotranslit( stripslashes( $title ), true, false );
+	else $alt_name = fatotranslit( stripslashes( $alt_name ), true, false );
 	
 	if( dle_strlen( $alt_name, $config['charset'] ) > 190 ) {
 		$alt_name = dle_substr( $alt_name, 0, 190, $config['charset'] );
@@ -884,7 +887,7 @@ elseif( $action == "doaddnews" ) {
 	
 	if( $newdate ) {
 		
-		if( (($newsdate = strtotime( $newdate )) === - 1) OR !$newsdate ) {
+		if( (($newsdate = jstrtotime( $newdate )) === - 1) OR !$newsdate ) {
 			msg( "error", array('javascript:history.go(-1)' => $lang['addnews'], '' => $lang['addnews_error'] ), $lang['addnews_erdate'], "javascript:history.go(-1)" );
 		} else {
 			$thistime = date( "Y-m-d H:i:s", $newsdate );
@@ -1057,7 +1060,7 @@ elseif( $action == "doaddnews" ) {
 				$full_link = $config['http_home_url'] . $row['id'] . "-" . $row['alt_name'] . ".html";
 			}
 		} else {
-			$full_link = $config['http_home_url'] . date( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
+			$full_link = $config['http_home_url'] . jdate( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
 		}
 	} else {
 		$full_link = $config['http_home_url'] . "index.php?newsid=" . $row['id'];

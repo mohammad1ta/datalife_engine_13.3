@@ -13,13 +13,13 @@
 </article>
 [related-news]
 <div class="box">
-	<h3>Related news</h3>
+	<h3>مطالب مشابه</h3>
 	<nav id="rel-news">
 		{related-news}
 	</nav>
 </div>
 [/related-news]
 <div class="box commentbox">
-	<h3>Comments ({comments-num})</h3>
+	<h3>نظرات ({comments-num})</h3>
 	[comments]{comments}[/comments]
 </div>

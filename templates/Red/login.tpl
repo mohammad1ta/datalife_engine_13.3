@@ -1,5 +1,5 @@
 [not-group=5]
-<a id="login" class="h_btn login" href="{profile-link}" title="{login}, messages {new-pm}">
+<a id="login" class="h_btn login" href="{profile-link}" title="{login} با {new-pm} پیام جدید">
 	<div class="avatar pmnum_{new-pm}">
 		<span class="cover" style="background-image: url({foto});">{login}</span>
 		<span class="num">{new-pm}</span>
@@ -11,22 +11,22 @@
 <div id="loginpane" class="droptopbar loggedpane">
 	<div class="wrp">
 		<div class="name">
-			Hallo, <a href="{profile-link}"><b>{login}</b></a>!
+			<a href="{profile-link}"><b>{login}</b></a> خوش آمدید!
 		</div>
 		<ul class="login_menu">
 			<li>
-				<a href="{pm-link}"><b class="lm_num">{new-pm}</b>Messages</a>
+				<a href="{pm-link}"><b class="lm_num">{new-pm}</b>پیام ها</a>
 			</li>
 			<li>
-				<a href="{favorites-link}"><b class="lm_num">{favorite-count}</b>My favorites</a>
+				<a href="{favorites-link}"><b class="lm_num">{favorite-count}</b>علاقه مندی ها</a>
 			</li>
 			<li>
-				<a href="{logout-link}">Logout</a>
+				<a href="{logout-link}">خروج</a>
 			</li>
 		</ul>
 		<div class="login_form_links">
-			[admin-link]<a href="{admin-link}" target="_blank">Administration Panel</a>[/admin-link]
-			<a href="{addnews-link}">Add news article</a>
+			[admin-link]<a href="{admin-link}" target="_blank">پنل مدیریت</a>[/admin-link]
+			<a href="{addnews-link}">ارسال مطلب</a>
 		</div>
 	</div>
 </div>
@@ -34,7 +34,7 @@
 [group=5]
 <a href="{profile-link}" id="loginf" class="h_btn login">
 	<svg class="icon icon-login"><use xlink:href="#icon-login"></use></svg>
-	<span class="title_hide">Login</span>
+	<span class="title_hide">ورود</span>
 	<span class="icon_close">
 		<i class="mt_1"></i><i class="mt_2"></i>
 	</span>
@@ -47,12 +47,12 @@
 				<input placeholder="{login-method}" type="text" name="login_name" id="login_name" class="wide">
 			</li>
 			<li class="form-group">
-				<label for="login_password">Password</label>
-				<input placeholder="Password" type="password" name="login_password" id="login_password" class="wide">
+				<label for="login_password">گذرواژه</label>
+				<input placeholder="گذرواژه" type="password" name="login_password" id="login_password" class="wide">
 			</li>
 			<li>
-				<button class="btn" onclick="submit();" type="submit" title="Submit">
-					<b class="ultrabold">Submit</b>
+				<button class="btn" onclick="submit();" type="submit" title="ورود به سایت">
+					<b class="ultrabold">ورود</b>
 				</button>
 			</li>
 		</ul>
@@ -78,8 +78,8 @@
 		</div>
 		<input name="login" type="hidden" id="login" value="submit">
 		<div class="login_form_links">
-			<a href="{registration-link}">Registration</a>
-			<a href="{lostpassword-link}">Forgot password?</a>
+			<a href="{registration-link}">عضویت در سایت</a>
+			<a href="{lostpassword-link}">بازیابی رمز عبور</a>
 		</div>
 	</div>
 </form>

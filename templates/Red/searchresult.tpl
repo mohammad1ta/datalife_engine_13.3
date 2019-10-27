@@ -3,13 +3,13 @@
 		{include file="shortstory.tpl"}
 	[/fullresult]
 	[shortresult]
-	<div class="search_head_line block story lefticons shadow">
+	<div class="search_head_line block story righticons shadow">
 		<div class="wrp">
 			[not-group=5]
-			<div class="story_left_icons">
+			<div class="story_right_icons">
 				<div class="story_icons">
-					<div class="edit_btn" title="Edit">
-						[edit]<i title="Edit"></i>[/edit]
+					<div class="edit_btn" title="ویرایش">
+						[edit]<i title="ویرایش"></i>[/edit]
 					</div>
 				</div>
 			</div>

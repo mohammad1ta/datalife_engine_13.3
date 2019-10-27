@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  Files: files.php
 -----------------------------------------------------
@@ -171,8 +171,8 @@ if( !$total_size ) {
 
 
 	echo "</tbody></table><div class=\"panel-footer\">
-		<div id=\"file-uploader\" style=\"width:210px;float:left;\"></div>
-		<div style=\"float:right;\"><input class=\"btn bg-danger btn-sm btn-raised\" type=\"submit\" value=\" {$lang['images_del']} \"><input type=\"hidden\" name=\"action\" value=\"doimagedelete\"><input type=\"hidden\" name=\"user_hash\" value=\"$dle_login_hash\" /></div>
+		<div id=\"file-uploader\" style=\"width:210px;float:right;\"></div>
+		<div style=\"float:left;\"><input class=\"btn bg-danger btn-sm btn-raised\" type=\"submit\" value=\" {$lang['images_del']} \"><input type=\"hidden\" name=\"action\" value=\"doimagedelete\"><input type=\"hidden\" name=\"user_hash\" value=\"$dle_login_hash\" /></div>
 	</div>";
 
 

@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: show.full.php
 -----------------------------------------------------
@@ -190,7 +190,7 @@ if( !defined('DATALIFEENGINE') ) {
 								$link = $config['http_home_url'] . $row_link['id'] . "-" . $row_link['alt_name'] . ".html";
 							}
 						} else {
-							$link = $config['http_home_url'] . date( 'Y/m/d/', strtotime( $row_link['date'] ) ) . $row_link['alt_name'] . ".html";
+							$link = $config['http_home_url'] . jdate( 'Y/m/d/', strtotime( $row_link['date'] ) ) . $row_link['alt_name'] . ".html";
 						}
 					} else {
 						$link = $config['http_home_url'] . "index.php?newsid=" . $row_link['id'];
@@ -213,7 +213,7 @@ if( !defined('DATALIFEENGINE') ) {
 								$link = $config['http_home_url'] . $row_link['id'] . "-" . $row_link['alt_name'] . ".html";
 							}
 						} else {
-							$link = $config['http_home_url'] . date( 'Y/m/d/', strtotime( $row_link['date'] ) ) . $row_link['alt_name'] . ".html";
+							$link = $config['http_home_url'] . jdate( 'Y/m/d/', strtotime( $row_link['date'] ) ) . $row_link['alt_name'] . ".html";
 						}
 					} else {
 						$link = $config['http_home_url'] . "index.php?newsid=" . $row_link['id'];
@@ -347,7 +347,7 @@ if( !defined('DATALIFEENGINE') ) {
 			
 			} else {
 				
-				$full_link = $config['http_home_url'] . date( 'Y/m/d/', $row['date'] ) . $row['alt_name'] . ".html";
+				$full_link = $config['http_home_url'] . jdate( 'Y/m/d/', $row['date'] ) . $row['alt_name'] . ".html";
 
 				if ( $config['seo_control'] ) {
 
@@ -364,9 +364,9 @@ if( !defined('DATALIFEENGINE') ) {
 
 				}
 
-				$print_link = $config['http_home_url'] . date( 'Y/m/d/', $row['date'] ) . "print:page,1," . $row['alt_name'] . ".html";
-				$short_link = $config['http_home_url'] . date( 'Y/m/d/', $row['date'] );
-				$link_page = $config['http_home_url'] . date( 'Y/m/d/', $row['date'] ) . 'page,' . $news_page . ',';
+				$print_link = $config['http_home_url'] . jdate( 'Y/m/d/', $row['date'] ) . "print:page,1," . $row['alt_name'] . ".html";
+				$short_link = $config['http_home_url'] . jdate( 'Y/m/d/', $row['date'] );
+				$link_page = $config['http_home_url'] . jdate( 'Y/m/d/', $row['date'] ) . 'page,' . $news_page . ',';
 				$news_name = $row['alt_name'];
 			
 			}
@@ -937,12 +937,12 @@ if( !defined('DATALIFEENGINE') ) {
 		if( $config['allow_alt_url'] ) {
 			
 			$go_page = $config['http_home_url'] . "user/" . urlencode( $row['autor'] ) . "/";
-			$tpl->set( '[day-news]', "<a href=\"".$config['http_home_url'] . date( 'Y/m/d/', $row['date'])."\" >" );
+			$tpl->set( '[day-news]', "<a href=\"".$config['http_home_url'] . jdate( 'Y/m/d/', $row['date'])."\" >" );
 		
 		} else {
 			
 			$go_page = "$PHP_SELF?subaction=userinfo&amp;user=" . urlencode( $row['autor'] );
-			$tpl->set( '[day-news]', "<a href=\"$PHP_SELF?year=".date( 'Y', $row['date'])."&amp;month=".date( 'm', $row['date'])."&amp;day=".date( 'd', $row['date'])."\" >" );
+			$tpl->set( '[day-news]', "<a href=\"$PHP_SELF?year=".jdate( 'Y', $row['date'])."&amp;month=".jdate( 'm', $row['date'])."&amp;day=".jdate( 'd', $row['date'])."\" >" );
 		
 		}
 		
@@ -1200,7 +1200,7 @@ if( !defined('DATALIFEENGINE') ) {
 						
 						} else {
 							
-							$rel_full_link = $config['http_home_url'] . date( 'Y/m/d/', $related['date'] ) . $related['alt_name'] . ".html";
+							$rel_full_link = $config['http_home_url'] . jdate( 'Y/m/d/', $related['date'] ) . $related['alt_name'] . ".html";
 						}
 					
 					} else {

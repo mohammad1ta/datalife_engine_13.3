@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: clean.php
 -----------------------------------------------------
@@ -77,7 +77,7 @@ if ($_REQUEST['step'] == 6) {
 
 
 if ($_REQUEST['step'] == 4) {
-	if ((@strtotime($_REQUEST['date']) === -1) OR (@strtotime($_REQUEST['date']) === false) OR (trim($_REQUEST['date']) == ""))
+	if ((@jstrtotime($_REQUEST['date']) === -1) OR (@jstrtotime($_REQUEST['date']) === false) OR (trim($_REQUEST['date']) == ""))
 		$_REQUEST['step'] = 3;
 	else {
 
@@ -133,7 +133,7 @@ if ($_REQUEST['step'] == 4) {
 
 if ($_REQUEST['step'] == 2) {
 	
-	if ((@strtotime($_REQUEST['date']) === -1) OR (@strtotime($_REQUEST['date']) === false) OR (trim($_REQUEST['date']) == ""))
+	if ((@jstrtotime($_REQUEST['date']) === -1) OR (@jstrtotime($_REQUEST['date']) === false) OR (trim($_REQUEST['date']) == ""))
 		$_REQUEST['step'] = 1;
 	else {
 
@@ -240,18 +240,8 @@ HTML;
 
 if ($_REQUEST['step'] == 3) {
 $buffer = <<<HTML
-{$lang['clean_comments']}<br /><br />{$lang['addnews_date']}&nbsp;<input data-rel="calendardate" type="text" name="date" id="f_date_c" class="form-control" style="width:190px;" autocomplete="off">
-<script>
-	$('[data-rel=calendardate]').datetimepicker({
-	  format:'Y-m-d',
-	  closeOnDateSelect:true,
-	  dayOfWeekStart: 1,
-	  timepicker:false,
-	  scrollMonth:false,
-	  scrollInput:false,
-	  i18n: cal_language
-	});
-</script>
+<br />{$lang['clean_comments']}<br /><br />{$lang['addnews_date']}&nbsp;<input type="text" name="date" id="f_date_c" size="20" class="form-control position-left ltr">
+<script type="text/javascript">Calendar.setup({inputField:"f_date_c",ifFormat:"%Y-%m-%d",align:"Br",timeFormat:"24",dateType:"jalali",singleClick:true});</script>
 <br /><br /><span style="color:red;"><span id="status"></span></span><br /><br />
 		<input id = "next_button" onclick="start_clean('4', '{$_REQUEST['size']}'); return false;" class="btn bg-teal btn-sm btn-raised position-left" type="button" value="{$lang['edit_next']}">&nbsp;
 		<input id = "skip_button" onclick="start_clean('5', '{$_REQUEST['size']}'); return false;" class="btn bg-slate-600 btn-sm btn-raised" type="button" value="{$lang['clean_skip']}">
@@ -271,21 +261,9 @@ if ($_REQUEST['step'] == 1) {
 	
 	
 $buffer = <<<HTML
-{$lang['clean_news']}<br /><br />{$lang['addnews_date']}&nbsp;<input data-rel="calendardate" type="text" name="date" id="f_date_c" class="form-control position-left" style="width:190px;" autocomplete="off"> <span class="position-left">{$lang['addnews_cat']}</span> <select data-placeholder="{$lang['addnews_cat_sel']}" title="{$lang['addnews_cat_sel']}" name="category[]" id="category" class="categoryselect" multiple style="width:100%;max-width:350px;">{$categories_list}</select>
-<script>
-	$('[data-rel=calendardate]').datetimepicker({
-	  format:'Y-m-d',
-	  closeOnDateSelect:true,
-	  dayOfWeekStart: 1,
-	  timepicker:false,
-	  scrollMonth:false,
-	  scrollInput:false,
-	  i18n: cal_language
-	});
-	
-	$('.categoryselect').chosen({no_results_text: '{$lang['addnews_cat_fault']}'});
-	
-</script>
+<br />{$lang['clean_news']}<br /><br />{$lang['addnews_date']}&nbsp;<input type="text" name="date" id="f_date_c" size="20" class="form-control position-left ltr">
+<script type="text/javascript">Calendar.setup({inputField:"f_date_c",ifFormat:"%Y-%m-%d",align:"Br",timeFormat:"24",dateType:"jalali",singleClick:true});</script>
+
 <br /><br /><span style="color:red;"><span id="status"></span></span><br /><br />
 		<input id = "next_button" onclick="start_clean('2', '{$_REQUEST['size']}'); return false;" class="btn bg-teal btn-sm btn-raised position-left" type="button" value="{$lang['edit_next']}">
 		<input id = "skip_button" onclick="start_clean('3', '{$_REQUEST['size']}'); return false;" class="btn bg-slate-600 btn-sm btn-raised" type="button" value="{$lang['clean_skip']}">

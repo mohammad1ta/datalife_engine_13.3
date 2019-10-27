@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: rss.php
 -----------------------------------------------------
@@ -76,7 +76,7 @@ if( $_REQUEST['action'] == "addnews" ) {
 			$short_story = $parse->process( $content['short'] );
 			$title = $parse->process(  trim( strip_tags ($content['title']) ) );
 			$_POST['title'] = $title;
-			$alt_name = totranslit( stripslashes( $title ) );
+			$alt_name = fatotranslit( stripslashes( $title ) );
 			$title = $db->safesql( $title );
 			
 			if( ! $allow_br ) {
@@ -88,7 +88,7 @@ if( $_REQUEST['action'] == "addnews" ) {
 			}
 			
 			$metatags = create_metatags( $short_story . $full_story );
-			$thistime = date( "Y-m-d H:i:s", strtotime( $content['date'] ) );
+			$thistime = date( "Y-m-d H:i:s", jstrtotime( $content['date'] ) );
 			
 			if( trim( $title ) == "" ) {
 				msg( "error", $lang['addnews_error'], $lang['addnews_ertitle'], "javascript:history.go(-1)" );
@@ -214,7 +214,9 @@ HTML;
 	
 	if( count( $xml->content ) ) {
 		foreach ( $xml->content as $content ) {
-			
+
+            $content['date'] = jdate( "Y-m-d H:i:s", strtotime( $content['date'] ) );
+
 			echo '<span id="ContentTable' . $i . '"><table class="table form-horizontal"><tr><td>
     <b><a onclick="RemoveTable(' . $i . '); return false;" href="#" ><i class="fa fa-trash-o position-left text-danger"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:ShowOrHide(\'cp' . $i . '\',\'cc' . $i . '\')" >' . $content['title'] . '</a></td>
     </tr>
@@ -225,7 +227,8 @@ HTML;
 	</div>
 	<div class="form-group">
 	<label class="control-label col-md-2">' .$lang['addnews_date']. '</label>
-	<div class="col-md-10"><input class="form-control" autocomplete="off" style="width:190px;" data-rel="calendar" type="text" name="content[' . $i . '][date]" value="' . $content['date'] . '"></div>
+	<div class="col-md-10"><input class="form-control ltr" style="width:190px;" id="PersianDate_A" type="text" name="content[' . $i . '][date]" value="' . $content['date'] . '"></div>
+	<script type="text/javascript">Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});</script>
 	</div>
 	<div class="form-group">
 	<label class="control-label col-md-2">' .$lang['addnews_cat']. '</label>
@@ -389,7 +392,7 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rss_url']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input type="text" class="form-control width-400" maxlength="250" name="rss_url" value="{$rss_url_value}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hurl']}" ></i>
+			<input type="text" class="form-control ltr width-400" maxlength="250" name="rss_url" value="{$rss_url_value}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hurl']}" ></i>
 		  </div>
 		 </div>	
 		<div class="form-group">
@@ -401,7 +404,7 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rss_maxnews']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input type="text" class="form-control text-center" style="width:60px;" name="rss_maxnews" value="{$rss_maxnews_value}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hmaxnews']}" ></i>
+			<input type="text" class="form-control ltr text-center" style="width:60px;" name="rss_maxnews" value="{$rss_maxnews_value}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hmaxnews']}" ></i>
 		  </div>
 		 </div>	
 		<div class="form-group">
@@ -443,13 +446,13 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rss_search']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<textarea class="classic" style="width:100%;max-width:350px;" rows="5" name="rss_search">{$rss_search_value}</textarea><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hsearch']}" ></i>
+			<textarea class="classic ltr" style="width:100%;max-width:350px;" rows="5" name="rss_search">{$rss_search_value}</textarea><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hsearch']}" ></i>
 		  </div>
 		 </div>	
 		<div class="form-group">
-		  <label class="control-label col-lg-2">{$lang['rss_cookie']}</label>
+		  <label class="control-label col-md-2 col-sm-3">{$lang['rss_cookie']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<textarea class="classic" style="width:100%;max-width:350px;" rows="5" name="rss_cookie">{$rss_cookie_value}</textarea><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hcookie']}" ></i>
+			<textarea class="classic ltr" style="width:100%;max-width:350px;" rows="5" name="rss_cookie">{$rss_cookie_value}</textarea><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['rss_hcookie']}" ></i>
 		  </div>
 		 </div>		 
 	

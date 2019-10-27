@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: functions.php
 =====================================================
@@ -18,6 +18,8 @@ if( !defined('DATALIFEENGINE') ) {
 	header ( 'Location: ../../' );
 	die( "Hacking attempt!" );
 }
+
+require_once ENGINE_DIR . '/classes/jdate.php';
 
 if ( $config['auth_domain'] ) {
 
@@ -87,7 +89,7 @@ function formatsize($file_size) {
 	
 	if( !$file_size OR $file_size < 1) return '0 b';
 	
-    $prefix = array("b", "Kb", "Mb", "Gb", "Tb");
+    $prefix = array("بایت", "کیلوبایت", "مگابایت", "گیگابایت", "ترابایت");
     $exp = floor(log($file_size, 1024)) | 0;
 	
     return round($file_size / (pow(1024, $exp)), 2).' '.$prefix[$exp];
@@ -177,30 +179,30 @@ function totranslit($var, $lower = true, $punkt = true) {
 }
 
 function langdate($format, $stamp, $servertime = false, $custom = false ) {
-	global $langdate, $member_id, $customlangdate;
+    global $lang, $member_id, $customlangdate;
 
-	$timezones = array('Pacific/Midway','US/Samoa','US/Hawaii','US/Alaska','US/Pacific','America/Tijuana','US/Arizona','US/Mountain','America/Chihuahua','America/Mazatlan','America/Mexico_City','America/Monterrey','US/Central','US/Eastern','US/East-Indiana','America/Lima','America/Caracas','Canada/Atlantic','America/La_Paz','America/Santiago','Canada/Newfoundland','America/Buenos_Aires','America/Godthab','Atlantic/Stanley','Atlantic/Azores','Africa/Casablanca','Europe/Dublin','Europe/Lisbon','Europe/London','Europe/Amsterdam','Europe/Belgrade','Europe/Berlin','Europe/Bratislava','Europe/Brussels','Europe/Budapest','Europe/Copenhagen','Europe/Madrid','Europe/Paris','Europe/Prague','Europe/Rome','Europe/Sarajevo','Europe/Stockholm','Europe/Vienna','Europe/Warsaw','Europe/Zagreb','Europe/Athens','Europe/Bucharest','Europe/Helsinki','Europe/Istanbul','Asia/Jerusalem','Europe/Kiev','Europe/Minsk','Europe/Riga','Europe/Sofia','Europe/Tallinn','Europe/Vilnius','Asia/Baghdad','Asia/Kuwait','Africa/Nairobi','Asia/Tehran','Europe/Kaliningrad','Europe/Moscow','Europe/Volgograd','Europe/Samara','Asia/Baku','Asia/Muscat','Asia/Tbilisi','Asia/Yerevan','Asia/Kabul','Asia/Yekaterinburg','Asia/Tashkent','Asia/Kolkata','Asia/Kathmandu','Asia/Almaty','Asia/Novosibirsk','Asia/Jakarta','Asia/Krasnoyarsk','Asia/Hong_Kong','Asia/Kuala_Lumpur','Asia/Singapore','Asia/Taipei','Asia/Ulaanbaatar','Asia/Urumqi','Asia/Irkutsk','Asia/Seoul','Asia/Tokyo','Australia/Adelaide','Australia/Darwin','Asia/Yakutsk','Australia/Brisbane','Pacific/Port_Moresby','Australia/Sydney','Asia/Vladivostok','Asia/Sakhalin','Asia/Magadan','Pacific/Auckland','Pacific/Fiji');
+    $timezones = array('Pacific/Midway','US/Samoa','US/Hawaii','US/Alaska','US/Pacific','America/Tijuana','US/Arizona','US/Mountain','America/Chihuahua','America/Mazatlan','America/Mexico_City','America/Monterrey','US/Central','US/Eastern','US/East-Indiana','America/Lima','America/Caracas','Canada/Atlantic','America/La_Paz','America/Santiago','Canada/Newfoundland','America/Buenos_Aires','Greenland','Atlantic/Stanley','Atlantic/Azores','Africa/Casablanca','Europe/Dublin','Europe/Lisbon','Europe/London','Europe/Amsterdam','Europe/Belgrade','Europe/Berlin','Europe/Bratislava','Europe/Brussels','Europe/Budapest','Europe/Copenhagen','Europe/Madrid','Europe/Paris','Europe/Prague','Europe/Rome','Europe/Sarajevo','Europe/Stockholm','Europe/Vienna','Europe/Warsaw','Europe/Zagreb','Europe/Athens','Europe/Bucharest','Europe/Helsinki','Europe/Istanbul','Asia/Jerusalem','Europe/Kiev','Europe/Minsk','Europe/Riga','Europe/Sofia','Europe/Tallinn','Europe/Vilnius','Asia/Baghdad','Asia/Kuwait','Africa/Nairobi','Asia/Tehran','Europe/Kaliningrad','Europe/Moscow','Europe/Volgograd','Europe/Samara','Asia/Baku','Asia/Muscat','Asia/Tbilisi','Asia/Yerevan','Asia/Kabul','Asia/Yekaterinburg','Asia/Tashkent','Asia/Kolkata','Asia/Kathmandu','Asia/Almaty','Asia/Novosibirsk','Asia/Jakarta','Asia/Krasnoyarsk','Asia/Hong_Kong','Asia/Kuala_Lumpur','Asia/Singapore','Asia/Taipei','Asia/Ulaanbaatar','Asia/Urumqi','Asia/Irkutsk','Asia/Seoul','Asia/Tokyo','Australia/Adelaide','Australia/Darwin','Asia/Yakutsk','Australia/Brisbane','Pacific/Port_Moresby','Australia/Sydney','Asia/Vladivostok','Asia/Sakhalin','Asia/Magadan','Pacific/Auckland','Pacific/Fiji');
 
-	if( is_array($custom) ) $locallangdate = $customlangdate; else $locallangdate = $langdate;
+    if( is_array($custom) ) $locallangdate = $customlangdate; else $locallangdate = $langdate;
 
-	if (!$stamp) { $stamp = time(); }
-	
-	$local = new DateTime('@'.$stamp);
+    if (!$stamp) { $stamp = time(); }
 
-	if (isset($member_id['timezone']) AND $member_id['timezone'] AND !$servertime) {
-		$localzone = $member_id['timezone'];
+    $local = new DateTime('@'.$stamp);
 
-	} else {
+    if (isset($member_id['timezone']) AND $member_id['timezone'] AND !$servertime) {
+        $localzone = $member_id['timezone'];
 
-		$localzone = date_default_timezone_get();
-	}
+    } else {
 
-	if (!in_array($localzone, $timezones)) $localzone = 'Europe/Moscow';
+        $localzone = date_default_timezone_get();
+    }
 
-	$local->setTimeZone(new DateTimeZone($localzone));
+    if (!in_array($localzone, $timezones)) $localzone = 'Europe/Moscow';
 
-	return strtr( $local->format($format), $locallangdate );
+    $local->setTimeZone(new DateTimeZone($localzone));
+    $get_local = get_object_vars($local);
 
+    return strtr( jdate($format, strtotime($get_local['date'])), $lang['date'] );
 }
 
 function formdate( $matches=array() ) {

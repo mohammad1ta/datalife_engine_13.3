@@ -13,6 +13,7 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="{THEME}/images/touch-icon-ipad.png">
 	<link rel="apple-touch-icon" sizes="120x120" href="{THEME}/images/touch-icon-iphone-retina.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="{THEME}/images/touch-icon-ipad-retina.png">
+	<meta property="og:image" content="{THEME}/images/logo.png">
 
 	<link href="{THEME}/css/engine.css" type="text/css" rel="stylesheet">
 	<link href="{THEME}/css/styles.css" type="text/css" rel="stylesheet">
@@ -27,7 +28,7 @@
 					<!-- Header -->
 					<header id="header">
 						<!-- Logo -->
-						<a class="logotype" href="/" title="DataLife Engine">
+						<a class="logotype" href="/" title="دیتالایف انجین">
 							<svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg>
 						</a>
 						<!-- / Logo -->
@@ -50,7 +51,7 @@
 							</button>
 							<div id="sort_drop" class="head_drop">
 								<div class="hd_pad">
-									<b class="sort_label">Sort by</b>
+									<b class="sort_label">مرتب کردن بر اساس</b>
 									{sort}
 								</div>
 							</div>
@@ -93,7 +94,7 @@
 							{info}
 							[available=lastcomments]
 							<div class="block story">
-								<h1 class="title h2">Recent comments</h1>
+								<h1 class="title h2">آخرین نظرات</h1>
 								<div class="com_list">
 									{content}
 								</div>
@@ -118,9 +119,9 @@
 		</div>
 	</div>
 	{AJAX}
-	<script src="{THEME}/js/lib.js"></script>
-	<script src="{THEME}/js/svgxuse.min.js"></script>
-	<script>
+	<script type="text/javascript" src="{THEME}/js/lib.js"></script>
+	<script type="text/javascript" src="{THEME}/js/svgxuse.min.js"></script>
+	<script type="text/javascript">
 		jQuery(function($){
 			$.get("{THEME}/images/sprite.svg", function(data) {
 			  var div = document.createElement("div");

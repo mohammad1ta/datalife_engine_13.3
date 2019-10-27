@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: redirects.php
 -----------------------------------------------------
@@ -374,8 +374,8 @@ echo <<<HTML
 	</table>
 	</div>
 <div class="panel-footer">
-	<div class="pull-left"><button class="btn bg-teal btn-sm btn-raised" type="button" onclick="addLink()"><i class="fa fa-plus-circle position-left"></i>{$lang['add_links']}</button></div>
-	<div class="pull-right">
+	<div class="pull-right"><button class="btn bg-teal btn-sm btn-raised" type="button" onclick="addLink()"><i class="fa fa-plus-circle position-left"></i>{$lang['add_links']}</button></div>
+	<div class="pull-left">
 	<select class="uniform position-left" name="action">
 	<option value="">{$lang['edit_selact']}</option>
 	<option value="mass_delete">{$lang['edit_seldel']}</option>
@@ -482,7 +482,7 @@ echo <<<HTML
 
 		$("#dlepopup").remove();
 
-		$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'>{$lang['input_oldurl']}<br><input type='text' name='dle-promt-oldurl' id='dle-promt-oldurl' class='classic' style='width:100%;' value=''/><br><br>{$lang['input_newurl']}<br /><input type='text' name='dle-promt-newurl' id='dle-promt-newurl' class='classic' style='width:100%;' value=''/></div>");
+		$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'>{$lang['input_oldurl']}<br><input type='text' name='dle-promt-oldurl' id='dle-promt-oldurl' class='classic ltr' style='width:100%;' value=''/><br><br>{$lang['input_newurl']}<br /><input type='text' name='dle-promt-newurl' id='dle-promt-newurl' class='classic ltr' style='width:100%;' value=''/></div>");
 	
 		$('#dlepopup').dialog({
 			autoOpen: true,
@@ -544,7 +544,7 @@ $(function(){
 	
 			$("#dlepopup").remove();
 
-			$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'>{$lang['input_oldurl']}<br><input type='text' name='dle-promt-oldurl' id='dle-promt-oldurl' class='classic' style='width:100%;' value='"+oldurl+"'/><br /><br />{$lang['input_newurl']}<br /><input type='text' name='dle-promt-newurl' id='dle-promt-newurl' class='classic' style='width:100%;' value='"+newurl+"'/></div>");
+			$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'>{$lang['input_oldurl']}<br><input type='text' name='dle-promt-oldurl' id='dle-promt-oldurl' class='classic ltr' style='width:100%;' value='"+oldurl+"'/><br /><br />{$lang['input_newurl']}<br /><input type='text' name='dle-promt-newurl' id='dle-promt-newurl' class='classic ltr' style='width:100%;' value='"+newurl+"'/></div>");
 		
 			$('#dlepopup').dialog({
 				autoOpen: true,

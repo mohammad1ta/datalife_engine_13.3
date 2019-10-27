@@ -16,16 +16,16 @@
 					<a href="{profile-link}"><span class="cover" style="background-image: url({foto});">{login}</span></a>
 				</div>
 				<b class="name"><a href="{profile-link}">{login}</a></b>
-				[admin-link]<div class="login_pane__admin"><a href="{admin-link}" target="_blank">Administration Panel</a></div>[/admin-link]
+				[admin-link]<div class="login_pane__admin"><a href="{admin-link}" target="_blank">پنل مدیریت</a></div>[/admin-link]
 			</div>
 			<ul class="login_pane__menu">
-				<li><a href="{pm-link}">Messages <span class="right"><b>{new-pm}</b> of {all-pm}</span></a></li>
-				<li><a href="{favorites-link}">My favorites <span class="right"><b>{favorite-count}</b></span></a></li>
-				<li><a href="{newposts-link}">Unread News</a></li>
+				<li><a href="{pm-link}">پیغام خصوصی <span class="left"><b>{new-pm}</b> از ({all-pm})</span></a></li>
+				<li><a href="{favorites-link}">علاقمندی ها <span class="left"><b>{favorite-count}</b></span></a></li>
+				<li><a href="{newposts-link}">مطالب جدید</a></li>
 			</ul>
 			<div class="login_pane__foot">
-				<a class="right" href="{logout-link}">Logout</a>
-				<a href="{addnews-link}"><span class="plus_icon"><span>+</span></span>Add news article</a>
+				<a class="left" href="{logout-link}">خروج</a>
+				<a href="{addnews-link}"><span class="plus_icon"><span>+</span></span>ارسال مطلب</a>
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 	<a href="#" id="loginbtn" class="h_btn login">
 		<svg class="icon n_ico icon-login"><use xlink:href="#icon-login"></use></svg>
 		<svg class="icon m_ico icon-login_m"><use xlink:href="#icon-login_m"></use></svg>
-		<span class="title_hide">Login</span>
+		<span class="title_hide">ورود به حساب کاربری</span>
 		<span class="icon_close">
 			<i class="mt_1"></i><i class="mt_2"></i>
 		</span>
@@ -65,22 +65,22 @@
 				<ul>
 					<li class="form-group">
 						<label for="login_name">{login-method}</label>
-						<input placeholder="{login-method}" type="text" name="login_name" id="login_name" class="wide">
+						<input placeholder="Username" type="text" name="login_name" id="login_name" class="wide ltr">
 					</li>
 					<li class="form-group">
-						<label for="login_password">Password</label>
-						<input placeholder="Password" type="password" name="login_password" id="login_password" class="wide">
+						<label for="login_password">رمز عبور:</label>
+						<input placeholder="Password" type="password" name="login_password" id="login_password" class="wide ltr">
 					</li>
 					<li>
-						<button class="btn" onclick="submit();" type="submit" title="Submit">
-							<b>Submit</b>
+						<button class="btn" onclick="submit();" type="submit" title="ورود">
+							<b>ارسال</b>
 						</button>
 					</li>
 				</ul>
 				<input name="login" type="hidden" id="login" value="submit">
 				<div class="login_form__foot">
-					<a class="right" href="{registration-link}"><b>Registration</b></a>
-					<a href="{lostpassword-link}">Forgot password?</a>
+					<a class="left" href="{registration-link}"><b>عضویت</b></a>
+					<a href="{lostpassword-link}">بازیابی کلمه عبور؟</a>
 				</div>
 			</form>
 		</div>

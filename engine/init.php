@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: init.php
 -----------------------------------------------------
@@ -95,9 +95,9 @@ if( $config['start_site'] == 3 AND $_SERVER['QUERY_STRING'] == "" AND !$_POST['d
 if (isset ( $_GET['year'] )) {
 	
 	$year = intval($_GET['year']);
-		
-	if($year < 1970 ) $year = 1970;
-	if($year > 2100 ) $year = 2100;
+
+    if($year < 1300 ) $year = 1300;
+    if($year > 1500 ) $year = 1500;
 	
 } else $year = '';
 

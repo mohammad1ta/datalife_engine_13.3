@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: default.skin.php
 -----------------------------------------------------
@@ -291,7 +291,15 @@ HTML;
 	
 	
 	$options['others'] = array (
-								array (
+
+                                array (
+                                    'name' => $lang['opt_obmen'],
+                                    'url' => "?mod=obmen",
+                                    'mod' => "obmen",
+                                    'access' => $user_group[$member_id['user_group']]['admin_static']
+                                ),
+
+                                array (
 											'name' => $lang['opt_rules'], 
 											'url' => "?mod=static&action=doedit&page=rules", 
 											'mod' => "rules",
@@ -515,7 +523,7 @@ var dle_login_hash = '{$dle_login_hash}';
 <div id="loading-layer" class="shadow-depth3"><i class="fa fa-spinner fa-spin"></i></div>
 	<div class="navbar navbar-inverse bg-primary-700">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="?mod=main">DataLife Engine</a>
+			<a class="navbar-brand" href="?mod=main">دیتالایف انجین</a>
 			<ul class="nav navbar-nav visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-angle-double-down"></i></a></li>
 				<li><a class="sidebar-mobile-main-toggle"><i class="fa fa-bars"></i></a></li>
@@ -617,8 +625,8 @@ var dle_login_hash = '{$dle_login_hash}';
 HTML;
 
 $skin_footer = <<<HTML
-					<div class="footer text-muted text-size-small">
-						DataLife Engine&reg;  Copyright 2004-{$year} &copy; <a href="https://dle-news.ru/" target="_blank">SoftNews Media Group</a> All rights reserved.
+					<div class="footer text-muted text-size-small rtl">
+						&copy; ۱۳۸۶-۱۳۹۸ سیستم قدرت گرفته از <a href="http://www.datalifeengine.ir/" target="_blank">دیتالایف انجین فارسی</a> . تمامی حقوق محفوظ است.
 					</div>
 				</div>
 			</div>
@@ -731,7 +739,7 @@ var filebtntext    = '';
 	<div class="panel panel-default" style="margin-top: 100px;">
 
       <div class="panel-heading">
-        {$lang['skin_title']} DataLife Engine
+        ورود به {$lang['skin_title']} دیتالایف انجین
       </div>
 	  
       <div class="panel-body">
@@ -768,7 +776,7 @@ var filebtntext    = '';
       </div>
 
     </div>
-	<div class="text-muted text-size-small text-center">DataLife Engine&reg;  Copyright 2004-{$year}<br>&copy; <a href="https://dle-news.ru/" target="_blank">SoftNews Media Group</a> All rights reserved.</div>
+	<div class="text-muted text-size-small text-center">&copy; سیستم قدرت گرفته از <a href="http://www.datalifeengine.ir/" target="_blank">دیتالایف انجین فارسی</a></div>
 
 
 

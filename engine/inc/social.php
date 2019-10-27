@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: social.php
 -----------------------------------------------------
@@ -164,30 +164,30 @@ echo <<<HTML
 HTML;
 
 showRow( $lang['sconf_vk'], $lang['sconf_vkd'], makeCheckBox( "save_con[vk]", "{$social_config['vk']}" ) );
-showRow( $lang['sconf_vk1'], $lang['sconf_vk1d'], "<input type=text class=\"form-control\" name=\"save_con[vkid]\" value=\"{$social_config['vkid']}\" >" );
-showRow( $lang['sconf_vk2'], $lang['sconf_vk2d'], "<input type=text class=\"form-control\" name=\"save_con[vksecret]\" value=\"{$social_config['vksecret']}\" >" );
+showRow( $lang['sconf_vk1'], $lang['sconf_vk1d'], "<input type=text class=\"form-control ltr\" name=\"save_con[vkid]\" value=\"{$social_config['vkid']}\" >" );
+showRow( $lang['sconf_vk2'], $lang['sconf_vk2d'], "<input type=text class=\"form-control ltr\" name=\"save_con[vksecret]\" value=\"{$social_config['vksecret']}\" >" );
 
 
 showRow( $lang['sconf_od'], $lang['sconf_odd'], makeCheckBox( "save_con[od]", "{$social_config['od']}" ) );
-showRow( $lang['sconf_od1'], $lang['sconf_od1d'], "<input type=text class=\"form-control\" name=\"save_con[odid]\" value=\"{$social_config['odid']}\" >" );
-showRow( $lang['sconf_od3'], $lang['sconf_od3d'], "<input type=text class=\"form-control\" name=\"save_con[odpublic]\" value=\"{$social_config['odpublic']}\" >" );
-showRow( $lang['sconf_od2'], $lang['sconf_od2d'], "<input type=text class=\"form-control\" name=\"save_con[odsecret]\" value=\"{$social_config['odsecret']}\" >" );
+showRow( $lang['sconf_od1'], $lang['sconf_od1d'], "<input type=text class=\"form-control ltr\" name=\"save_con[odid]\" value=\"{$social_config['odid']}\" >" );
+showRow( $lang['sconf_od3'], $lang['sconf_od3d'], "<input type=text class=\"form-control ltr\" name=\"save_con[odpublic]\" value=\"{$social_config['odpublic']}\" >" );
+showRow( $lang['sconf_od2'], $lang['sconf_od2d'], "<input type=text class=\"form-control ltr\" name=\"save_con[odsecret]\" value=\"{$social_config['odsecret']}\" >" );
 
 showRow( $lang['sconf_fc'], $lang['sconf_fcd'], makeCheckBox( "save_con[fc]", "{$social_config['fc']}" ) );
-showRow( $lang['sconf_fc1'], $lang['sconf_fc1d'], "<input type=text class=\"form-control\" name=\"save_con[fcid]\" value=\"{$social_config['fcid']}\" >" );
-showRow( $lang['sconf_fc2'], $lang['sconf_fc2d'], "<input type=text class=\"form-control\" name=\"save_con[fcsecret]\" value=\"{$social_config['fcsecret']}\" >" );
+showRow( $lang['sconf_fc1'], $lang['sconf_fc1d'], "<input type=text class=\"form-control ltr\" name=\"save_con[fcid]\" value=\"{$social_config['fcid']}\" >" );
+showRow( $lang['sconf_fc2'], $lang['sconf_fc2d'], "<input type=text class=\"form-control ltr\" name=\"save_con[fcsecret]\" value=\"{$social_config['fcsecret']}\" >" );
 
 showRow( $lang['sconf_google'], $lang['sconf_googled'], makeCheckBox( "save_con[google]", "{$social_config['google']}" ) );
-showRow( $lang['sconf_google1'], $lang['sconf_google1d'], "<input type=text class=\"form-control\" name=\"save_con[googleid]\" value=\"{$social_config['googleid']}\" >" );
-showRow( $lang['sconf_google2'], $lang['sconf_google2d'], "<input type=text class=\"form-control\" name=\"save_con[googlesecret]\" value=\"{$social_config['googlesecret']}\" >" );
+showRow( $lang['sconf_google1'], $lang['sconf_google1d'], "<input type=text class=\"form-control ltr\" name=\"save_con[googleid]\" value=\"{$social_config['googleid']}\" >" );
+showRow( $lang['sconf_google2'], $lang['sconf_google2d'], "<input type=text class=\"form-control ltr\" name=\"save_con[googlesecret]\" value=\"{$social_config['googlesecret']}\" >" );
 
 showRow( $lang['sconf_mailru'], $lang['sconf_mailrud'], makeCheckBox( "save_con[mailru]", "{$social_config['mailru']}" ) );
-showRow( $lang['sconf_mailru1'], $lang['sconf_mailru1d'], "<input type=text class=\"form-control\" name=\"save_con[mailruid]\" value=\"{$social_config['mailruid']}\" >" );
-showRow( $lang['sconf_mailru2'], $lang['sconf_mailru2d'], "<input type=text class=\"form-control\" name=\"save_con[mailrusecret]\" value=\"{$social_config['mailrusecret']}\" >" );
+showRow( $lang['sconf_mailru1'], $lang['sconf_mailru1d'], "<input type=text class=\"form-control ltr\" name=\"save_con[mailruid]\" value=\"{$social_config['mailruid']}\" >" );
+showRow( $lang['sconf_mailru2'], $lang['sconf_mailru2d'], "<input type=text class=\"form-control ltr\" name=\"save_con[mailrusecret]\" value=\"{$social_config['mailrusecret']}\" >" );
 
 showRow( $lang['sconf_yandex'], $lang['sconf_yandexd'], makeCheckBox( "save_con[yandex]", "{$social_config['yandex']}" ) );
-showRow( $lang['sconf_yandex1'], $lang['sconf_yandex1d'], "<input type=text class=\"form-control\" name=\"save_con[yandexid]\" value=\"{$social_config['yandexid']}\" >" );
-showRow( $lang['sconf_yandex2'], $lang['sconf_yandex2d'], "<input type=text class=\"form-control\" name=\"save_con[yandexsecret]\" value=\"{$social_config['yandexsecret']}\" >" );
+showRow( $lang['sconf_yandex1'], $lang['sconf_yandex1d'], "<input type=text class=\"form-control ltr\" name=\"save_con[yandexid]\" value=\"{$social_config['yandexid']}\" >" );
+showRow( $lang['sconf_yandex2'], $lang['sconf_yandex2d'], "<input type=text class=\"form-control ltr\" name=\"save_con[yandexsecret]\" value=\"{$social_config['yandexsecret']}\" >" );
 
 
 echo <<<HTML

@@ -1,31 +1,29 @@
-<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-<script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing"></script>
+        <script src="../js/geometry_generator.js"></script>
+        
+        <script>
+            function initialize() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(35.6930,51.4332),
+                    zoom: 10
+                };
 
-    var myMap;
+                var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                
+                var points = generateGeometry(function(x, y) {
+                    return new google.maps.LatLng(y, x);
+                })
+                
+                var polygon = new google.maps.Polygon({
+                    paths: points,
+                    editable: true
+                });
 
-    ymaps.ready(init);
+                polygon.setMap(map);
+            }
 
-    function init () {
-        myMap = new ymaps.Map('map', {
-            center: [55.99803,92.898377],
-            zoom: 17,
-            controls: ['zoomControl', 'typeSelector',  'fullscreenControl']
-        });
-        var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            balloonContentBody: [
-                '<address>',
-                '<strong>LLC "Softnews Media Group"</strong>',
-                '<br/>',
-                'Address: 660093, Krasnoyarsk, Kapitanskaya st., 12, office 43',
-                '</address>'
-            ].join('')
-        }, {
-            preset: 'islands#darkGreenDotIcon'
-        });
-        myMap.geoObjects.add(myPlacemark);
-        myMap.behaviors.disable('scrollZoom');
-    } 
-</script>
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
 <div class="map_resp">
     <div id="map"></div>
 </div>

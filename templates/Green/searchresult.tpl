@@ -7,7 +7,7 @@
 		[not-group=5]
 		<ul class="story_icons">
 			<li class="edit_btn">
-				[edit]<i title="Edit">Edit</i>[/edit]
+				[edit]<i title="Edit">ویرایش</i>[/edit]
 			</li>
 		</ul>
 		[/not-group]

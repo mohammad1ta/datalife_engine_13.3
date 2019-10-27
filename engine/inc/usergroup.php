@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: usergroup.php
 -----------------------------------------------------
@@ -483,17 +483,17 @@ if( $action == "del" ) {
 	
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_icon']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['hint_gicon']}</span></td>
-        <td><input type="text" class="form-control" name="group_icon" value="{$group_icon_value}"></td>
+        <td><input type="text" class="form-control ltr" name="group_icon" value="{$group_icon_value}"></td>
     </tr>
 	
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_pref']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['hint_gpref']}</span></td>
-        <td><input type="text" class="form-control" name="group_prefix" value="{$group_prefix_value}"></td>
+        <td><input type="text" class="form-control ltr" name="group_prefix" value="{$group_prefix_value}"></td>
     </tr>
 	
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_suf']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['hint_gsuf']}</span></td>
-        <td><input type="text" class="form-control" name="group_suffix" value="{$group_suffix_value}"></td>
+        <td><input type="text" class="form-control ltr" name="group_suffix" value="{$group_suffix_value}"></td>
     </tr>
 	
     <tr>
@@ -626,24 +626,24 @@ if( $action == "del" ) {
     </tr>
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_fuf2']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['group_fufd2']}</span></td>
-        <td><input type="text" class="form-control" style="max-width:100px; text-align: center;" name="max_mail_files" value="{$max_mail_files_value}"></td>
+        <td><input type="text" class="form-control ltr" style="max-width:100px; text-align: center;" name="max_mail_files" value="{$max_mail_files_value}"></td>
     </tr>
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_fuf3']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['group_fufd3']}</span></td>
-        <td><input type="text" class="form-control" style="max-width:100px; text-align: center;" name="max_mail_allfiles" value="{$max_mail_allfiles_value}"></td>
+        <td><input type="text" class="form-control ltr" style="max-width:100px; text-align: center;" name="max_mail_allfiles" value="{$max_mail_allfiles_value}"></td>
     </tr>
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_fuf4']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['group_fufd4']}</span></td>
-        <td><input type="text" name="mail_files_type" value="{$mail_files_type_value}" class="form-control"></td>
+        <td><input type="text" name="mail_files_type" value="{$mail_files_type_value}" class="form-control ltr"></td>
     </tr>
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_mfot']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['hint_gmphoto']}</span></td>
-        <td><input type="text" class="form-control" style="max-width:100px; text-align: center;" name="max_foto" value="{$max_foto_value}"></td>
+        <td><input type="text" class="form-control ltr" style="max-width:100px; text-align: center;" name="max_foto" value="{$max_foto_value}"></td>
     </tr>
 	
     <tr>
         <td><h6 class="media-heading text-semibold">{$lang['group_max_info']}</h6><span class="text-muted text-size-small hidden-xs">{$lang['hint_max_info']}</span></td>
-        <td><input type="text" class="form-control" style="max-width:100px; text-align: center;" name="max_info" value="{$max_info_value}"></td>
+        <td><input type="text" class="form-control ltr" style="max-width:100px; text-align: center;" name="max_info" value="{$max_info_value}"></td>
     </tr>
 </table>
 							  

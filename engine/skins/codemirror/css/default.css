@@ -6,6 +6,8 @@
   font-size: 12px;
   line-height:normal;
   height: 100%;
+  direction: ltr;
+  text-align: left;
 }
 
 /* PADDING */

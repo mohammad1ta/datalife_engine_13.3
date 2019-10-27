@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: static.php
 -----------------------------------------------------
@@ -67,8 +67,8 @@ if( $action == "list" ) {
 	$search_field = $db->safesql( trim( htmlspecialchars( stripslashes( @urldecode( $_GET['search_field'] ) ), ENT_QUOTES, $config['charset'] ) ) );
 	$search_field2 = $db->safesql( addslashes(addslashes(trim( urldecode( $_REQUEST['search_field'] ) ) ) ) );
 	
-	if ($_GET['fromnewsdate']) $fromnewsdate = strtotime( $_GET['fromnewsdate'] ); else $fromnewsdate = "";
-	if ($_GET['tonewsdate']) $tonewsdate = strtotime( $_GET['tonewsdate'] ); else $tonewsdate = "";
+	if ($_GET['fromnewsdate']) $fromnewsdate = jstrtotime( $_GET['fromnewsdate'] ); else $fromnewsdate = "";
+	if ($_GET['tonewsdate']) $tonewsdate = jstrtotime( $_GET['tonewsdate'] ); else $tonewsdate = "";
 
 
 	if ($fromnewsdate === -1 OR !$fromnewsdate) $fromnewsdate = "";
@@ -195,7 +195,7 @@ if( $action == "list" ) {
 		
 		if( !$langformatdate ) $langformatdate = "d.m.Y";
 		
-		$itemdate = @date( $langformatdate, $row['date'] );
+		$itemdate = @jdate( $langformatdate, $row['date'] );
 		
 		$title = htmlspecialchars( stripslashes( $row['name'] ), ENT_QUOTES, $config['charset'] );
 		$descr = stripslashes($row['descr']);
@@ -279,8 +279,12 @@ if( $action == "list" ) {
 	  	<div class="form-group">
 		  <label class="control-label col-sm-12">{$lang['search_by_date']}</label>
 		  <div class="col-sm-12">
-			{$lang['edit_fdate']} <input data-rel="calendardate" type="text" name="fromnewsdate" id="fromnewsdate" class="form-control" style="width:160px;" value="{$fromnewsdate}" autocomplete="off">
-			{$lang['edit_tdate']} <input data-rel="calendardate" type="text" name="tonewsdate" id="tonewsdate" class="form-control" style="width:160px;" value="{$tonewsdate}" autocomplete="off">
+			{$lang['edit_fdate']} <input id="PersianDate_A" type="text" name="fromnewsdate" id="fromnewsdate" class="form-control" style="width:160px;" value="{$fromnewsdate}">
+			{$lang['edit_tdate']} <input id="PersianDate_B" type="text" name="tonewsdate" id="tonewsdate" class="form-control" style="width:160px;" value="{$tonewsdate}">
+            <script type="text/javascript">
+                Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+                Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+            </script>
 		  </div>
 		 </div>
 
@@ -529,8 +533,8 @@ HTML;
 		  
   
 <div class="panel-footer">
- <div class="pull-left"><button class="btn bg-teal btn-sm btn-raised" type="button" onclick="document.location='?mod=static&action=addnew'"><i class="fa fa-plus-circle position-left"></i>{$lang['static_new']}</button></div>
- <div class="pull-right"><select name="action" class="uniform">
+ <div class="pull-right"><button class="btn bg-teal btn-sm btn-raised" type="button" onclick="document.location='?mod=static&action=addnew'"><i class="fa fa-plus-circle position-left"></i>{$lang['static_new']}</button></div>
+ <div class="pull-left"><select name="action" class="uniform">
   <option value="">{$lang['edit_selact']}</option>
   <option value="mass_date">{$lang['mass_edit_date']}</option>
   <option value="mass_clear_count">{$lang['mass_clear_count']}</option>
@@ -658,7 +662,7 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2">{$lang['static_title']}</label>
 		  <div class="col-md-10">
-			<input type="text" name="name" class="form-control width-550" maxlength="100"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stitle']}" ></i>
+			<input type="text" name="name" class="form-control ltr width-550" maxlength="100"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stitle']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
@@ -670,7 +674,8 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2">{$lang['edit_edate']}</label>
 		  <div class="col-md-10">
-			<input data-rel="calendar" type="text" name="newdate" class="form-control position-left" style="width:190px;" value="" autocomplete="off"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_now" id="allow_now" value="yes" checked>{$lang['edit_jdate']}</label>
+		    <input id="PersianDate_A" type="text" name="newdate" class="ltr form-control position-left" style="width:190px;" value=""><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_now" id="allow_now" value="yes" checked>{$lang['edit_jdate']}</label>
+			<script type="text/javascript">Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});</script>
 		  </div>
 		 </div>
 		<div class="form-group editor-group">
@@ -840,7 +845,7 @@ HTML;
 	$allow_sitemap = intval( $_POST['allow_sitemap'] );
 
 	$added_time = time();
-	$newsdate = strtotime( $newdate );
+	$newsdate = jstrtotime( $newdate );
 
 	if( ($allow_now == "yes") OR ($newsdate === - 1) OR !$newsdate) {
 		$thistime = $added_time;
@@ -915,7 +920,7 @@ HTML;
 	$skinlist = SelectSkin( $row['template_folder'] );
 	$row['descr'] = stripslashes($row['descr']);
 	$row['metatitle'] = stripslashes( $row['metatitle'] );
-	$itemdate = @date( "Y-m-d H:i:s", $row['date'] );
+	$itemdate = @jdate( "Y-m-d H:i:s", $row['date'] );
 
 	if( $config['allow_static_wysiwyg'] == 1 ) {
 		$js_array[] = "engine/skins/codemirror/js/code.js";
@@ -1100,7 +1105,7 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2">{$lang['static_title']}</label>
 		  <div class="col-md-10">
-			<input type="text" name="name" class="form-control width-550" maxlength="100" value="{$row['name']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stitle']}" ></i>
+			<input type="text" name="name" class="form-control ltr width-550" maxlength="100" value="{$row['name']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stitle']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
@@ -1117,7 +1122,8 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2">{$lang['edit_edate']}</label>
 		  <div class="col-md-10">
-			<input data-rel="calendar" type="text" name="newdate" value="{$itemdate}" class="form-control position-left" style="width:190px;" autocomplete="off"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_now" id="allow_now" value="yes">{$lang['edit_jdate']}</label>
+		    <input id="PersianDate_A" type="text" name="newdate" value="{$itemdate}" class="ltr form-control position-left" style="width:190px;"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_now" id="allow_now" value="yes">{$lang['edit_jdate']}</label>
+			<script type="text/javascript">Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});</script>
 		  </div>
 		 </div>
 		<div class="form-group editor-group">
@@ -1178,7 +1184,7 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2">{$lang['static_tpl']}</label>
 		  <div class="col-md-10">
-			<input type="text" name="static_tpl" class="form-control position-left" style="width:220px;" value="{$row['tpl']}">.tpl<i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-html="true" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stpl']}" ></i>
+			tpl.<input type="text" name="static_tpl" class="form-control position-left ltr" style="width:220px;" value="{$row['tpl']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-html="true" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stpl']}" ></i>
 		  </div>
 		 </div>
 HTML;
@@ -1314,7 +1320,7 @@ HTML;
 	
 	if( $newdate ) {
 		
-        $newsdate = strtotime( $newdate );
+        $newsdate = jstrtotime( $newdate );
 		
 		if( $allow_now == "yes" ) {
 			

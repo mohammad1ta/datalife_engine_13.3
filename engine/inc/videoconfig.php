@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: videoconfig.php
 -----------------------------------------------------
@@ -148,7 +148,7 @@ echo <<<HTML
       </thead>
 HTML;
 
-	showRow( $lang['vconf_widht'], $lang['vconf_widhtd'], "<input type=\"text\" name=\"save_con[width]\" value=\"{$video_config['width']}\" class=\"form-control\" style=\"max-width:150px; text-align: center;\">", "white-line" );
+	showRow( $lang['vconf_widht'], $lang['vconf_widhtd'], "<input type=\"text\" name=\"save_con[width]\" value=\"{$video_config['width']}\" class=\"form-control ltr\" style=\"max-width:150px; text-align: center;\">", "white-line" );
 	showRow( $lang['vconf_awidht'], $lang['vconf_awidhtd'], "<input type=\"text\" name=\"save_con[audio_width]\" value=\"{$video_config['audio_width']}\" class=\"form-control\" style=\"max-width:150px; text-align: center;\">" );
 	showRow( $lang['vconf_theme'], $lang['vconf_themed'], makeDropDown( array ("default" => $lang['vconf_theme_1'], "dark" => $lang['vconf_theme_2'] ), "save_con[theme]", "{$video_config['theme']}" ) );
 

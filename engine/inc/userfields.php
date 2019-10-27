@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: userfields.php
 -----------------------------------------------------
@@ -218,7 +218,7 @@ switch ($xfieldsaction) {
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3"><?php echo $lang['xfield_xname']; ?></label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-250" maxlength="30" type="text" name="editedxfield[0]" value="<?php echo htmlspecialchars($editedxfield[0], ENT_QUOTES, $config['charset'] ); ?>" /><span class="text-muted text-size-small"><i class="fa fa-exclamation-circle position-left position-right"></i> <?php echo $lang['xf_lat']; ?></span>
+			<input class="form-control ltr width-250" maxlength="30" type="text" name="editedxfield[0]" value="<?php echo htmlspecialchars($editedxfield[0], ENT_QUOTES, $config['charset'] ); ?>" /><span class="text-muted text-size-small"><i class="fa fa-exclamation-circle position-left position-right"></i> <?php echo $lang['xf_lat']; ?></span>
 		  </div>
 		 </div>	
 		<div class="form-group">

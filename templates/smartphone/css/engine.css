@@ -1,5 +1,4 @@
-
-/* ==================== Вывод формы по умолчанию */
+/* http://datalifeengine.ir */
 
 form {  
 	padding-top: 0px;
@@ -15,13 +14,6 @@ form {
 	text-align:center;
 	border:1px solid #000;
 	color: #FFF;
-}
-/*---Найденные похожие новости при добавлении новостей на сайте---*/
-.findrelated {
-	width:99%;
-	background: #ffc;border:1px solid #9E9E9E;
-	padding: 5px;margin-top: 7px;
-	margin-right: 10px;
 }
 /* ==================== Цитата и скрытый текст */
 
@@ -66,6 +58,7 @@ form {
 	background-color: #f2f2f2; 
 	border: 1px dotted #bebebe;
 	text-align: left;
+	direction: ltr;
 	padding: 5px;
 }
 
@@ -100,44 +93,44 @@ form {
 /* ==================== Дополнительные поля новостей */
 
 .xfields textarea {
-	color: #757575;		/* ! */
-	font-size: 11px;		/* ! */
-	font-family: tahoma;	/* ! */
+	color: #757575;		
+	font-size: 11px;		
+	font-family: tahoma;	
 	background-repeat: repeat-x;
-	width: 100%;
+
 	height: 86px;
 	border: 1px solid #e0e0e0;
 }
 .xfields input {
-	color: #757575;		/* ! */
-	font-size: 11px;		/* ! */
-	font-family: tahoma;	/* ! */
+	color: #757575;		
+	font-size: 11px;		
+	font-family: tahoma;	
 
 	width: 250px;
 	height: 14px;
 	border: 1px solid #e0e0e0;
 }
 .xfields select {
-	color: #757575;		/* ! */
-	font-size: 11px;		/* ! */
-	font-family: tahoma;	/* ! */
+	color: #757575;		
+	font-size: 11px;		
+	font-family: tahoma;	
 	border: 1px solid #e0e0e0;
 }
 
 /* ==================== Дополнительные поля профиля пользователей */
 
 .xprofile textarea {
-	color: #757575;		/* ! */
-	font-size: 11px;		/* ! */
-	font-family: tahoma;	/* ! */
+	color: #757575;		
+	font-size: 11px;		
+	font-family: tahoma;	
 	width: 316px;
 	height: 86px;
 	border: 1px solid #e0e0e0;
 }
 .xprofile input {
-	color: #757575;		/* ! */
-	font-size: 11px;		/* ! */
-	font-family: tahoma;	/* ! */
+	color: #757575;		
+	font-size: 11px;		
+	font-family: tahoma;	
 	width: 250px;
 	height: 14px;
 	border: 1px solid #e0e0e0;
@@ -239,9 +232,9 @@ form {
 	fieldset {
 		border: 1px solid #e0e0e0;
 		padding: 5px;
-		text-align: left;
-		font-size: 11px;		/* ! */
-		font-family: tahoma;	/* ! */
+		text-align: right;
+		font-size: 11px;		
+		font-family: tahoma;	
 	}
 
 /* ==================== показ оригинальной картинки загруженной на сайт из уменьшенной копии */
@@ -292,37 +285,6 @@ a.highslide-full-expand {
     display: none;
 }
 
-/*---Показ древовидных комментариев---*/
-.comments-tree-list {
-	display: block;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.comments-tree-list .comments-tree-list {
-	padding-left: 10px;
-}
-
-.comments-tree-item {
-	display: block;
-	margin: 0;
-	padding: 0;
-}
-
-/*---Форма быстрого ответа на комментарий---*/
-
-#dlefastreplycomments {
-	padding:5px;
-	background: #e4ecf0;
-    margin: 5px 5px 5px 10px;
-}
-
-.commentsreplyname {
-	padding: 2px; border: 1px solid #bcc0c2;
-	width: 200px;
-}
-
 /* ==================== Облако тегов */
 .clouds_xsmall {
 	font-size: x-small;
@@ -350,14 +312,14 @@ a.highslide-full-expand {
   box-shadow: 0 0 40px 0 rgba(0,0,0,0.16); -moz-box-shadow: 0 0 40px 0 rgba(0,0,0,0.16); -webkit-box-shadow: 0 0 40px 0 rgba(0,0,0,0.16);
 }
 .ui-dialog-titlebar { padding: 17px 25px 18px 25px; border-bottom: 1px solid #e6e6e6 }
-.ui-dialog-title { margin-top: 2px; float: left; font-size: 20px; font-weight: bold }
-.ui-dialog-titlebar-close .ui-icon { position: absolute; right: 18px; top: 20px; height: 31px; width: 31px; background-position: -37px -45px; }
+.ui-dialog-title { margin-top: 2px; float: right; font-size: 20px; font-weight: bold }
+.ui-dialog-titlebar-close .ui-icon { position: absolute; left: 18px; top: 20px; height: 31px; width: 31px; background-position: -37px -45px; }
 
 .ui-dialog .ui-dialog-content { border-top-left-radius: 0; border-top-right-radius: 0; padding: 25px; border: 0; overflow: auto; position: relative; zoom: 1; }
 .ui-dialog-content h2 { display: inline; font-size: 1em; font-weight: bold }
 .ui-dialog .ui-dialog-buttonpane { border-top: 1px solid #e6e6e6; padding: 15px 20px; text-align: center; }
 
-.ui-dialog .ui-resizable-se { bottom: 3px; height: 14px; right: 3px; width: 14px; }
+.ui-dialog .ui-resizable-se { bottom: 3px; height: 14px; left: 3px; width: 14px; }
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
 
 .ui-state-error { background: #fef1ec 50% 50% repeat-x !important; border: 1px solid #cd0a0a; color: #cd0a0a; }
@@ -372,3 +334,101 @@ a.highslide-full-expand {
 
 /*---Выделение текста и всплывающее окно (поделиться ссылкой)---*/
 #marker-bar, #txtselect_marker, #share-popup { display: none; }
+
+.findrelated {
+    width:99%;
+    background: #ffc;border:1px solid #9E9E9E;
+    padding: 5px;margin-top: 7px;
+    margin-right: 10px;
+}
+.ratingzero {
+  color: #6c838e;
+}
+
+.ratingtypeplusminus {
+  padding: 0px 5px;
+}
+
+.ratingtypeplus {
+  color: #6c838e;
+  padding: 0px 0px 0px 5px;
+}
+
+.ratingplus {
+  color: green;
+}
+
+.ratingminus {
+  color: red;
+}
+/*---Показ древовидных комментариев---*/
+.comments-tree-list {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comments-tree-list .comments-tree-list {
+  padding-left: 30px;
+}
+
+.comments-tree-item {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/*---Форма быстрого ответа на комментарий---*/
+
+#dlefastreplycomments {
+  padding:5px;
+  background: #e4ecf0;
+  margin: 5px 5px 5px 30px;
+}
+
+.commentsreplyname {
+ padding: 2px; border: 1px solid #bcc0c2;
+ width: 200px;
+ background: #fff url("../images/fields.png") repeat-x;
+}
+
+/*---Вывод результатов голосования на сайте---*/
+.pollallvotes {
+  text-align: center;
+  margin-top: 10px;
+}
+.xfieldimagegallery {
+  margin: 0;
+  padding: 0;  
+  list-style: none;
+  clear: both;
+}
+
+.xfieldimagegallery li {
+  list-style: none;
+  margin: 0;
+  padding: 0;  
+}
+
+.xfieldimagegallery li img {
+  float: left;
+  margin-right: 5px;
+  border: 5px solid #fff;
+  width: 100px;
+  height: 100px;
+  transition: box-shadow 0.5s ease;
+}
+
+.xfieldimagegallery li img:hover {
+  box-shadow: 0px 0px 7px rgba(0,0,0,0.4);
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor:not-allowed;
+    pointer-events:none;
+    opacity:0.65;
+    filter:alpha(opacity=65);
+    -webkit-box-shadow:none;
+    box-shadow:none;
+}

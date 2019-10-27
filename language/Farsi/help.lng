@@ -1,6 +1,13 @@
 <?php
 
-$help_sections['templates'] = <<<HTML
+$help_sections['title']['templates'] ="Templates";
+$help_sections['title']['xfields'] ="Extra Fields";
+$help_sections['title']['xprofile'] ="Extra Fields in users profiles";
+$help_sections['title']['banners'] ="Advertising Management";
+$help_sections['title']['date'] ="Local time and date format";
+$help_sections['title']['social'] ="Configure authorization";
+
+$help_sections['body']['templates'] = <<<HTML
 <div style="text-align: left; direction: ltr; font-family: tahoma; line-height: 20px;">
 <table width="100%">
     <tr>
@@ -15,7 +22,7 @@ You can use several different patterns.
 </div>
 HTML;
 
-$help_sections['xfields'] = <<<HTML
+$help_sections['body']['xfields'] = <<<HTML
 <div style="text-align: right; direction: rtl; font-family: tahoma; line-height: 20px;">
 <table width="100%">
     <tr>
@@ -41,7 +48,7 @@ $help_sections['xfields'] = <<<HTML
 </div>
 HTML;
 
-$help_sections['xprofile'] = <<<HTML
+$help_sections['body']['xprofile'] = <<<HTML
 <div style="text-align: right; direction: rtl; font-family: tahoma; line-height: 20px;">
 <table width="100%">
     <tr>
@@ -64,7 +71,7 @@ $help_sections['xprofile'] = <<<HTML
 </div>
 HTML;
 
-$help_sections['banners'] = <<<HTML
+$help_sections['body']['banners'] = <<<HTML
 <div style="text-align: right; direction: rtl; font-family: tahoma; line-height: 20px;">
 <table width="100%">
     <tr>
@@ -88,8 +95,7 @@ $help_sections['banners'] = <<<HTML
 </div>
 HTML;
 
-
-$help_sections['date'] = <<<HTML
+$help_sections['body']['date'] = <<<HTML
 <div style="text-align: right; direction: rtl; font-family: tahoma; line-height: 20px;">
 <table width="100%">
     <tr>
@@ -133,7 +139,7 @@ $help_sections['date'] = <<<HTML
 </div>
 HTML;
 
-$help_sections['social'] = <<<HTML
+$help_sections['body']['social'] = <<<HTML
 <table width="100%">
     <tr>
         <td bgcolor="#EFEFEF" height="29" style="padding-left:10px;"><div class="navigation">Configuring authorization through a network Vkontakte</div></td>

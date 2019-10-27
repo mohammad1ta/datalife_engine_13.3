@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: templates.php
 -----------------------------------------------------
@@ -281,16 +281,16 @@ echo <<<HTML
     </div>
   </div>
   <div class="panel-body row-seamless">
-	 <div class="col-md-12 mb-10">{$lang['templates_help']} <a class="main" href="http://dle-news.ru/extras/online/all2.html" target="_blank">http://dle-news.ru/extras/online/all2.html</a></div>
+	 <div class="col-md-12 mb-10">{$lang['templates_help']} <a class="main" href="http://datalifeengine.ir" target="_blank">http://datalifeengine.ir</a></div>
+	
+	  <div class="col-md-10">
+			<div id="fileedit" style="border: solid 1px #BBB;min-height: 565px; padding:5px;"></div>
+	  </div>
 	
 	  <div class="col-md-2">
 		<div id="filetree" class="filetree"></div>
 	  </div>
 	  
-	  <div class="col-md-10">
-			<div id="fileedit" style="border: solid 1px #BBB;min-height: 565px; padding:5px;"></div>
-	  </div>
-	
    </div>
 <div class="panel-footer">
 	<button class="btn bg-teal btn-sm btn-raised" type="button" onclick="createfile()"><i class="fa fa-plus-circle position-left"></i>{$lang['template_create']}</button>

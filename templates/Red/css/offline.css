@@ -1,11 +1,12 @@
-/* +++++++ © 2016 Centroarts.com +++++++ */
-@import url(../fonts/font.css);
+/* =========== © 2016 9thart.ir - datalifeengine.ir =========== */
+
+@font-face { font-family: 'yekan'; src: url('../fonts/dle.eot') format('eot'), url("../fonts/dle.woff") format("woff"), url('../fonts/dle.ttf') format('truetype'); }
 
 /* Сброс */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline } article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block } body { line-height: 1 } ol, ul { list-style: none } blockquote, q { quotes: none } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none } table { border-collapse: collapse; border-spacing: 0 }
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary { display: block; }
 
-body, html { height: 100%; }
+body, html { height: 100%; direction: rtl; }
 html, html a {
 	-webkit-font-smoothing: antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
@@ -13,7 +14,7 @@ html, html a {
 
 /* Текст */
 body, select, input, textarea, button {
-	font: normal 15px/1.5 "GothaPro", Arial, Helvetica, sans-serif;
+	font: normal 15px/1.5 'yekan', 'b yekan', tahoma;
 	letter-spacing: 0.012em;
 	color: #444;
 	outline: none;
@@ -32,7 +33,7 @@ a { outline: none; color: #4e8cda; text-decoration: none; }
 
 body { background: #fff; }
 
-.offpage { display: table; position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.offpage { display: table; position: absolute; right: 0; top: 0; width: 100%; height: 100%; }
 	
 	.wrap {
 		display: table-cell;
@@ -53,7 +54,9 @@ body { background: #fff; }
 	.logo > img { max-width: 160px; vertical-align: top; }
 
 	.footer { display: table-row; }
-	.copyright {
+	.copyleft {
+		font-family: tahoma;
+		direction: ltr;
 		display: table-cell;
 		height: 1%;
 		padding: 20px;
@@ -63,5 +66,5 @@ body { background: #fff; }
 		background-color: #f4f6f7;
 		color: #94999e;
 	}
-	.copyright a { color: #94999e; }
-	.copyright a:hover { color: inherit; }
+	.copyleft a { color: #94999e; }
+	.copyleft a:hover { color: inherit; }

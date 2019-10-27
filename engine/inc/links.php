@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: links.php
 -----------------------------------------------------
@@ -431,7 +431,7 @@ echo <<<HTML
 	</table>
 </div>
 <div class="panel-footer">
-	<div class="pull-right">
+	<div class="pull-left">
 	<input class="btn bg-teal btn-sm btn-raised position-left" type="button" onclick="addLink()" value="{$lang['add_links']}">
 	<select class="uniform position-left" name="action" data-dropdown-align-right="auto">
 	<option value="">{$lang['edit_selact']}</option>
@@ -551,7 +551,7 @@ echo <<<HTML
 
 		$("#dlepopup").remove();
 
-		$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'>{$lang['add_links_tag']}<br /><input type='text' name='dle-promt-tag' id='dle-promt-tag' class='classic' style='width:100%;' value=''><br><br>{$lang['add_links_url']}<br><input type='text' name='dle-promt-url' id='dle-promt-url' class='classic' style='width:100%;' value='http://'><br><br>{$lang['bb_url_tooltip']}<br><input type='text' name='dle-promt-title' id='dle-promt-title' class='classic' style='width:100%;' value=''><br><br>{$lang['links_rcount']} <input type='text' name='dle-rcount' id='dle-rcount' class='classic' style='width:50px;' value='0'/> {$lang['links_rcount_1']}<br /><br />{$lang['links_area_1']} <select name='replacearea' id='replacearea' class='ui-widget-content ui-corner-all'><option value='1'>{$lang['links_area_2']}</option><option value='2'>{$lang['links_area_3']}</option><option value='3'>{$lang['links_area_4']}</option><option value='4'>{$lang['links_area_5']}</option><option value='5'>{$lang['links_area_8']}</option><option value='6'>{$lang['links_area_9']}</option></select><br /><br /><input type='checkbox' name='only-one' id='only-one' value=''><label for='only-one'>&nbsp;{$lang['add_links_one']}</label>&nbsp;&nbsp;&nbsp;<input type='checkbox' name='targetblank' id='targetblank' value=''><label for='targetblank'>&nbsp;{$lang['links_target']}</label></div>");
+		$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'>{$lang['add_links_tag']}<br /><input type='text' name='dle-promt-tag' id='dle-promt-tag' class='classic' style='width:100%;' value=''><br><br>{$lang['add_links_url']}<br><input type='text' name='dle-promt-url' id='dle-promt-url' class='classic ltr' style='width:100%;' value='http://'><br><br>{$lang['bb_url_tooltip']}<br><input type='text' name='dle-promt-title' id='dle-promt-title' class='classic' style='width:100%;' value=''><br><br>{$lang['links_rcount']} <input type='text' name='dle-rcount' id='dle-rcount' class='classic' style='width:50px;' value='0'/> {$lang['links_rcount_1']}<br /><br />{$lang['links_area_1']} <select name='replacearea' id='replacearea' class='ui-widget-content ui-corner-all'><option value='1'>{$lang['links_area_2']}</option><option value='2'>{$lang['links_area_3']}</option><option value='3'>{$lang['links_area_4']}</option><option value='4'>{$lang['links_area_5']}</option><option value='5'>{$lang['links_area_8']}</option><option value='6'>{$lang['links_area_9']}</option></select><br /><br /><input type='checkbox' name='only-one' id='only-one' value=''><label for='only-one'>&nbsp;{$lang['add_links_one']}</label>&nbsp;&nbsp;&nbsp;<input type='checkbox' name='targetblank' id='targetblank' value=''><label for='targetblank'>&nbsp;{$lang['links_target']}</label></div>");
 	
 		$('#dlepopup').dialog({
 			autoOpen: true,
@@ -626,7 +626,7 @@ $(function(){
 	
 			$("#dlepopup").remove();
 
-			$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'><br />{$lang['add_links_tag']}<br /><input type='text' name='dle-promt-tag' id='dle-promt-tag' class='classic' style='width:100%;' value=\""+tag+"\"/><br /><br />{$lang['add_links_url']}<br /><input type='text' name='dle-promt-url' id='dle-promt-url' class='classic' style='width:100%;' value='"+url+"'/><br><br>{$lang['bb_url_tooltip']}<br><input type='text' name='dle-promt-title' id='dle-promt-title' class='classic' style='width:100%;' value='"+title+"'><br><br>{$lang['links_rcount']} <input type='text' name='dle-rcount' id='dle-rcount' class='classic' style='width:50px;' value='"+rcount+"'/> {$lang['links_rcount_1']}<br /><br />{$lang['links_area_1']} <select name='replacearea' id='replacearea' class='ui-widget-content ui-corner-all'><option value='1'>{$lang['links_area_2']}</option><option value='2'>{$lang['links_area_3']}</option><option value='3'>{$lang['links_area_4']}</option><option value='4'>{$lang['links_area_5']}</option><option value='5'>{$lang['links_area_8']}</option><option value='6'>{$lang['links_area_9']}</option></select><br /><br /><input type='checkbox' name='only-one' id='only-one' value=''><label for='only-one'>&nbsp;{$lang['add_links_one']}</label>&nbsp;&nbsp;&nbsp;<input type='checkbox' name='targetblank' id='targetblank' value=''><label for='targetblank'>&nbsp;{$lang['links_target']}</label><input type='hidden' name='url-id' id='url-id' value='"+urlid+"'></div>");
+			$("body").append("<div id='dlepopup' title='{$lang['add_links_new']}' style='display:none'><br />{$lang['add_links_tag']}<br /><input type='text' name='dle-promt-tag' id='dle-promt-tag' class='classic' style='width:100%;' value=\""+tag+"\"/><br /><br />{$lang['add_links_url']}<br /><input type='text' name='dle-promt-url' id='dle-promt-url' class='classic ltr' style='width:100%;' value='"+url+"'/><br><br>{$lang['bb_url_tooltip']}<br><input type='text' name='dle-promt-title' id='dle-promt-title' class='classic' style='width:100%;' value='"+title+"'><br><br>{$lang['links_rcount']} <input type='text' name='dle-rcount' id='dle-rcount' class='classic' style='width:50px;' value='"+rcount+"'/> {$lang['links_rcount_1']}<br /><br />{$lang['links_area_1']} <select name='replacearea' id='replacearea' class='ui-widget-content ui-corner-all'><option value='1'>{$lang['links_area_2']}</option><option value='2'>{$lang['links_area_3']}</option><option value='3'>{$lang['links_area_4']}</option><option value='4'>{$lang['links_area_5']}</option><option value='5'>{$lang['links_area_8']}</option><option value='6'>{$lang['links_area_9']}</option></select><br /><br /><input type='checkbox' name='only-one' id='only-one' value=''><label for='only-one'>&nbsp;{$lang['add_links_one']}</label>&nbsp;&nbsp;&nbsp;<input type='checkbox' name='targetblank' id='targetblank' value=''><label for='targetblank'>&nbsp;{$lang['links_target']}</label><input type='hidden' name='url-id' id='url-id' value='"+urlid+"'></div>");
 		
 			$('#dlepopup').dialog({
 				autoOpen: true,

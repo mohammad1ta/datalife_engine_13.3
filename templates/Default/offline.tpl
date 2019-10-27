@@ -16,15 +16,15 @@
 	<meta property="og:image" content="{THEME}/images/logo.png">
 	
 	<link href="{THEME}/css/offline.css" type="text/css" rel="stylesheet">
-	<title>This website is temporarily disabled</title>
+	<title>وب سایت غیرفعال است</title>
 </head>
 <body>
 	<div class="offpage">
 		<div class="wrap">
 			<div class="logo"><img src="{THEME}/images/offline.png" alt=""></div>
-			<div class="title">This website is temporarily disabled</div>
+			<div class="title">این وب سایت به طور موقت غیرفعال است</div>
 			<div class="reason">{reason}</div>
-			<p class="copyright">Copyright © 2004&ndash;2019 <a href="https://dle-news.ru/" target="_blank" rel="nofollow">SoftNews Media Group</a> All Rights Reserved. Powered by DataLife Engine © 2019</p>
+			<p class="copyright">Copyright © 2006&ndash;2019 <a href="http://datalifeengine.ir/" target="_blank" rel="nofollow">Datalife Engine Farsi</a> All Rights Reserved.</p>
 		</div>
 	</div>
 </body>

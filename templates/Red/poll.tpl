@@ -6,11 +6,11 @@
 		{list}
 	</div>
 [voted]
-	<div class="vote_votes grey">Total votes: {votes}</div>
+	<div class="vote_votes grey">تعداد کل آراء: {votes}</div>
 [/voted]
 [not-voted]
-	<button title="Vote" class="btn" type="submit" onclick="doPoll('vote', '{news-id}'); return false;" >
-		<b class="ultrabold">Vote</b>
+	<button title="ثبت" class="btn" type="submit" onclick="doPoll('vote', '{news-id}'); return false;" >
+		<b class="ultrabold">ثبت</b>
 	</button>
 [/not-voted]
 </div>

@@ -1,2 +1,3 @@
-[allow-download]<span class="attachment"><a href="{link}" >{name}</a> [count] [{size}] (downloads: {count})[/count][allow-online]<br />See the file online: <a href="{online-view-link}" target="_blank">{name}</a>[/allow-online]</span>[/allow-download]
-[not-allow-download]<span class="attachment">You do not have access to download files from our server</span>[/not-allow-download]
+[allow-download]<span class="attachment"><a href="{link}" >{name}</a> [count] [{size}] (حجم: {count})[/count]</span>[/allow-download]
+[not-allow-download]<span class="attachment">شما اجازه دسترسی به دانلود فایل از این سایت را ندارید</span>[/not-allow-download]
+[allow-online]<br />مشاهده آنلاین فایل: <a href="{online-view-link}" target="_blank">{name}</a>[/allow-online]

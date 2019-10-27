@@ -2,7 +2,7 @@
 <aside class="rightside">
 	<!-- Popular articles -->
 	<div class="block top_block">
-		<h4 class="title"><b>Popular articles</b></h4>
+		<h4 class="title"><b>برترین مطالب</b></h4>
 		<ol class="topnews">
 			{topnews}
 		</ol>
@@ -23,16 +23,16 @@
 	<!-- archive -->
 	<div class="block arch_block">
 		<div class="title h4 title_tabs">
-			<h4>Archive</h4>
+			<h4>آرشیو خبری</h4>
 			<ul>
 				<li class="active">
 					<a title="View as calendar" href="#arch_calendar" aria-controls="arch_calendar" data-toggle="tab">
-						<svg class="icon icon-calendar"><use xlink:href="#icon-calendar"></use></svg><span class="title_hide">View as calendar</span>
+						<svg class="icon icon-calendar"><use xlink:href="#icon-calendar"></use></svg><span class="title_hide">تقویم</span>
 					</a>
 				</li>
 				<li>
 					<a title="View as list" href="#arch_list" aria-controls="arch_list" data-toggle="tab">
-						<svg class="icon icon-archive"><use xlink:href="#icon-archive"></use></svg><span class="title_hide">View as list</span>
+						<svg class="icon icon-archive"><use xlink:href="#icon-archive"></use></svg><span class="title_hide">لیست ماهانه</span>
 					</a>
 				</li>
 			</ul>
@@ -45,7 +45,7 @@
 	<!-- / archive -->
 	<!-- Design change-->
 	<div class="block_bg change_skin">
-		<h4 class="title">Design</h4>
+		<h4 class="title">قالب</h4>
 		<div class="styled_select">
 			{changeskin}
 			<svg class="icon icon-down"><use xlink:href="#icon-down"></use></svg>
@@ -55,7 +55,7 @@
 	[/available]
 	<!-- Tags Cloud-->
 	<div class="block tags_block">
-		<h4 class="title"><b>Tags Cloud</b></h4>
+		<h4 class="title"><b>برچسب ها</b></h4>
 		<div class="tag_list">
 			{tags}
 		</div>
@@ -64,7 +64,7 @@
 	<!-- Latest Comments -->
 	[available=main]
 	<div class="block top_block">
-		<h4 class="title"><b>Comments</b></h4>
+		<h4 class="title"><b>آخرین نظرات</b></h4>
 		<ul class="lastcomm">
 			{customcomments template="modules/lastcomments" available="global" from="0" limit="5" order="date" sort="desc" cache="yes"}
 		</ul>

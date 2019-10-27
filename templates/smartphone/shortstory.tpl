@@ -10,7 +10,7 @@
 		{short-story}
 	</div>
 	<div class="panel clrfix">
-		<b class="com-num ico" title="Comments - {comments-num}">[com-link]{comments-num}[/com-link]</b>
-		<b class="more">[full-link]More[/full-link]</b>
+		<b class="com-num ico" title="نظرات - {comments-num}">[com-link]{comments-num}[/com-link]</b>
+		<b class="more">[full-link]ادامه مطلب[/full-link]</b>
 	</div> 
 </article>

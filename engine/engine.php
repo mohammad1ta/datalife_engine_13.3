@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: engine.php
 =====================================================
@@ -735,13 +735,13 @@ switch ( $do ) {
 				
 				if( $config['allow_alt_url'] AND $config['seo_control']) {
 
-					if (substr ( $_SERVER['REQUEST_URI'], - 1, 1 ) != '/' OR $_GET['cstart'] == 1 OR substr ( $_SERVER['REQUEST_URI'], - 2 ) == '//' OR intval($_GET['year']) < 1970 OR intval($_GET['year']) > 2100) {
+					if (substr ( $_SERVER['REQUEST_URI'], - 1, 1 ) != '/' OR $_GET['cstart'] == 1 OR substr ( $_SERVER['REQUEST_URI'], - 2 ) == '//' OR intval($_GET['year']) < 1300 OR intval($_GET['year']) > 1500) {
 						
 						$re_url = explode ( "index.php", strtolower ( $_SERVER['PHP_SELF'] ) );
 						$re_url = reset ( $re_url );
-						
-						if (intval($_GET['year']) < 1970 OR intval($_GET['year']) > 2100) {
-							$year= date( 'Y', $_TIME );
+
+						if (intval($_GET['year']) < 1300 OR intval($_GET['year']) > 1500) {
+							$year= jdate( 'Y', $_TIME );
 						}
 						
 						$re_url .= $year."/";
@@ -756,7 +756,10 @@ switch ( $do ) {
 						die("Redirect");
 					}
 				}
-				
+
+				$starty = date("Y-m-d", jmaketime(0, 0, 0, 1, 1, $year));
+				$endy = date("Y-m-d", jmaketime(0, 0, 0, 1, 1, ($year+1)));
+
 				$url_page = $config['http_home_url'] . $year;
 				$user_query = "year=" . $year;
 				
@@ -765,8 +768,8 @@ switch ( $do ) {
 				if (isset ( $_SESSION['dle_sort_date'] )) $news_sort_by = $_SESSION['dle_sort_date'];
 				if (isset ( $_SESSION['dle_direction_date'] )) $news_direction_by = $_SESSION['dle_direction_date'];
 				
-				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$stop_list}date >= '{$year}-01-01'AND date < '{$year}-01-01' + INTERVAL 1 YEAR AND approve=1" . $where_date . " ORDER BY " . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
-				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post {$cat_join_count}where {$stop_list}date >= '{$year}-01-01'AND date < '{$year}-01-01' + INTERVAL 1 YEAR AND approve=1" . $where_date;
+				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$stop_list}date >= '{$starty}-01-01'AND date < '{$starty}-01-01' + INTERVAL 1 YEAR AND approve=1" . $where_date . " ORDER BY " . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
+				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post {$cat_join_count}where {$stop_list}date >= '{$starty}'AND date < '{$endy}' + INTERVAL 1 YEAR AND approve=1" . $where_date;
 			}
 			
 			// ################ Show news by month #################
@@ -782,15 +785,15 @@ switch ( $do ) {
 						
 						$re_url = explode ( "index.php", strtolower ( $_SERVER['PHP_SELF'] ) );
 						$re_url = reset ( $re_url );
-						
-						if (intval($_GET['year']) < 1970 OR intval($_GET['year']) > 2100) {
-							$year= date( 'Y', $_TIME );
+
+						if (intval($_GET['year']) < 1300 OR intval($_GET['year']) > 1500) {
+							$year= jdate( 'Y', $_TIME );
 						}
 						
 						$re_url .= $year."/";
 						
 						if (intval($_GET['month']) < 1 OR intval($_GET['month']) > 12) {
-							$month= date( 'm', $_TIME );
+							$month= jdate( 'm', $_TIME );
 						}
 						
 						$re_url .= $month."/";
@@ -805,6 +808,9 @@ switch ( $do ) {
 					}
 				}
 
+				$startm = date("Y-m-d", jmaketime(0, 0, 0, $month, 1, $year));
+				$endm = date("Y-m-d", jmaketime(0, 0, 0, ($month+1), 1, $year));
+
 				$url_page = $config['http_home_url'] . $year . "/" . $month;
 				$user_query = "year=" . $year . "&amp;month=" . $month;
 				
@@ -813,8 +819,8 @@ switch ( $do ) {
 				if (isset ( $_SESSION['dle_sort_date'] )) $news_sort_by = $_SESSION['dle_sort_date'];
 				if (isset ( $_SESSION['dle_direction_date'] )) $news_direction_by = $_SESSION['dle_direction_date'];
 				
-				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$stop_list}date >= '{$year}-{$month}-01'AND date < '{$year}-{$month}-01' + INTERVAL 1 MONTH AND approve=1" . $where_date . " ORDER BY " . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
-				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post {$cat_join_count}where {$stop_list}date >= '{$year}-{$month}-01'AND date < '{$year}-{$month}-01' + INTERVAL 1 MONTH AND approve=1" . $where_date;
+				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$stop_list}date >= '{$startm}-01'AND date < '{$startm}-01' + INTERVAL 1 MONTH AND approve=1" . $where_date . " ORDER BY " . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
+				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post {$cat_join_count}where {$stop_list}date >= '$startm' AND date < '$endm' AND approve=1" . $where_date;
 			}
 		
 			// ################ Show news by day #################
@@ -832,20 +838,20 @@ switch ( $do ) {
 						$re_url = explode ( "index.php", strtolower ( $_SERVER['PHP_SELF'] ) );
 						$re_url = reset ( $re_url );
 						
-						if (intval($_GET['year']) < 1970 OR intval($_GET['year']) > 2100) {
-							$year= date( 'Y', $_TIME );
+						if (intval($_GET['year']) < 1300 OR intval($_GET['year']) > 1500) {
+							$year= jdate( 'Y', $_TIME );
 						}
 						
 						$re_url .= $year."/";
 						
 						if (intval($_GET['month']) < 1 OR intval($_GET['month']) > 12) {
-							$month= date( 'm', $_TIME );
+							$month= jdate( 'm', $_TIME );
 						}
 						
 						$re_url .= $month."/";
 						
 						if (intval($_GET['day']) < 1 OR intval($_GET['day']) > 31) {
-							$day= date( 'd', $_TIME );
+							$day= jdate( 'd', $_TIME );
 						}
 						
 						$re_url .= $day."/";
@@ -859,7 +865,10 @@ switch ( $do ) {
 						die("Redirect");
 					}
 				}
-				
+
+				$startd = date("Y-m-d", jmaketime(0, 0, 0, $month, $day, $year));
+				$endd = date("Y-m-d", jmaketime(24, 0, 0, $month, $day, $year));
+
 				$url_page = $config['http_home_url'] . $year . "/" . $month . "/" . $day;
 				$user_query = "year=" . $year . "&amp;month=" . $month . "&amp;day=" . $day;
 				
@@ -868,14 +877,16 @@ switch ( $do ) {
 				if (isset ( $_SESSION['dle_sort_date'] )) $news_sort_by = $_SESSION['dle_sort_date'];
 				if (isset ( $_SESSION['dle_direction_date'] )) $news_direction_by = $_SESSION['dle_direction_date'];
 				
-				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$stop_list}date >= '{$year}-{$month}-{$day}' AND date < '{$year}-{$month}-{$day}' + INTERVAL 24 HOUR AND approve=1" . $where_date . " ORDER BY " . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
-				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post {$cat_join_count}WHERE {$stop_list}date >= '{$year}-{$month}-{$day}' AND date < '{$year}-{$month}-{$day}' + INTERVAL 24 HOUR AND approve=1" . $where_date;
+				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$cat_join}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$stop_list}date >= '{$startd}' AND date < '{$startd}' + INTERVAL 24 HOUR AND approve=1" . $where_date . " ORDER BY " . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
+				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post {$cat_join_count}WHERE {$stop_list}date >= '{$startd}' AND date < '{$startd}' + INTERVAL 24 HOUR AND approve=1" . $where_date;
 		
 			}
 			
 			// ################ Full News #################
 			if ($subaction != '' OR $newsid) {
-				if (! $newsid) $sql_news = "SELECT * FROM " . PREFIX . "_post LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id) WHERE alt_name ='$news_name' AND date >= '{$year}-{$month}-{$day}' AND date < '{$year}-{$month}-{$day}' + INTERVAL 24 HOUR LIMIT 1";
+                $startd = date("Y-m-d", jmaketime(0, 0, 0, $month, $day, $year));
+                $endd = date("Y-m-d", jmaketime(24, 0, 0, $month, $day, $year));
+				if (! $newsid) $sql_news = "SELECT * FROM " . PREFIX . "_post LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id) WHERE alt_name ='$news_name' AND date >= '{$startd}' AND date < '{$endd}' LIMIT 1";
 				else $sql_news = "SELECT * FROM " . PREFIX . "_post LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id) WHERE  id = '{$newsid}'";
 				
 				if ($subaction == '') $subaction = "showfull";
@@ -1102,8 +1113,8 @@ elseif ($catalog != "") {
 else {
 	
 	if ($year != '' and $month == '' and $day == '') $nam_e = $lang['title_date'] . ' ' . $year . ' ' . $lang['title_year'];
-	if ($year != '' and $month != '' and $day == '') $nam_e = $lang['title_date'] . ' ' . $r[$month - 1] . ' ' . $year . ' ' . $lang['title_year1'];
-	if ($year != '' and $month != '' and $day != '' and $subaction == '') $nam_e = $lang['title_date'] . ' ' . $day . '.' . $month . '.' . $year;
+	if ($year != '' and $month == '' and $day == '') $nam_e = $lang['title_date'] . ' ' . $lang['title_year'] . '  ' . $year;
+	if ($year != '' and $month != '' and $day == '') $nam_e = $lang['title_date'] . ' ماه ' . $month  . ' ' . $lang['title_year1'] . ' ' . $year;
 	if (($subaction != '' or $newsid != '') and $news_found) $titl_e = $metatags['title'];
 
 }
@@ -1194,7 +1205,7 @@ $metatags = <<<HTML
 <title>{$metatags['title']}</title>
 <meta name="description" content="{$metatags['description']}">
 <meta name="keywords" content="{$metatags['keywords']}">{$robots_meta}
-<meta name="generator" content="DataLife Engine (http://dle-news.ru)">
+<meta name="generator" content="DataLife Engine v13.3 (http://www.datalifeengine.ir/)" />
 {$s_meta}<link rel="search" type="application/opensearchdescription+xml" href="{$PHP_SELF}?do=opensearch" title="{$config['home_title']}">
 HTML;
 

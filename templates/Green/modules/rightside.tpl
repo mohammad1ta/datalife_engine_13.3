@@ -5,19 +5,19 @@
 			[available=showfull]
 			<li class="active">
 				<a title="Related" href="#news_rel" aria-controls="news_rel" data-toggle="tab">
-					Related
+					مطالب مرتبط
 				</a>
 			</li>
 			[/available]
 			<li[not-available=showfull] class="active"[/not-available]>
 				<a title="Popular" href="#news_top" aria-controls="news_top" data-toggle="tab">
-					Popular
+					مطالب پر بیننده
 				</a>
 			</li>
 			[not-available=showfull]
 			<li>
 				<a title="Discuss" href="#news_coms" aria-controls="news_coms" data-toggle="tab">
-					Discuss
+					مطالب بحث برانگیز
 				</a>
 			</li>
 			[/not-available]
@@ -41,13 +41,13 @@
 	<div class="block">
 		<ul class="block_tabs">
 			<li class="active">
-				<a title="Calendar" href="#arch_calendar" aria-controls="arch_calendar" data-toggle="tab">
-					Calendar
+				<a title="تقویم" href="#arch_calendar" aria-controls="arch_calendar" data-toggle="tab">
+					تقویم
 				</a>
 			</li>
 			<li>
-				<a title="Archive" href="#arch_list" aria-controls="arch_list" data-toggle="tab">
-					Archive
+				<a title="آرشیو" href="#arch_list" aria-controls="arch_list" data-toggle="tab">
+					آرشیو
 				</a>
 			</li>
 		</ul>
@@ -68,7 +68,7 @@
 	<!-- / Banner 300X500 -->
 	<!-- Tags -->
 	<div class="block">
-		<h4 class="title">Tags Cloud</h4>
+		<h4 class="title">کلمات کلیدی</h4>
 		<div class="tag_list">
 			{tags}
 		</div>
@@ -78,7 +78,7 @@
 	<div class="block">
 		<div class="change_skin">
 			{changeskin}
-			<h4 class="title">Design</h4>
+			<h4 class="title">طراحی</h4>
 			<span class="arrow"></span>
 			<span class="cs_colors"><i class="cs_1"></i><i class="cs_2"></i><i class="cs_3"></i></span>
 		</div>

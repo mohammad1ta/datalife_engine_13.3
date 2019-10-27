@@ -1,6 +1,6 @@
 <article class="block story searchpage">
 	<div class="wrp">
-		<div class="head"><h1 class="title h2 ultrabold">Site search</h1></div>
+		<div class="head"><h1 class="title h2 ultrabold">جستجو در سایت</h1></div>
 		<div id="searchtable" name="searchtable" class="searchtable">{searchtable}</div>
 		[searchmsg]<div class="search_result_num grey">{searchmsg}</div>[/searchmsg]
 	</div>

@@ -1,18 +1,18 @@
 <article class="post static">
   <h1 class="title">
-    [registration]New user registration[/registration]
-    [validation]User profile update[/validation]
+    [registration]عضويت در سايت[/registration]
+    [validation]بروزرسانی مشخصات کاربری[/validation]
   </h1>
     [registration]
-      <b>Hello, dear visitor of our website!</b><br />
-      Registration on our site will allow you to become its full participant. 
-      You will be able to add news on the website, write your comments, view the hidden text and more.
-      <br />In case of problems encountered during the registration process, please contact the website <a href="/index.php?do=feedback">Administrator</a>.
+     <b> سلام, به وبسایت ما خوش آمدید! </b> <br/>
+	با عضویت در سایت ما سطح دسترسی شما به امکانات سایت افزایش خواهد داشت.
+	می توانید در سایت مطالب خود را انتشار دهید، ارسال نطر، مشاهده نوشته های پنهان، و به خیلی امکانات بیشتری دسترسی خواهید داشت.
+	<br/> اگر شما با هرگونه مشکلی در عضویت مواجه شدید، لطفا به <a href="/index.php?do=feedback"> مدیریت </a> سایت اطلاع دهید.
     [/registration]
     [validation]
-      <b>Dear visitor,</b><br />
-      Your account has been registered on our website, 
-      but your profile information is incomplete. Please, fill in the additional fields of your profile.
+      <b> بازدید کننده عزیز, </b> <br/>
+	حساب کاربری شما با موفقیت در سایت ما ایجاد شد.
+	با این حال ، اطلاعات مربوط به شما ناقص است، بنابراین باید فیلد های زیر را باید پر کنید.
     [/validation]
 </article>
 <div class="ux-form">
@@ -20,52 +20,53 @@
     [registration]
       <li>
         <div class="combofield">
-          <input placeholder="Login" type="text" name="name" id="name" class="f_input f_wide">
-          <input class="bbcodes" title="Check" onclick="CheckLogin(); return false;" type="button" value="Check">
+          <input placeholder="نام کاربری" type="text" name="name" id="name" class="f_input f_wide">
+          <input class="bbcodes" title="Check" onclick="CheckLogin(); return false;" type="button" value="چک کردن">
         </div>
         <div class="clr" id='result-registration'></div>
       </li>
       <li>
-        <input placeholder="Password" type="password" name="password1" id="password1" class="f_input f_wide">
+        <input placeholder="رمز عبور" type="password" name="password1" id="password1" class="f_input f_wide">
       </li>
       <li>
-        <input placeholder="Confirm password" type="password" name="password2" id="password2" class="f_input f_wide">
+        <input placeholder="تکرار رمز عبور" type="password" name="password2" id="password2" class="f_input f_wide">
       </li>
       <li>
-        <input placeholder="Your e-mail" type="email" name="email" id="email" class="f_input f_wide">
+        <input placeholder="آدرس ايميل" type="email" name="email" id="email" class="f_input f_wide">
       </li>
       [question]
       <li>
-        Question: <b>{question}</b>
-        <div><input placeholder="Answer" type="text" name="question_answer" id="question_answer" class="f_input f_wide" ></div>
+        سوال امنيتی: <b>{question}</b>
+        <div><input placeholder="جواب" type="text" name="question_answer" id="question_answer" class="f_input f_wide" ></div>
       </li>
       [/question]
       [sec_code]
       <li>
         <div class="c-captcha-box">
-          <label for="sec_code">Enter the code:</label>
+          <label for="sec_code">تصوير کد امنيتی:</label>
           <div class="c-captcha">
             {reg_code}
-            <input title="Enter the code" type="text" name="sec_code" id="sec_code" class="f_input" >
+            <input title="کد امنيتی داده شده را وارد نمائيد" type="text" name="sec_code" id="sec_code" class="f_input" >
           </div>
         </div>
       </li>
       [/sec_code]
       [recaptcha]
       <li>
-        <div>Confirm that you are not a robot</div>
+        <div>کد امنيتی</div>
         {recaptcha}
       </li>
       [/recaptcha]
       [/registration]
       [validation]
-      <li><input placeholder="Your name�" type="text" id="fullname" name="fullname" class="f_input f_wide"></li>
-      <li><input placeholder="Place of residence" type="text" id="land" name="land" class="f_input f_wide"></li>
-      <li><textarea placeholder="About me" id="info" name="info" rows="3" class="f_textarea f_wide"></textarea></li>
-      <li><label for="image">Photo:</label><input type="file" id="image" name="image" class="f_input f_wide"></li>
+      <li><input placeholder="نام کامل" type="text" id="fullname" name="fullname" class="f_input f_wide"></li>
+      <li><input placeholder="محل سکونت" type="text" id="land" name="land" class="f_input f_wide"></li>
+      <li><input placeholder="ID ياهو" type="text" id="yahoo" name="yahoo" class="f_input f_wide"></li>
+      <li><textarea placeholder="توضيحات شخصی" id="info" name="info" rows="3" class="f_textarea f_wide"></textarea></li>
+      <li><label for="image">آواتار:</label><input type="file" id="image" name="image" class="f_input f_wide"></li>
       [/validation]
   </ul>
   <div class="submitline">
-    <button name="submit" class="btn f_wide" type="submit">Submit</button>
+    <button name="submit" class="btn f_wide" type="submit">ارسال</button>
   </div>
 </div>

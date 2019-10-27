@@ -1,11 +1,11 @@
 <?php
 /*
 =====================================================
-DataLife Engine - by SoftNews Media Group 
+DataLife Engine v13.3
 -----------------------------------------------------
 Copyright (c) 2004-2019
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: newsletter.php
 -----------------------------------------------------
@@ -80,25 +80,25 @@ if ($action=="send") {
 	
 	if( isset($_GET['toregdate']) ) {
 		
-		$toregdate = intval(strtotime( (string)$_GET['toregdate'] ));
+		$toregdate = intval(jstrtotime( (string)$_GET['toregdate'] ));
 		
 	} else $toregdate = 0;
 
 	if( isset($_GET['fromregdate']) ) {
 		
-		$fromregdate = intval(strtotime( (string)$_GET['fromregdate'] ));
+		$fromregdate = intval(jstrtotime( (string)$_GET['fromregdate'] ));
 		
 	} else $fromregdate = 0;	
 
 	if( isset($_GET['fromentdate']) ) {
 		
-		$fromentdate = intval(strtotime( (string)$_GET['fromentdate'] ));
+		$fromentdate = intval(jstrtotime( (string)$_GET['fromentdate'] ));
 		
 	} else $fromentdate = 0;	
 
 	if( isset($_GET['toentdate']) ) {
 		
-		$toentdate = intval(strtotime( (string)$_GET['toentdate'] ));
+		$toentdate = intval(jstrtotime( (string)$_GET['toentdate'] ));
 		
 	} else $toentdate = 0;
 	
@@ -168,7 +168,7 @@ echo <<<HTML
 	{$css}
 	<script src="engine/classes/js/jquery.js"></script>
 </head>
-<body class="p-20">
+<body class="p-20 rtl">
 <script>
 var total = {$row['count']};
 
@@ -312,7 +312,7 @@ height:100%;
 margin:0px;
 padding: 0px;
 font-size: 11px;
-font-family: verdana;
+font-family: tahoma;
 }
 p {
 margin:0px;
@@ -326,7 +326,7 @@ border-collapse:collapse;
 table td{
 padding:0px;
 font-size: 11px;
-font-family: verdana;
+font-family: tahoma;
 }
 
 a:active,
@@ -344,7 +344,7 @@ a:hover {
 <body>
 HTML;
 
-echo "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$title}</span> </legend>{$message}</fieldset>";
+echo "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$title}</span> </legend>{$message}</fieldset>";
 
 
 } elseif ($action=="message") {
@@ -488,17 +488,23 @@ echo <<<HTML
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['edit_regdate']}</label>
 		  <div class="col-md-10 col-sm-9">
-			{$lang['edit_fdate']}&nbsp;<input data-rel="calendardate" type="text" name="fromregdate" id="fromregdate" class="form-control" style="width:130px;" value="" autocomplete="off">
-			{$lang['edit_tdate']}&nbsp;<input data-rel="calendardate" type="text" name="toregdate" id="toregdate" class="form-control" style="width:130px;" value="" autocomplete="off">
+			{$lang['edit_fdate']}&nbsp;<input id="PersianDate_A" type="text" name="fromregdate" id="fromregdate" size="17" maxlength="16" value="{$fromregdate}" class="form-control ltr" style="width:140px;">
+			{$lang['edit_tdate']}&nbsp;<input id="PersianDate_B" type="text" name="toregdate" id="toregdate" size="17" maxlength="16" value="{$toregdate}" class="form-control ltr" style="width:140px;">
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['edit_entedate']}</label>
 		  <div class="col-md-10 col-sm-9">
-			{$lang['edit_fdate']}&nbsp;<input data-rel="calendardate" type="text" name="fromentdate" id="fromentdate" class="form-control" style="width:130px;" value="" autocomplete="off">
-			{$lang['edit_tdate']}&nbsp;<input data-rel="calendardate" type="text" name="toentdate" id="toentdate" class="form-control" style="width:130px;" value="" autocomplete="off">
+			{$lang['edit_fdate']}&nbsp;<input id="PersianDate_C" type="text" name="fromentdate" id="fromentdate" size="17" maxlength="16" value="{$fromentdate}" class="form-control ltr" style="width:140px;">
+			{$lang['edit_tdate']}&nbsp;<input id="PersianDate_D" type="text" name="toentdate" id="toentdate" size="17" maxlength="16" value="{$toentdate}" class="form-control ltr" style="width:140px;">
 		   </div>
 		 </div>
+         <script type="text/javascript">
+         Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+         Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+         Calendar.setup({inputField:"PersianDate_C",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+         Calendar.setup({inputField:"PersianDate_D",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});
+         </script>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['nl_editor']}</label>
 		  <div class="col-md-10 col-sm-9">

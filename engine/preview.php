@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: preview.php
 -----------------------------------------------------
@@ -289,7 +289,7 @@ $tpl->copy_template = $xfieldsoutput;
 $tpl->set( '{short-story}', stripslashes( $short_story ) );
 $tpl->set( '{full-story}', stripslashes( $full_story ) );
 
-$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$lang['preview_short']}</span> </legend>" . $tpl->copy_template . "</fieldset>";
+$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$lang['preview_short']}</span> </legend>" . $tpl->copy_template . "</fieldset>";
 $tpl->compile( 'shortstory' );
 $tpl->result['shortstory'] = preg_replace ( "#\[hide(.*?)\]#i", "", $tpl->result['shortstory'] );
 $tpl->result['shortstory'] = str_ireplace( "[/hide]", "", $tpl->result['shortstory']);
@@ -442,7 +442,7 @@ $tpl->copy_template = $xfieldsoutput;
 $tpl->set( '{short-story}', stripslashes( $short_story ) );
 $tpl->set( '{full-story}', stripslashes( $full_story ) );
 
-$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$lang['preview_full']}</span> </legend>" . $tpl->copy_template . "</fieldset>";
+$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$lang['preview_full']}</span> </legend>" . $tpl->copy_template . "</fieldset>";
 $tpl->compile( 'fullstory' );
 $tpl->result['fullstory'] = preg_replace ( "#\[hide(.*?)\]#i", "", $tpl->result['fullstory'] );
 $tpl->result['fullstory'] = str_ireplace( "[/hide]", "", $tpl->result['fullstory']);

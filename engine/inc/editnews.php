@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: editnews.php
 -----------------------------------------------------
@@ -144,13 +144,17 @@ if( $action == "list" ) {
 
 	if( $fromnewsdate ) {
 
-		$where[] = "date >= '$fromnewsdate'";
+        $fromnewsdate = jstrtotime($fromnewsdate);
+        $fromnewsdate = date("Y-m-d H:m", $fromnewsdate);
+        $where[] = "date >= '$fromnewsdate'";
 
 	}
 
 	if( $tonewsdate ) {
 
-		$where[] = "date <= '$tonewsdate'";
+        $tonewsdate = jstrtotime($tonewsdate);
+        $tonewsdate = date("Y-m-d H:m", $tonewsdate);
+        $where[] = "date <= '$tonewsdate'";
 
 	}
 	
@@ -275,9 +279,9 @@ if( $action == "list" ) {
 		$i ++;
 		
 		if( $langformatdate ) {
-			$itemdate = date( $langformatdate, strtotime( $row['date'] ) );
+			$itemdate = jdate( $langformatdate, strtotime( $row['date'] ) );
 		} else {
-			$itemdate = date( "d.m.Y", strtotime( $row['date'] ) );
+			$itemdate = jdate( "Y/m/d", strtotime( $row['date'] ) );
 		}
 
 		$title = $row['title'];
@@ -303,7 +307,7 @@ if( $action == "list" ) {
 
 			} else {
 
-				$full_link = $config['http_home_url'] . date( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
+				$full_link = $config['http_home_url'] . jdate( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
 			}
 
 		} else {
@@ -449,12 +453,16 @@ HTML;
 				<input name="search_author" value="{$search_author}" type="text" class="form-control">
 			</div>
 			<div class="col-sm-6">
-				<label>{$lang['search_by_date']}</label>
-				<div style="width:100%">{$lang['edit_fdate']} <input data-rel="calendar" class="form-control" style="width:160px;" type="text" name="fromnewsdate" id="fromnewsdate" value="{$fromnewsdate}" autocomplete="off">
-				{$lang['edit_tdate']} <input data-rel="calendar" class="form-control" style="width:160px;" type="text" name="tonewsdate" id="tonewsdate" value="{$tonewsdate}" autocomplete="off"></div>
+				<label>{$lang['search_by_date']}</label>        
+                {$lang['edit_fdate']} <input id="PersianDate_A" type="text"  style="width:160px;" name="fromnewsdate" id="fromnewsdate" size="14" maxlength="16" value="{$fromnewsdate}" class="form-control ltr">
+                {$lang['edit_tdate']} <input id="PersianDate_B" type="text" name="tonewsdate" id="tonewsdate" size="14" maxlength="16" value="{$tonewsdate}" class="form-control ltr" style="width:160px;">
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});
+		Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});
+    </script>
 	<div class="form-group">
 		<div class="row">
 			<div class="col-sm-6">
@@ -653,7 +661,7 @@ function cdelete(id){
 	</table>
 
 	<div class="panel-footer">
-			  <div class="pull-right">
+			  <div class="pull-left">
 				<select name="action" class="uniform position-left">
 					<option value="">{$lang['edit_selact']}</option>
 					<option value="mass_add_cat">{$lang['add_selcat']}</option>
@@ -824,7 +832,7 @@ HTML;
 	}
 
 	if( $user_group[$member_id['user_group']]['max_edit_days'] ) {
-		$newstime = strtotime( $row['date'] );
+		$newstime = jstrtotime( $row['date'] );
 		$maxedittime = $_TIME - ($user_group[$member_id['user_group']]['max_edit_days'] * 3600 * 24);
 		if( $maxedittime > $newstime ) $have_perm = 0;
 	}
@@ -901,7 +909,7 @@ HTML;
 
 	$expires = $db->super_query( "SELECT * FROM " . PREFIX . "_post_log where news_id = '{$row['id']}'" );
 
-	if ( $expires['expires'] ) $expires['expires'] = date("Y-m-d", $expires['expires']);
+	if ( $expires['expires'] ) $expires['expires'] = jdate("Y-m-d", $expires['expires']);
 	
 	if( $config['allow_admin_wysiwyg'] == 1 ) {
 		$js_array[] = "engine/skins/codemirror/js/code.js";
@@ -1354,7 +1362,7 @@ HTML;
 
 	if( $member_id['user_group'] == 1 ) {
 
-		$author_info = "<input type=\"text\" name=\"new_author\" class=\"form-control position-left\" style=\"width:190px;\" value=\"{$row['autor']}\"><input type=\"hidden\" name=\"old_author\" value=\"{$row['autor']}\" />";
+		$author_info = "<input type=\"text\" name=\"new_author\" class=\"form-control position-left ltr\" style=\"width:190px;\" value=\"{$row['autor']}\"><input type=\"hidden\" name=\"old_author\" value=\"{$row['autor']}\" />";
 
 	} else {
 
@@ -1419,12 +1427,12 @@ HTML;
 	if( $row['editdate'] ) {
 		
 		if( $langformatdatefull ) {
-			$row['editdate'] = date( $langformatdatefull, $row['editdate'] );
+			$row['editdate'] = jdate( $langformatdatefull, $row['editdate'] );
 		} else {
-			$row['editdate'] = date( "d.m.Y H:i:s", $row['editdate'] );
+			$row['editdate'] = jdate( "j F Y H:i:s", $row['editdate'] );
 		}
 		
-		$lang['news_edit_date'] = $lang['news_edit_date'] . " " . $row['editor'] . " - " . $row['editdate'];
+		$lang['news_edit_date'] = $lang['news_edit_date'] . " " . $row['editor'] . " در " . $row['editdate'];
 	} else
 		$lang['news_edit_date'] = "";
 	if( $row['view_edit'] == '1' ) $view_edit_cheked = "checked";
@@ -1437,6 +1445,8 @@ HTML;
 	
 	if ($row['autor'] != $member_id['name']) $notice_btn = "<button  onclick=\"sendNotice('{$id}');  return false;\" class=\"btn bg-slate-600 btn-sm btn-raised position-left\"><i class=\"fa fa-envelope-o position-left\"></i>{$lang['btn_notice']}</button>"; else $notice_btn = "";
 	if ($row['autor'] != $member_id['name'] AND $user_group[$member_id['user_group']]['allow_all_edit'] AND !$row['approve']) $spam_btn = "<button  onclick=\"MarkSpam('{$id}', '{$dle_login_hash}'); return false;\" class=\"btn bg-brown-600 btn-sm btn-raised position-left\"><i class=\"fa fa-minus-square-o position-left\"></i> {$lang['btn_spam']}</button>"; else $spam_btn = "";
+
+    $news_date = jdate( "Y-m-d H:i:s", strtotime( $row['date'] ) );
 
 	echo <<<HTML
 <div class="panel panel-default">
@@ -1463,7 +1473,7 @@ HTML;
 							<div class="form-group">
 							  <label class="control-label col-sm-2">{$lang['edit_info']}</label>
 							  <div class="col-sm-10">
-								<span class="position-left">ID=<b>{$row['id']}</b>, {$lang['edit_eau']}</span>{$author_info}
+								<span class="position-left">شماره: <b>{$row['id']}</b> ، {$lang['edit_eau']}</span>{$author_info}
 							  </div>
 							 </div>
 
@@ -1477,7 +1487,10 @@ HTML;
 							<div class="form-group">
 							  <label class="control-label col-sm-2">{$lang['edit_edate']}</label>
 							  <div class="col-sm-10">
-								<input type="text" name="newdate" data-rel="calendar" class="form-control position-left" style="width:190px;" value="{$row['date']}" autocomplete="off"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_now" id="allow_now" value="yes">{$lang['edit_jdate']}</label>
+								<input type="text" name="newdate" id="PersianDate_A" class="form-control position-left ltr" style="width:190px;" value="{$news_date}"><label class="checkbox-inline"><input class="icheck" type="checkbox" name="allow_now" id="allow_now" value="yes">{$lang['edit_jdate']}</label>
+                                <script type="text/javascript">
+                                Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});
+                                </script>
 							  </div>
 							 </div>
 
@@ -1608,7 +1621,7 @@ echo <<<HTML
 							<div class="form-group">
 							  <label class="control-label col-md-2 col-sm-3">{$lang['catalog_url']}</label>
 							  <div class="col-md-10 col-sm-9">
-								<input type="text" name="catalog_url" class="form-control" maxlength="3" style="width:55px;" value="{$row['symbol']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['catalog_hint_url']}" ></i>
+								<input type="text" name="catalog_url" class="form-control ltr" maxlength="3" style="width:55px;" value="{$row['symbol']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['catalog_hint_url']}" ></i>
 							  </div>
 							 </div>
 							<div class="form-group">
@@ -1626,7 +1639,8 @@ echo <<<HTML
 							<div class="form-group">
 							  <label class="control-label col-md-2 col-sm-3">{$lang['date_expires']}</label>
 							  <div class="col-md-10 col-sm-9">
-								<input type="text" name="expires" data-rel="calendardate" class="form-control" style="width:200px;" value="{$expires['expires']}" autocomplete="off"><span class="position-right position-left">{$lang['cat_action']}</span><select class="uniform" name="expires_action" id="expires_action" onchange="moveCategoryChange(this)"><option value="0">{$lang['mass_noact']}</option><option value="1" {$exp_action[1]}>{$lang['edit_dnews']}</option><option value="2" {$exp_action[2]}>{$lang['mass_edit_notapp']}</option><option value="3" {$exp_action[3]}>{$lang['mass_edit_notmain']}</option><option value="4" {$exp_action[4]}>{$lang['mass_edit_notfix']}</option><option value="5" {$exp_action[5]}>{$lang['m_cat_list_2']}</option></select><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_expires']}" ></i>
+								<input type="text" name="expires" id="PersianDate_B" class="ltr form-control" style="width:200px;" value="{$expires['expires']}"><span class="position-right position-left">{$lang['cat_action']}</span><select class="uniform" name="expires_action" id="expires_action" onchange="moveCategoryChange(this)"><option value="0">{$lang['mass_noact']}</option><option value="1" {$exp_action[1]}>{$lang['edit_dnews']}</option><option value="2" {$exp_action[2]}>{$lang['mass_edit_notapp']}</option><option value="3" {$exp_action[3]}>{$lang['mass_edit_notmain']}</option><option value="4" {$exp_action[4]}>{$lang['mass_edit_notfix']}</option><option value="5" {$exp_action[5]}>{$lang['m_cat_list_2']}</option></select><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_expires']}" ></i>
+								<script type="text/javascript">Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d",align:"Br",dateType:"jalali",singleClick:true});</script>
 							  </div>
 							 </div> 
 							 <div class="form-group" id="movecatlist" style="display:none;">
@@ -1845,11 +1859,11 @@ HTML;
 	}
 
 	$alt_name = trim($_POST['alt_name']);
-	
-	if(!$alt_name) $alt_name = totranslit( stripslashes( $title ), true, false );
-	else $alt_name = totranslit( stripslashes( $alt_name ), true, false );
-	
-	if( dle_strlen( $alt_name, $config['charset'] ) > 190 ) {
+
+    if(!$alt_name) $alt_name = fatotranslit( stripslashes( $title ), true, false );
+    else $alt_name = fatotranslit( stripslashes( $alt_name ), true, false );
+
+    if( dle_strlen( $alt_name, $config['charset'] ) > 190 ) {
 		$alt_name = dle_substr( $alt_name, 0, 190, $config['charset'] );
 	}
 	
@@ -1925,7 +1939,7 @@ HTML;
 	if ( ($_POST['expires'].$_POST['expires_action'].$movecat_list) != $_POST['expires_alt'] ) {
 		
 		if( trim( $_POST['expires'] ) != "" ) {
-			if( (($expires = strtotime( $_POST['expires'] )) === - 1) OR !$expires) {
+			if( (($expires = jstrtotime( $_POST['expires'] )) === - 1) OR !$expires) {
 				msg( "error", $lang['addnews_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
 			}
 		} else $expires = '';
@@ -1948,7 +1962,7 @@ HTML;
 		$item_db[4] = $db->safesql( $row['title'] );
 		$item_db[5] = explode( ',', $row['category'] );
 		$item_db[6] = $row['news_id'];
-		$item_db[7] = strtotime( $row['date'] );
+		$item_db[7] = jstrtotime( $row['date'] );
 		$item_db[8] = $row['category'];
 		$xf_existing = xfieldsdataload($row['xfields']);
 		
@@ -2035,7 +2049,7 @@ HTML;
 						
 						$thistime = date( "Y-m-d H:i:s", $added_time );
 						
-					} elseif( (($newsdate = strtotime( $newdate )) === - 1) OR !$newsdate ) {
+					} elseif( (($newsdate = jstrtotime( $newdate )) === - 1) OR !$newsdate ) {
 						
 						msg( "error", $lang['cat_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
 						
@@ -2246,7 +2260,7 @@ HTML;
 					$full_link = $config['http_home_url'] . $row['id'] . "-" . $row['alt_name'] . ".html";
 				}
 			} else {
-				$full_link = $config['http_home_url'] . date( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
+				$full_link = $config['http_home_url'] . jdate( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
 			}
 		} else {
 			$full_link = $config['http_home_url'] . "index.php?newsid=" . $row['id'];

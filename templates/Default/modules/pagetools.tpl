@@ -3,7 +3,7 @@
 	<div class="pagetools_in">
 		<div class="sortbar">
 			<div class="sortbar_in">
-				[sort]<span class="sort_label">sort by:</span>{sort}[/sort]
+				<span class="sort_label">چیدمان:</span>{sort}
 			</div>
 		</div>
 		<div class="breadcrumb">
@@ -11,8 +11,8 @@
 				{speedbar}
 			</div>
 			<a class="pagetools_back" href="/">
-				<svg class="icon icon-left"><use xlink:href="#icon-left"></use></svg>
-				<span class="title_hide">Home</span>
+				<svg class="icon icon-left"><use xlink:href="#icon-right"></use></svg>
+				<span class="title_hide">صفحه نخست</span>
 			</a>
 		</div>
 	</div>
@@ -26,8 +26,8 @@
 			{speedbar}
 			</div>
 			<a class="pagetools_back" href="/">
-				<svg class="icon icon-left"><use xlink:href="#icon-left"></use></svg>
-				<span class="title_hide">Home</span>
+				<svg class="icon icon-left"><use xlink:href="#icon-right"></use></svg>
+				<span class="title_hide">صفحه نخست</span>
 			</a>
 		</div>
 	</div>

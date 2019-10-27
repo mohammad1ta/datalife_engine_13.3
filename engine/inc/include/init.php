@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: init.php
 =====================================================
@@ -43,11 +43,6 @@ if( $config['only_ssl'] AND !isSSL() AND !isset($_SESSION['is_redirect']) ) {
 	die("Redirect");
 
 } elseif( isset($_SESSION['is_redirect']) ) { unset($_SESSION['is_redirect']); }
-
-$lic_tr = true;
-$auto_detect_config = false;
-$domen_md5 = md5( get_domen_hash() . DINITVERSION );
-if( $domen_md5 == $config['key'] ) $lic_tr = false;
 
 $_SERVER['PHP_SELF'] = htmlspecialchars( $_SERVER['PHP_SELF'], ENT_QUOTES, $config['charset'] );
 
@@ -461,61 +456,6 @@ if ( $is_loged_in ) {
 	$dle_login_hash = "";
 	
 }
-
-if( $_REQUEST['activation'] == "yes" AND $lic_tr) {
-
-	if( $member_id['user_group'] != 1 ) die();
-
-	if ( $_REQUEST['dle_key'] )	dle_activation( $_REQUEST['dle_key'], get_domen_hash(), $config );
-	elseif($_REQUEST['site_code']) dle_activation( $_REQUEST['site_code'], get_domen_hash(), $config, true );
-	else echo $lang['trial_act6']." ".$lang['key_format']." <b>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</b>";
-	exit();
-}
-
-if( $member_id['user_group'] == 1 AND $lic_tr) {
-
-	$activation_field = <<<HTML
-<script>
-<!--
-function dle_activation ( code ){
-
-	document.getElementById( 'result_info' ).innerHTML = '{$lang['nl_sinfo']}';
-
-	if (code == 'key') {
-
-		var dle_key = document.getElementById('sitekey').value ;
-		var varsString = "dle_key=" + dle_key;
-
-	} else {
-
-		var site_code = document.getElementById('sitecode').value;
-		var varsString = "site_code=" + site_code;
-	}
-	
-	$.post('?' + varsString, { activation: "yes" }, function(data){
-	
-		$('#dle-activation').html(data);
-	
-	});
-
-	return false;
-}
-//-->
-</script>
-HTML;
-
-	if(!is_writable(ENGINE_DIR . '/data/config.php')) {
-	
-		$lang['stat_system'] = str_replace ("{file}", "engine/data/config.php", $lang['stat_system']);
-	
-		$fail = "<div class=\"alert alert-warning alert-styled-left alert-arrow-left alert-component alert alert-info alert-styled-left alert-arrow-left alert-component text-size-small text-size-small\">{$lang['stat_system']}</div>";
-	
-	} else $fail = "";
-
-	$activation_field .= "<div id=\"dle-activation\" class=\"alert alert-info alert-styled-left alert-arrow-left alert-component text-left text-size-small\">{$lang['trial_info']}<br /><br /><input type=\"text\" name=\"sitekey\" id=\"sitekey\" placeholder=\"{$lang['trial_key']}\" class=\"classic width-400 mr-10\"><button onclick=\"dle_activation( 'key' ); return false;\" class=\"btn bg-teal btn-raised btn-sm\">{$lang['trial_act']}</button><div id=\"result_info\"><br />{$lang['key_format']} <b>XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</b></div></div>
-	{$fail}";
-
-} else $activation_field = "";
 
 if($is_loged_in AND version_compare( $config['version_id'], VERSIONID , '<') AND $mod != "upgrade"  ) {
 

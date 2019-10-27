@@ -1,44 +1,44 @@
 <article class="story">
 	<div class="block">
-		<h1 class="title h2">Website statistics</h1>
+		<h1 class="title h2">آمار سایت</h1>
 		<div class="stats_head">
 			<ul>
-				<li class="stats_d"><b>This day</b> <span>{news_day} news and {comm_day} comments added, {user_day} users registered</span></li>
-				<li class="stats_w"><b>This week</b> <span>{news_week} news and {comm_week} comments added, {user_week} users registered</span></li>
-				<li class="stats_m"><b>This month</b> <span>{news_month} news and {comm_month} comments added, {user_month} users registered</span></li>
+				<li class="stats_d"><b>امروز</b> <span>{news_day} مطلب و {comm_day} نظر افزوده شده, {user_day} کاربر عضو شده اند</span></li>
+				<li class="stats_w"><b>این هفته</b> <span>{news_week} مطلب و {comm_week}  نظر افزوده شده, {user_week} کاربر عضو شده اند</span></li>
+				<li class="stats_m"><b>این ماه</b> <span>{news_month} مطلب و {comm_month}  نظر افزوده شده, {user_month} کاربر عضو شده اند</span></li>
 			</ul>
 		</div>
 	</div>
 	<div class="block">
 		<div class="statistics">
 			<div class="stat_group">
-				<h5>News</h5>
+				<h5>مطالب</h5>
 				<ul>
-					<li>Total number of news <b class="right">{news_num}</b></li>
-					<li>Published <b class="right">{news_allow}</b></li>
-					<li>Published on Homepage <b class="right">{news_main}</b></li>
-					<li>Awaiting moderation <b class="right">{news_moder}</b></li>
+					<li>تعداد کل مطالب <b class="left">{news_num}</b></li>
+					<li>منتشر شده <b class="left">{news_allow}</b></li>
+					<li>منتشر شده در صفحه اصلی <b class="left">{news_main}</b></li>
+					<li>مطالب مدیریت شده <b class="left">{news_moder}</b></li>
 				</ul>
 			</div>
 			<div class="stat_group">
-				<h5>Users</h5>
+				<h5>کاربران</h5>
 				<ul>
-					<li>Total number of users <b class="right">{user_num}</b></li>
-					<li>Banned <b class="right">{user_banned}</b></li>
+					<li>تعداد کل کاربران <b class="left">{user_num}</b></li>
+					<li>تعداد کاربران بن شده <b class="left">{user_banned}</b></li>
 				</ul>
 			</div>
 			<div class="stat_group">
-				<h5>Comments</h5>
+				<h5>نظرات</h5>
 				<ul>
-					<li>Number of comments <b class="right">{comm_num}</b></li>
-					<li><a href="/?do=lastcomments">View the latest</a></li>
+					<li>تعداد کل نظرات <b class="left">{comm_num}</b></li>
+					<li><a href="/?do=lastcomments">نمایش آخرین نظرات</a></li>
 				</ul>
 			</div>
-			<p class="grey">Total size of the database: {datenbank}</p>
+			<p class="grey">اندازه کل پایگاه داده: {datenbank}</p>
 		</div>
 	</div>
 	<div class="block block_table_top_users">
-		<h4 class="title">Top users</h4>
+		<h4 class="title">کاربران برتر</h4>
 		<div class="table_top_users">
 			<table class="userstop">{topusers}</table>
 		</div>

@@ -9,7 +9,7 @@
 		[not-group=5]
 		<ul class="story_icons">
 			<li class="edit_btn">
-				[edit]<i title="Edit">Edit</i>[/edit]
+				[edit]<i title="ویرایش">ویرایش</i>[/edit]
 			</li>
 		</ul>
 		[/not-group]
@@ -18,14 +18,14 @@
 		</div>
 	</div>
 	<div class="meta">
-		<ul class="right">
+		<ul class="left">
 			<li class="category">
 				<svg class="icon icon-cat"><use xlink:href="#icon-cat"></use></svg>
 				<a href="{category-url}">{category}</a>
 			</li>
 		</ul>
-		<ul class="left">
-			<li><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg> {author}<span class="grey"> from <time datetime="{date=Y-m-d}">[day-news]{date}[/day-news]</time></span></li>
+		<ul class="right">
+			<li><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg> {author}<span class="grey"> در <time datetime="{date=Y-m-d}">[day-news]{date}[/day-news]</time></span></li>
 		</ul>
 	</div>
 </article>

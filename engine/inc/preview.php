@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: preview.php
 -----------------------------------------------------
@@ -95,7 +95,7 @@ $ver = $config['jquery_version'] ? $config['jquery_version'] : "";
 
 echo <<<HTML
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
 <head>
 <meta content="text/html; charset={$config['charset']}" http-equiv=Content-Type>
 <link media="screen" href="engine/classes/html5player/player.css" type="text/css" rel="stylesheet" />
@@ -189,7 +189,7 @@ if ($_POST['preview_mode'] == "static" ) {
 	    $tpl->set('[/print-link]',"</a>");
 
 
-		$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$lang['preview_static']}</span> </legend>".$tpl->copy_template."</fieldset>";
+		$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$lang['preview_static']}</span> </legend>".$tpl->copy_template."</fieldset>";
 		$tpl->compile('template');
 		
 		$tpl->result['template'] = preg_replace ( "#\[hide(.*?)\]#i", "", $tpl->result['template'] );
@@ -200,7 +200,7 @@ if ($_POST['preview_mode'] == "static" ) {
 
 	} else {
 
-		echo "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$lang['preview_static']}</span> </legend>".$template."</fieldset>";
+		echo "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$lang['preview_static']}</span> </legend>".$template."</fieldset>";
 
 	}
 
@@ -403,7 +403,7 @@ if ($_POST['preview_mode'] == "static" ) {
     $tpl->set('{full-story}', stripslashes($full_story));
 
 
-	$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$lang['preview_short']}</span> </legend>".$tpl->copy_template."</fieldset>";
+	$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$lang['preview_short']}</span> </legend>".$tpl->copy_template."</fieldset>";
 	$tpl->compile('shortstory');
 	
 	$tpl->result['shortstory'] = preg_replace ( "#\[hide(.*?)\]#i", "", $tpl->result['shortstory'] );
@@ -556,7 +556,7 @@ if ($_POST['preview_mode'] == "static" ) {
     $tpl->set('{short-story}', stripslashes($short_story));
     $tpl->set('{full-story}', stripslashes($full_story));
 
-	$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: Verdana\">{$lang['preview_full']}</span> </legend>".$tpl->copy_template."</fieldset>";
+	$tpl->copy_template = "<fieldset style=\"border-style:solid; border-width:1; border-color:black;\"><legend> <span style=\"font-size: 10px; font-family: tahoma\">{$lang['preview_full']}</span> </legend>".$tpl->copy_template."</fieldset>";
 	$tpl->compile('fullstory');
 	
 	$tpl->result['fullstory'] = preg_replace ( "#\[hide(.*?)\]#i", "", $tpl->result['fullstory'] );

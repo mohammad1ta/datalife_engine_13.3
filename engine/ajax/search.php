@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: search.php
 -----------------------------------------------------
@@ -121,7 +121,7 @@ while($row = $db->get_row()){
 			
 			} else {
 				
-				$full_link = $config['http_home_url'] . date( 'Y/m/d/', $row['date'] ) . $row['alt_name'] . ".html";
+				$full_link = $config['http_home_url'] . jdate( 'Y/m/d/', $row['date'] ) . $row['alt_name'] . ".html";
 			}
 		
 		} else {

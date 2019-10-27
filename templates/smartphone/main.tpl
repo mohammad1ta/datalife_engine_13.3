@@ -21,14 +21,14 @@
 		</div>
 		<!-- Head Menu -->
 		<nav id="menu-head">
-			<a href="#">About us</a>
-			<a href="#">World</a>
-			<a href="#">Economics</a>
-			<a href="#">Religion</a>
-			<a href="#">Crime</a>
-			<a href="#">Sports</a>
-			<a href="#">Culture</a>
-			<a href="#">Foreign press</a>
+			<a href="#">منوی 1</a>
+			<a href="#">منوی 2</a>
+			<a href="#">منوی 3</a>
+			<a href="#">منوی 4</a>
+			<a href="#">منوی 5</a>
+			<a href="#">منوی 6</a>
+			<a href="#">منوی 7</a>
+			<a href="#">منوی 8</a>
 		</nav>
 		<!-- Head Menu [E] -->
 	</div>
@@ -37,7 +37,7 @@
 		<!-- LogoType -->
 		<a id="logo" href="/">
 			<b id="logo-text">Datalife Engine</b>
-			<span>Softnews Media Group</span>
+			<span>Persian Group</span>
 		</a>
 		<!-- LogoType [E] -->
 		<!--Search-->
@@ -45,37 +45,37 @@
 			<input type="hidden" name="do" value="search">
 			<input type="hidden" name="subaction" value="search">
 			<div class="quicksearch">
-				<input class="f_input" placeholder="Search..." name="story" value="" type="search">
-				<button type="submit" title="Search" class="thd">Search</button>
+				<input class="f_input" placeholder="جستجو..." name="story" value="" type="search">
+				<button type="submit" title="Search" class="thd">جستجو...</button>
 			</div>
 		</form>
 		<!--Search [E]-->
-		<a id="go2full" class="ico" href="/index.php?action=mobiledisable">Full version</a>
+		<a id="go2full" class="ico" href="/index.php?action=mobiledisable">بازگشت به نسخه غير موبایل</a>
 	</header>
 	<section id="content">
 		{info}
 		{content}
 	</section>
 	<div id="footmenu">
-		<h3>Navigation</h3>
+		<h3>فهرست</h3>
 		<nav class="main-nav">
-			<a href="#">About us</a>
-			<a href="#">World</a>
-			<a href="#">Economics</a>
-			<a href="#">Religion</a>
-			<a href="#">Crime</a>
-			<a href="#">Sports</a>
-			<a href="#">Culture</a>
-			<a href="#">Foreign press</a>
+			<a href="#">منوی 1</a>
+			<a href="#">منوی 2</a>
+			<a href="#">منوی 3</a>
+			<a href="#">منوی 4</a>
+			<a href="#">منوی 5</a>
+			<a href="#">منوی 6</a>
+			<a href="#">منوی 7</a>
+			<a href="#">منوی 8</a>
 			<span class="nav-sep"></span>
-			<a href="/index.php?do=lastnews" target="_blank">All the latest news</a>
-			<a href="http://dle-news.ru" target="_blank">Script support</a>
-			<a href="/index.php?action=mobiledisable">Full version</a>
+			<a href="/index.php?do=lastnews" target="_blank">آخرين اخبار</a>
+			<a href="http://datalifeengine.ir" target="_blank">پشتیبانی اسکریپت</a>
+			<a href="/index.php?action=mobiledisable">بازگشت به نسخه غير موبایل</a>
 		</nav>
 	</div>
 	<footer id="footer">
 		<div class="background"></div>
-		<div id="copyright">Powered by <a href="http://dle-news.ru" target="_blank">DataLife Engine</a> © 2017</div>
+		<div id="copyright">Powered by <a href="http://www.datalifeengine.ir/?utm_source=customers&utm_medium=cpc&utm_campaign=copyright" target="_blank">DataLife Engine</a> © 2019</div>
 	</footer>
 	<script type="text/javascript">
 	// <![CDATA[

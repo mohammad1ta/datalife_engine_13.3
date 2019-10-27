@@ -1,11 +1,13 @@
 <?php
 /*
 =====================================================
-DataLife Engine - by SoftNews Media Group
+ DataLife Engine v13.3
 -----------------------------------------------------
-http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
-Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
+=====================================================
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
 File: rssinform.php
 -----------------------------------------------------
@@ -236,37 +238,37 @@ if( $_REQUEST['action'] == "add" or $_REQUEST['action'] == "edit" ) {
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rssinform_url']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-350" maxlength="250" type="text" name="rss_url" value="{$rss_url}" />
+			<input class="form-control ltr width-350" maxlength="250" type="text" name="rss_url" value="{$rss_url}" />
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['opt_sys_an']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-200" maxlength="20" type="text" name="rss_date_format" value="{$rss_date_format}" /> <a onclick="javascript:Help('date'); return false;" href="#">{$lang['opt_sys_and']}</a>
+			<input class="form-control ltr width-200" maxlength="20" type="text" name="rss_date_format" value="{$rss_date_format}" /> <a onclick="javascript:Help('date'); return false;" href="#">{$lang['opt_sys_and']}</a>
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rssinform_template']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-200" maxlength="40" type="text" name="rss_template" value="{$rss_template}" /> .tpl
+			tpl.<input class="form-control ltr width-200" maxlength="40" type="text" name="rss_template" value="{$rss_template}" /> 
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rssinform_max']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control" style="width: 60px;" type="text" name="rss_max" value="{$rss_max}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_ri_max']}" ></i>
+			<input class="form-control ltr" style="width: 60px;" type="text" name="rss_max" value="{$rss_max}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_ri_max']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rssinform_tmax']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control" style="width: 60px;" type="text" name="rss_tmax" value="{$rss_tmax}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_ri_tmax']}" ></i>
+			<input class="form-control ltr" style="width: 60px;" type="text" name="rss_tmax" value="{$rss_tmax}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_ri_tmax']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['rssinform_dmax']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control" style="width: 60px;" type="text" name="rss_dmax" value="{$rss_dmax}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_ri_dmax']}" ></i>
+			<input class="form-control ltr" style="width: 60px;" type="text" name="rss_dmax" value="{$rss_dmax}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_ri_dmax']}" ></i>
 		  </div>
 		 </div>
 	

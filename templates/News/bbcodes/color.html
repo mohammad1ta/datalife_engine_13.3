@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Text Color</title>
+	<script type="text/javascript">
+	<!--
+	function selectColor(color) {
+		self.parent.setColor(color);
+	}
+
+	function InitColorPalette() {
+		if (document.getElementsByTagName)
+			var x = document.getElementsByTagName('TD');
+		else if (document.all)
+			var x = document.all.tags('TD');
+		for (var i=0;i<x.length;i++) {
+			x[i].onclick = click;
+		}
+	}
+
+	function click() {
+		selectColor('#'+this.id);
+	}
+	//-->
+	</script>
+
+	<style type="text/css">
+		html, body {background:transparent;margin:0;padding:0;}
+		table {border-collapse:collapse;border-spacing:1px;background:transperent;border:0;width:148px;height:99px;margin:3px;}
+		table td {cursor:pointer;height:auto;width:auto;line-height:0;font-size:0;}
+		table td:hover {-moz-transform:scale(1.4);-webkit-transform:scale(1.4);-o-transform:scale(1.4);-ms-transform:scale(1.4);transform:scale(1.4);box-shadow:inset 0 0 3px rgba(0,0,0,.2);-webkit-perspective:1000;-webkit-backface-visibility:hidden;filter:alpha(opacity=70);}
+		#FFFFFF {background:#FBFBFB;}
+	</style>
+	<!--[if lte IE 8]>
+  <style type="text/css">table td:hover {outline:1px solid #ccc;}</style>
+  <![endif]-->
+</head>
+
+
+<body onLoad="InitColorPalette()">
+<table>
+	<tr>
+		<td id="FFFFFF" bgcolor="#FFFFFF">&nbsp;</td>
+		<td id="FFCCCC" bgcolor="#FFCCCC">&nbsp;</td>
+		<td id="FFCC99" bgcolor="#FFCC99">&nbsp;</td>
+		<td id="FFFF99" bgcolor="#FFFF99">&nbsp;</td>
+		<td id="FFFFCC" bgcolor="#FFFFCC">&nbsp;</td>
+		<td id="99FF99" bgcolor="#99FF99">&nbsp;</td>
+		<td id="99FFFF" bgcolor="#99FFFF">&nbsp;</td>
+		<td id="CCFFFF" bgcolor="#CCFFFF">&nbsp;</td>
+		<td id="CCCCFF" bgcolor="#CCCCFF">&nbsp;</td>
+		<td id="FFCCFF" bgcolor="#FFCCFF">&nbsp;</td>
+	</tr>
+	<tr>
+		<td id="CCCCCC" bgcolor="#CCCCCC">&nbsp;</td>
+		<td id="FF6666" bgcolor="#FF6666">&nbsp;</td>
+		<td id="FF9966" bgcolor="#FF9966">&nbsp;</td>
+		<td id="FFFF66" bgcolor="#FFFF66">&nbsp;</td>
+		<td id="FFFF33" bgcolor="#FFFF33">&nbsp;</td>
+		<td id="66FF99" bgcolor="#66FF99">&nbsp;</td>
+		<td id="33FFFF" bgcolor="#33FFFF">&nbsp;</td>
+		<td id="66FFFF" bgcolor="#66FFFF">&nbsp;</td>
+		<td id="9999FF" bgcolor="#9999FF">&nbsp;</td>
+		<td id="FF99FF" bgcolor="#FF99FF">&nbsp;</td>
+	</tr>
+	<tr>
+		<td id="C0C0C0" bgcolor="#C0C0C0">&nbsp;</td>
+		<td id="FF0000" bgcolor="#FF0000">&nbsp;</td>
+		<td id="FF9900" bgcolor="#FF9900">&nbsp;</td>
+		<td id="FFCC66" bgcolor="#FFCC66">&nbsp;</td>
+		<td id="FFFF00" bgcolor="#FFFF00">&nbsp;</td>
+		<td id="33FF33" bgcolor="#33FF33">&nbsp;</td>
+		<td id="66CCCC" bgcolor="#66CCCC">&nbsp;</td>
+		<td id="33CCFF" bgcolor="#33CCFF">&nbsp;</td>
+		<td id="6666CC" bgcolor="#6666CC">&nbsp;</td>
+		<td id="CC66CC" bgcolor="#CC66CC">&nbsp;</td>
+	</tr>
+	<tr>
+		<td id="999999" bgcolor="#999999">&nbsp;</td>
+		<td id="CC0000" bgcolor="#CC0000">&nbsp;</td>
+		<td id="FF6600" bgcolor="#FF6600">&nbsp;</td>
+		<td id="FFCC33" bgcolor="#FFCC33">&nbsp;</td>
+		<td id="FFCC00" bgcolor="#FFCC00">&nbsp;</td>
+		<td id="33CC00" bgcolor="#33CC00">&nbsp;</td>
+		<td id="00CCCC" bgcolor="#00CCCC">&nbsp;</td>
+		<td id="3366FF" bgcolor="#3366FF">&nbsp;</td>
+		<td id="6633FF" bgcolor="#6633FF">&nbsp;</td>
+		<td id="CC33CC" bgcolor="#CC33CC">&nbsp;</td>
+	</tr>
+	<tr>
+		<td id="666666" bgcolor="#666666">&nbsp;</td>
+		<td id="990000" bgcolor="#990000">&nbsp;</td>
+		<td id="CC6600" bgcolor="#CC6600">&nbsp;</td>
+		<td id="CC9933" bgcolor="#CC9933">&nbsp;</td>
+		<td id="999900" bgcolor="#999900">&nbsp;</td>
+		<td id="009900" bgcolor="#009900">&nbsp;</td>
+		<td id="339999" bgcolor="#339999">&nbsp;</td>
+		<td id="3333FF" bgcolor="#3333FF">&nbsp;</td>
+		<td id="6600CC" bgcolor="#6600CC">&nbsp;</td>
+		<td id="993399" bgcolor="#993399">&nbsp;</td>
+	</tr>
+	<tr>
+		<td id="333333" bgcolor="#333333">&nbsp;</td>
+		<td id="660000" bgcolor="#660000">&nbsp;</td>
+		<td id="993300" bgcolor="#993300">&nbsp;</td>
+		<td id="996633" bgcolor="#996633">&nbsp;</td>
+		<td id="666600" bgcolor="#666600">&nbsp;</td>
+		<td id="006600" bgcolor="#006600">&nbsp;</td>
+		<td id="336666" bgcolor="#336666">&nbsp;</td>
+		<td id="000099" bgcolor="#000099">&nbsp;</td>
+		<td id="333399" bgcolor="#333399">&nbsp;</td>
+		<td id="663366" bgcolor="#663366">&nbsp;</td>
+	</tr>
+	<tr>
+		<td id="000000" bgcolor="#000000">&nbsp;</td>
+		<td id="330000" bgcolor="#330000">&nbsp;</td>
+		<td id="663300" bgcolor="#663300">&nbsp;</td>
+		<td id="663333" bgcolor="#663333">&nbsp;</td>
+		<td id="333300" bgcolor="#333300">&nbsp;</td>
+		<td id="003300" bgcolor="#003300">&nbsp;</td>
+		<td id="003333" bgcolor="#003333">&nbsp;</td>
+		<td id="000066" bgcolor="#000066">&nbsp;</td>
+		<td id="330099" bgcolor="#330099">&nbsp;</td>
+		<td id="330033" bgcolor="#330033">&nbsp;</td>
+	</tr>
+</table>
+</body>
+</html>

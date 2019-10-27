@@ -1,11 +1,11 @@
 <?php
 /*
 =====================================================
-DataLife Engine - by SoftNews Media Group 
+DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
  File: editvote.php
 -----------------------------------------------------
@@ -104,7 +104,7 @@ if( $_GET['action'] == "doadd" ) {
 
 	if ( trim($_POST['start_date']) ) {
 
-		$start_date = @strtotime( $_POST['start_date'] );
+		$start_date = @jstrtotime( $_POST['start_date'] );
 
 		if ($start_date === - 1 OR !$start_date) $start_date = "";
 
@@ -112,7 +112,7 @@ if( $_GET['action'] == "doadd" ) {
 
 	if ( trim($_POST['end_date']) ) {
 
-		$end_date = @strtotime( $_POST['end_date'] );
+		$end_date = @jstrtotime( $_POST['end_date'] );
 
 		if ($end_date === - 1 OR !$end_date) $end_date = "";
 
@@ -169,7 +169,7 @@ if( $_GET['action'] == "doadd" ) {
 
 	if ( trim($_POST['start_date']) ) {
 
-		$start_date = @strtotime( $_POST['start_date'] );
+		$start_date = @jstrtotime( $_POST['start_date'] );
 
 		if ($start_date === - 1 OR !$start_date) $start_date = "";
 
@@ -177,7 +177,7 @@ if( $_GET['action'] == "doadd" ) {
 
 	if ( trim($_POST['end_date']) ) {
 
-		$end_date = @strtotime( $_POST['end_date'] );
+		$end_date = @jstrtotime( $_POST['end_date'] );
 
 		if ($end_date === - 1 OR !$end_date) $end_date = "";
 
@@ -263,7 +263,7 @@ if( $_GET['action'] == "views" AND $_GET['id']) {
 		else $proc = 0;
 		$proc = round( $proc, 2 );
 			
-		$entry .= "<div align=\"left\">$body[$i] - $num ($proc%)</div><div class=\"voteprogress\" align=\"left\"><span class=\"vote{$pn}\" style=\"width:".intval($proc)."%;\">{$proc}%</span></div>\n";
+		$entry .= "<div align=\"right\">$body[$i] - $num ($proc%)</div><div class=\"voteprogress\" align=\"right\"><span class=\"vote{$pn}\" style=\"width:".intval($proc)."%;\">{$proc}%</span></div>\n";
 
 	}
 
@@ -398,8 +398,8 @@ HTML;
 		if( $row['category'] == "all" ) $all_cats = "selected";
 		else $all_cats = "";
 
-		if ( $row['start'] ) $start_date = @date( "Y-m-d H:i", $row['start'] );
-		if ( $row['end'] )  $end_date  = @date( "Y-m-d H:i", $row['end'] );
+		if ( $row['start'] ) $start_date = @jdate( "Y-m-d H:i", $row['start'] );
+		if ( $row['end'] )  $end_date  = @jdate( "Y-m-d H:i", $row['end'] );
 		$groups = get_groups( explode( ',', $row['grouplevel'] ) );
 
 		if( $row['grouplevel'] == "all" ) $check_all = "selected";
@@ -452,15 +452,19 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['vote_startdate']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input data-rel="calendar" type="text" name="start_date" class="form-control" style="width:190px;" value="{$start_date}" autocomplete="off"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_vstart']}" ></i>
+			<input id="PersianDate_A" type="text" name="start_date" class="form-control ltr" style="width:190px;" value="{$start_date}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_vstart']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['vote_enddate']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input data-rel="calendar" type="text" name="end_date" class="form-control" style="width:190px;" value="{$end_date}" autocomplete="off"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_vend']}" ></i>
+			<input id="PersianDate_B" type="text" name="end_date" class="form-control ltr" style="width:190px;" value="{$end_date}" /><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_vend']}" ></i>
 		  </div>
 		 </div>
+		  <script type="text/javascript">
+		 Calendar.setup({inputField:"PersianDate_A",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});
+		 Calendar.setup({inputField:"PersianDate_B",ifFormat:"%Y-%m-%d %H:%M",align:"Br",timeFormat:"24",dateType:"jalali",showsTime:true,singleClick:true});
+		 </script>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['vote_body']}<br /><span class="note large">{$lang['vote_str_1']}</span></label>
 		  <div class="col-md-10 col-sm-9">
@@ -514,17 +518,17 @@ echo "
 $db->query( "SELECT * FROM " . PREFIX . "_vote ORDER BY id DESC" );
 
 $entries = "";
-if( !$langformatdate ) $langformatdate = "d.m.Y";
-if( !$langformatdatefull ) $langformatdatefull = "d.m.Y H:i";
+if( !$langformatdate ) $langformatdate = "Y/m/d";
+if( !$langformatdatefull ) $langformatdatefull = "Y/m/d H:i";
 
 while ( $row = $db->get_row() ) {
 	
 	$item_id = $row['id'];
-	$item_date = date( $langformatdate, strtotime( $row['date'] ) );
+	$item_date = jdate( $langformatdate, strtotime( $row['date'] ) );
 	$title = stripslashes( $row['title'] );
 
-	if ( $row['start'] ) $start_date = date( $langformatdatefull, $row['start'] ); else $start_date = "--";
-	if ( $row['end'] ) $end_date = date( $langformatdatefull, $row['end'] ); else $end_date = "--";
+	if ( $row['start'] ) $start_date = jdate( $langformatdatefull, $row['start'] ); else $start_date = "--";
+	if ( $row['end'] ) $end_date = jdate( $langformatdatefull, $row['end'] ); else $end_date = "--";
 	
 	if( dle_strlen( $title, $config['charset'] ) > 74 ) {
 		$title = dle_substr( $title, 0, 70, $config['charset'] ) . " ...";

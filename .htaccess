@@ -54,6 +54,9 @@ RewriteRule ^newposts/page/([0-9]+)(/?)+$ index.php?subaction=newposts&cstart=$1
 RewriteRule ^favorites(/?)+$ index.php?do=favorites [L]
 RewriteRule ^favorites/page/([0-9]+)(/?)+$ index.php?do=favorites&cstart=$1 [L]
 
+RewriteRule ^feedback.html$ index.php?do=feedback [L]
+RewriteRule ^contact.html$ index.php?do=feedback [L]
+RewriteRule ^contactus.html$ index.php?do=feedback [L]
 RewriteRule ^rules.html$ index.php?do=rules [L]
 RewriteRule ^statistics.html$ index.php?do=stats [L]
 RewriteRule ^addnews.html$ index.php?do=addnews [L]

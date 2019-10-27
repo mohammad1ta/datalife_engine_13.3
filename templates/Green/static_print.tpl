@@ -14,15 +14,15 @@
 		.top, .back, .meta { font-style: italic; font-size: .8em; }
 		.meta { color: #b1b1b1; margin: 1em 0 3em 0; }
 	</style>
-	<title>DataLife Engine > Printable version > {description}</title>
+	<title>DataLife Engine > صفحه اضافي > {description}</title>
 </head>
 <body>
-	<div class="top"><a href="/">DataLife Engine</a> / {description}</div>
+	<div class="top"><a href="/">صفحه اصلي</a> / [full-link]{description}[/full-link]</div>
 	<h1 class="title">{description}</h1>
 	<div class="text">
 	{static}
 	</div>
 	<div class="meta">{date}</div>
-	<a class="back" href="javascript:history.go(-1)">Go back</a>
+	<a class="back" href="javascript:history.go(-1)">بازگشت</a>
 </body>
 </html>

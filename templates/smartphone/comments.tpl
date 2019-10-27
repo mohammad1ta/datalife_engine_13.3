@@ -7,7 +7,7 @@
 		<img class="photo" src="{foto}" alt="{login}">
 		<b class="arg fn">[profile]{login}[/profile]</b>
 		<span class="arg">{date}</span>
-		<span class="fast">[fast]<b class="thd">Reply</b>[/fast]</span>
-		<span class="del">[com-del]<b class="thd">Remove</b>[/com-del]</span>
+		<span class="fast">[fast]<b class="thd">پاسخ</b>[/fast]</span>
+		<span class="del">[com-del]<b class="thd">حذف</b>[/com-del]</span>
 	</div>
 </div>

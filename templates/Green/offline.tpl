@@ -19,20 +19,20 @@
 	<meta property="og:image" content="{THEME}/images/logo.png">
 	
 	<link href="{THEME}/css/offline.css" type="text/css" rel="stylesheet">
-	<title>This website is temporarily disabled</title>
+	<title>سایت موقتا غیرفعال است!</title>
 </head>
 <body>
 	<div class="offpage">
 		<div class="wrap">
 			<div class="wrap_in">
 				<div class="logo"><img src="{THEME}/images/offline.png" alt=""></div>
-				<div class="title">This website is temporarily disabled</div>
+				<div class="title">سایت موقتا غیرفعال است!</div>
 				<div class="reason">{reason}</div>
 			</div>
 		</div>
 		<div class="footer">
 			<p class="copyright">
-				Copyright © 2004&ndash;2019 <a href="https://dle-news.com/" target="_blank" rel="nofollow"><b>SoftNews Media Group</b></a> All Rights Reserved. Powered by DataLife Engine © 2019
+				Copyright © 2006&ndash;2019 <a href="http://www.datalifeengine.ir/" target="_blank" rel="nofollow"><b>دیتالایف انجین فارسی</b></a> تمامی حقوق محفوظ است. قدرت گرفته از دیتالایف انجین فارسی
 			</p>
 		</div>
 	</div>

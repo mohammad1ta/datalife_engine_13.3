@@ -1,5 +1,5 @@
-<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-<script>
+<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
 
     var myMap;
 
@@ -14,9 +14,9 @@
         var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
             balloonContentBody: [
                 '<address>',
-                '<strong>LLC "Softnews Media Group"</strong>',
+                '<strong>LLC "Datalife Engine Farsi"</strong>',
                 '<br/>',
-                'Address: 660093, Krasnoyarsk, Kapitanskaya st., 12, office 43',
+                'Address: 660093, Tehran',
                 '</address>'
             ].join('')
         }, {

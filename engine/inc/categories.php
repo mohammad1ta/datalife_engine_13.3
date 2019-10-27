@@ -1,13 +1,13 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: categories.php
 -----------------------------------------------------
@@ -567,7 +567,7 @@ $(function(){
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['cat_url']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-350" value="{$row['alt_name']}" maxlength="50" type="text" name="alt_cat_name"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_cataltname']}" ></i>
+			<input class="form-control width-350 ltr" value="{$row['alt_name']}" maxlength="50" type="text" name="alt_cat_name"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_cataltname']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
@@ -579,7 +579,7 @@ $(function(){
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['cat_addicon']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-550" value="{$row['icon']}" maxlength="200" type="text" name="cat_icon"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_caticon']}"></i>
+			<input class="form-control width-550 ltr" value="{$row['icon']}" maxlength="200" type="text" name="cat_icon"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_caticon']}"></i>
 		  </div>
 		 </div>
 		<div class="form-group">
@@ -639,19 +639,19 @@ $(function(){
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['opt_sys_newc']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-350" type="text" name="news_number" value="{$row['news_number']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_news_number']}" ></i>
+			<input class="form-control width-350 ltr" type="text" name="news_number" value="{$row['news_number']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['hint_news_number']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['cat_s_tpl']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-350" type="text" name="short_tpl" value="{$row['short_tpl']}">.tpl<i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['cat_s_tpl_hit']}" ></i>
+			tpl.<input class="form-control width-350 ltr" type="text" name="short_tpl" value="{$row['short_tpl']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['cat_s_tpl_hit']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
 		  <label class="control-label col-md-2 col-sm-3">{$lang['cat_f_tpl']}</label>
 		  <div class="col-md-10 col-sm-9">
-			<input class="form-control width-350" type="text" name="full_tpl" value="{$row['full_tpl']}">.tpl<i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['cat_f_tpl_hit']}" ></i>
+			tpl.<input class="form-control width-350 ltr" type="text" name="full_tpl" value="{$row['full_tpl']}"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right" data-rel="popover" data-trigger="hover" data-placement="right" data-content="{$lang['cat_f_tpl_hit']}" ></i>
 		  </div>
 		 </div>
 		<div class="form-group">
@@ -1009,7 +1009,7 @@ HTML;
 					if( $config['allow_alt_url'] ) $link = "<a href=\"" . $config['http_home_url'] . get_url( $id ) . "/\" target=\"_blank\">" . stripslashes( $cat_info[$id]['name'] ) . "</a>";
 					else $link = "<a href=\"{$config['http_home_url']}index.php?do=cat&category=" . $cat_info[$id]['alt_name'] . "\" target=\"_blank\">" . stripslashes( $cat_info[$id]['name'] ) . "</a>";
 
-					$cat_item .= "<li class=\"dd-item\" data-id=\"{$cat_info[$id]['id']}\"><div class=\"dd-handle\"></div><div class=\"dd-content\"><b>ID:{$cat_info[$id]['id']}</b> {$link} <div class=\"pull-right\"><a href=\"?mod=categories&action=edit&catid=" . $cat_info[$id]['id'] . "\"><i title=\"{$lang['cat_ed']}\" alt=\"{$lang['cat_ed']}\" class=\"fa fa-pencil-square-o\"></i></a>&nbsp;&nbsp;<a onclick=\"javascript:cdelete('{$cat_info[$id]['id']}'); return(false);\" href=\"?mod=categories&user_hash=" . $dle_login_hash . "&action=remove&catid=" . $cat_info[$id]['id'] . "\"><i title=\"{$lang['cat_del']}\" alt=\"{$lang['cat_del']}\" class=\"fa fa-trash-o text-danger\"></i></a></div></div>";
+					$cat_item .= "<li class=\"dd-item\" data-id=\"{$cat_info[$id]['id']}\"><div class=\"dd-handle\"></div><div class=\"dd-content\"><b>شماره: {$cat_info[$id]['id']}</b> {$link} <div class=\"pull-left\"><a href=\"?mod=categories&action=edit&catid=" . $cat_info[$id]['id'] . "\"><i title=\"{$lang['cat_ed']}\" alt=\"{$lang['cat_ed']}\" class=\"fa fa-pencil-square-o\"></i></a>&nbsp;&nbsp;<a onclick=\"javascript:cdelete('{$cat_info[$id]['id']}'); return(false);\" href=\"?mod=categories&user_hash=" . $dle_login_hash . "&action=remove&catid=" . $cat_info[$id]['id'] . "\"><i title=\"{$lang['cat_del']}\" alt=\"{$lang['cat_del']}\" class=\"fa fa-trash-o text-danger\"></i></a></div></div>";
 					
 					$cat_item .= DisplayCategories( $id, true );
 					

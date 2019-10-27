@@ -1,11 +1,11 @@
 <div class="block story">
 	<div class="wrp">
 		<div class="head">
-			<h1 class="title h2 ultrabold">Recover password</h1>
+			<h1 class="title h2 ultrabold">بازیابی رمز عبور</h1>
 		</div>
 		<ul class="ui-form">
 			<li class="form-group">
-				<label for="lostname">Your login or e-mail on the website:</label>
+				<label for="lostname">ایمیل ثبت نامی خود را وارد نمایید:</label>
 				<input type="text" name="lostname" id="lostname" class="wide" required>
 			</li>
 		[recaptcha]
@@ -16,10 +16,10 @@
 			[sec_code]
 				<div class="c-capcha">
 					{code}
-					<input placeholder="Enter the code" title="Enter the code" type="text" name="sec_code" id="sec_code" required>
+					<input placeholder="کاراکترها را وارد نماید" title="کاراکترها را وارد نماید" type="text" name="sec_code" id="sec_code" required>
 				</div>
 			[/sec_code]
-			<button class="btn" name="submit" type="submit"><b class="ultrabold">Submit</b></button>
+			<button class="btn" name="submit" type="submit"><b class="ultrabold">بازیابی</b></button>
 		</div>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 [available=main]
 <!-- Partners news -->
 <aside class="box hblock">
-	<h4 class="title">Partners news</h4>
+	<h4 class="title">اخبار دوستان</h4>
 	<div class="box_in">
 		<ul class="informer_list">
 			{inform_dle}

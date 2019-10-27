@@ -1,7 +1,7 @@
 [related-news] 
 <!-- Related -->
 <div class="block rel_block">
-	<h4 class="title"><b>Related News</b></h4>
+	<h4 class="title"><b>مطالب مشابه</b></h4>
 	<ul class="relnews">
 		{related-news}
 	</ul>
@@ -24,7 +24,7 @@
 [tags]
 <!-- Tags -->
 <div class="block tags_block">
-	<h4 class="title"><b>Tags</b></h4>
+	<h4 class="title"><b>برچسب ها</b></h4>
 	<div class="tag_list">
 		{tags}
 	</div>

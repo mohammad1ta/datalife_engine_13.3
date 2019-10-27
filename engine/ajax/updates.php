@@ -1,13 +1,13 @@
 <?php
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
+ Contact us with: info@datalifeengine.ir
 =====================================================
- This code is protected by copyright
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
  File: updates.php
 -----------------------------------------------------
@@ -31,23 +31,9 @@ if( $_REQUEST['user_hash'] == "" OR $_REQUEST['user_hash'] != $dle_login_hash ) 
 }
 
 $_REQUEST['versionid'] = htmlspecialchars( strip_tags($_REQUEST['versionid']), ENT_QUOTES, $config['charset']);
-$_REQUEST['build'] = htmlspecialchars( strip_tags($_REQUEST['build']), ENT_QUOTES, $config['charset']);
 
-$data = @file_get_contents("http://dle-news.ru/extras/updates.php?version_id=".$_REQUEST['versionid']."&build=".$_REQUEST['build']."&key=".$config['key']."&lang=".$lang['wysiwyg_language']);
+$data = @file_get_contents("http://www.datalifeengine.ir/updatesdle.php?version_id=".$_REQUEST['versionid']);
 
-if ( !$data ) echo $lang['no_update']; else {
+if (!strlen($data)) echo $lang['no_update']; else echo $data;
 
-	if( function_exists( 'mb_convert_encoding' ) ) {
-	
-		$data = mb_convert_encoding( $data, "utf-8", "windows-1251" );
-	
-	} elseif( function_exists( 'iconv' ) ) {
-		
-		$data = iconv("windows-1251", "utf-8", $data);
-		
-	}
-	
-	echo $data;
-
-}
 ?>

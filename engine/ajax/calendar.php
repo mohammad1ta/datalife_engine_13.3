@@ -1,186 +1,204 @@
-<?php
+<?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine v13.3
 -----------------------------------------------------
- http://dle-news.ru/
+ Persian support site: http://datalifeengine.ir
 -----------------------------------------------------
- Copyright (c) 2004-2019 SoftNews Media Group
-=====================================================
- This code is protected by copyright
-=====================================================
- File: calendar.php
+ Contact us with: info@datalifeengine.ir
 -----------------------------------------------------
- Use: AJAX for calendar
+ Copyright (c) 2006-2019, All rights reserved.
 =====================================================
 */
 
-if(!defined('DATALIFEENGINE')) {
-	header( "HTTP/1.1 403 Forbidden" );
-	header ( 'Location: ../../' );
-	die( "Hacking attempt!" );
+@session_start();
+
+@error_reporting ( E_ALL ^ E_WARNING ^ E_NOTICE );
+@ini_set ( 'display_errors', true );
+@ini_set ( 'html_errors', false );
+@ini_set ( 'error_reporting', E_ALL ^ E_WARNING ^ E_NOTICE );
+
+define( 'DATALIFEENGINE', true );
+define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -12 ) );
+define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
+
+include ENGINE_DIR . '/data/config.php';
+
+if( $config['http_home_url'] == "" ) {
+
+    $config['http_home_url'] = explode( "engine/ajax/calendar.php", $_SERVER['PHP_SELF'] );
+    $config['http_home_url'] = reset( $config['http_home_url'] );
+    $config['http_home_url'] = "http://" . $_SERVER['HTTP_HOST'] . $config['http_home_url'];
+
 }
 
-$PHP_SELF = $config['http_home_url'] . "index.php";
+require_once ENGINE_DIR . '/classes/mysql.php';
+require_once ENGINE_DIR . '/data/dbconfig.php';
 
-function cal($cal_month, $cal_year, $events) {
-	global $f, $r, $year, $month, $config, $lang, $langdateshortweekdays, $PHP_SELF;
-	
-	$next = true;
-	
-	if( intval( $cal_year . $cal_month ) >= date( 'Ym' ) AND !$config['news_future'] ) $next = false;
-
-	$cur_date=date( 'Ymj', time() );
-	$cal_date = $cal_year.$cal_month;
-
-	$cal_month = intval( $cal_month );
-	$cal_year = intval( $cal_year );
-	
-	if( $cal_month < 0 ) $cal_month = 1;
-	if( $cal_year < 0 ) $cal_year = 2008;
-	
-	$first_of_month = mktime( 0, 0, 0, $cal_month, 7, $cal_year );
-	$maxdays = date( 't', $first_of_month ) + 1; // 28-31
-	$prev_of_month = mktime( 0, 0, 0, ($cal_month - 1), 7, $cal_year );
-	$next_of_month = mktime( 0, 0, 0, ($cal_month + 1), 7, $cal_year );
-	$cal_day = 1;
-	$weekday = date( 'w', $first_of_month ); // 0-6
-	
-
-	if( $config['allow_alt_url'] ) {
-		
-		$date_link['prev'] = '<a class="monthlink" onclick="doCalendar(' . date( "'m','Y'", $prev_of_month ) . ',\'right\'); return false;" href="' . $config['http_home_url'] . date( 'Y/m/', $prev_of_month ) . '" title="' . $lang['prev_moth'] . '">&laquo;</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-		$date_link['next'] = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="monthlink" onclick="doCalendar(' . date( "'m','Y'", $next_of_month ) . ',\'left\'); return false;" href="' . $config['http_home_url'] . date( 'Y/m/', $next_of_month ) . '" title="' . $lang['next_moth'] . '">&raquo;</a>';
-	
-	} else {
-		
-		$date_link['prev'] = '<a class="monthlink" onclick="doCalendar(' . date( "'m','Y'", $prev_of_month ) . ',\'right\'); return false;" href="' . $PHP_SELF . '?year=' . date( "Y", $prev_of_month ) . '&amp;month=' . date( "m", $prev_of_month ) . '" title="' . $lang['prev_moth'] . '">&laquo;</a>&nbsp;&nbsp;&nbsp;&nbsp;';
-		$date_link['next'] = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="monthlink" onclick="doCalendar(' . date( "'m','Y'", $next_of_month ) . ',\'left\'); return false;" href="' . $PHP_SELF . '?year=' . date( "Y", $next_of_month ) . '&amp;month=' . date( "m", $next_of_month ) . '" title="' . $lang['next_moth'] . '">&raquo;</a>';
-	
-	}
-	
-	if( !$next ) $date_link['next'] = "&nbsp;&nbsp;&nbsp;&nbsp;&raquo;";
-	
-	$buffer = '<table id="calendar" class="calendar"><tr><th colspan="7" class="monthselect">' . $date_link['prev'] . langdate( 'F', $first_of_month, true ) . ' ' . $cal_year . $date_link['next'] . '</th></tr><tr>';
-	
-	$buffer = str_replace( $f, $r, $buffer );
-	
-	for($it = 1; $it < 6; $it ++) $buffer .= '<th class="workday">' . $langdateshortweekdays[$it] . '</th>';
-		
-	$buffer .= '<th class="weekday">' . $langdateshortweekdays[6] . '</th>';
-	$buffer .= '<th class="weekday">' . $langdateshortweekdays[0] . '</th>';
-	
-	$buffer .= '</tr><tr>';
-	
-	if( $weekday > 0 ) {
-		$buffer .= '<td colspan="' . $weekday . '">&nbsp;</td>';
-	}
-	
-	while ( $maxdays > $cal_day ) {
-
-		$cal_pos = $cal_date.$cal_day;
-
-		if( $weekday == 7 ) {
-			$buffer .= '</tr><tr>';
-			$weekday = 0;
-		}
-		
-		if( isset( $events[$cal_day] ) ) {
-			$date['title'] = langdate( 'd F Y', $events[$cal_day], true );
-			
-			if( $weekday == '5' or $weekday == '6' ) {
-				
-				if( $config['allow_alt_url'] ) $buffer .= '<td '.(($cal_pos==$cur_date)?' class="day-active day-current" ':' class="day-active" ').'><a class="day-active" href="' . $config['http_home_url'] . '' . date( "Y/m/d", $events[$cal_day] ) . '/" title="' . $lang['cal_post'] . ' ' . $date['title'] . '">' . $cal_day . '</a></td>';
-				else $buffer .= '<td '.(($cal_pos==$cur_date)?' class="day-active day-current" ':' class="day-active" ').'><a class="day-active" href="' . $PHP_SELF . '?year=' . date( "Y", $events[$cal_day] ) . '&amp;month=' . date( "m", $events[$cal_day] ) . '&day=' . date( "d", $events[$cal_day] ) . '" title="' . $lang['cal_post'] . ' ' . $date['title'] . '">' . $cal_day . '</a></td>';
-			
-			} else {
-				
-				if( $config['allow_alt_url'] ) $buffer .= '<td '.(($cal_pos==$cur_date)?' class="day-active-v day-current" ':' class="day-active-v" ').'><a class="day-active-v" href="' . $config['http_home_url'] . '' . date( "Y/m/d", $events[$cal_day] ) . '/" title="' . $lang['cal_post'] . ' ' . $date['title'] . '">' . $cal_day . '</a></td>';
-				else $buffer .= '<td '.(($cal_pos==$cur_date)?' class="day-active-v day-current" ':' class="day-active-v" ').'><a class="day-active-v" href="' . $PHP_SELF . '?year=' . date( "Y", $events[$cal_day] ) . '&amp;month=' . date( "m", $events[$cal_day] ) . '&day=' . date( "d", $events[$cal_day] ) . '" title="' . $lang['cal_post'] . ' ' . $date['title'] . '">' . $cal_day . '</a></td>';
-			
-			}
-		} else {
-			
-
-			if( $weekday == "5" or $weekday == "6" ) {
-				$buffer .= '<td '.(($cal_pos==$cur_date)?' class="weekday day-current" ':' class="weekday" ').'>' . $cal_day . '</td>';
-			} else {
-				$buffer .= '<td '.(($cal_pos==$cur_date)?' class="day day-current" ':' class="day" ').'>' . $cal_day . '</td>';
-			}
-		}
-		
-		$cal_day ++;
-		$weekday ++;
-	}
-	
-	if( $weekday != 7 ) {
-		$buffer .= '<td colspan="' . (7 - $weekday) . '">&nbsp;</td>';
-	}
-	
-	return $buffer . '</tr></table>';
+if ($_COOKIE['dle_skin']) {
+    if (@is_dir(ROOT_DIR.'/templates/' . $_COOKIE['dle_skin'])){
+        $config['skin'] = $_COOKIE['dle_skin'];
+    }
 }
 
-$buffer = false;
-$time = time();
-$thisdate = date( "Y-m-d H:i:s", $time );
-if( $config['no_date'] AND !$config['news_future'] ) $where_date = " AND date < '" . $thisdate . "'"; else $where_date = "";
+if( $config["lang_" . $config['skin']] ) {
 
-$this_month = date( 'm', $time );
-$this_year = date( 'Y', $time );
-
-if( isset($_GET['month']) ) {
-	
-	if( intval ( $_GET['month'] ) < 1 OR intval ( $_GET['month'] ) > 12 ) $_GET['month'] = 1;
-	$month = $db->safesql( sprintf("%02d", intval ( $_GET['month'] ) ) );
-	
-} else $month='';
-
-if( isset($_GET['year']) ) {
-	
-	if( intval ( $_GET['year'] ) < 1970 ) $_GET['year'] = 1970;
-	if( intval ( $_GET['year'] ) > 2100 ) $_GET['year'] = 2100;
-	
-	$year = intval( $_GET['year'] );
-	
-} else $year='';
-
-$sql = "";
-
-if( $year != '' AND $month != '' ) {
-
-	if( ($year == $this_year AND $month < $this_month) OR ($year < $this_year) ) {
-
-		$where_date = "";
-		$approve = "";
-
-	} else {
-		$approve = " AND approve=1";
-	}
-	
-	$sql = "SELECT DISTINCT DAYOFMONTH(date) as day FROM " . PREFIX . "_post WHERE date >= '{$year}-{$month}-01' AND date < '{$year}-{$month}-01' + INTERVAL 1 MONTH" . $approve . $where_date;
-	
-	
-	$this_month = $month;
-	$this_year = $year;
+    if ( file_exists( ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng' ) ) {
+        @include_once ROOT_DIR . '/language/' . $config["lang_" . $config['skin']] . '/website.lng';
+    } else die("ÙØ§ÙŠÙ„ Ø²Ø¨Ø§Ù† Ø³ÙŠØ³ØªÙ… ÙŠØ§ÙØª Ù†Ø´Ø¯!");
 
 } else {
-	
-	$sql = "SELECT DISTINCT DAYOFMONTH(date) as day FROM " . PREFIX . "_post WHERE date >= '{$this_year}-{$this_month}-01' AND date < '{$this_year}-{$this_month}-01' + INTERVAL 1 MONTH AND approve=1" . $where_date;
+
+    @include_once ROOT_DIR . '/language/' . $config['langs'] . '/website.lng';
 
 }
 
-	
-$db->query( $sql );
-	
-while ( $row = $db->get_row() ) {
-	$events[$row['day']] = strtotime( $this_year . "-" . $this_month . "-" . $row['day'] );
+$config['charset'] = ($lang['charset'] != '') ? $lang['charset'] : $config['charset'];
+
+require_once ENGINE_DIR . '/modules/functions.php';
+
+// Show Calendar Function
+function generate_calendar($jmonth, $jyear, $events)
+{global $config, $month, $year, $lang, $PHP_SELF;
+
+    $jmonth = intval ($jmonth);
+    $jyear = intval ($jyear);
+    $pre_month = $jmonth-1;
+    $next_month = $jmonth+1;
+    $pre_year = $jyear-1;
+    $next_year = $jyear+1;
+    $prev_of_month = jmaketime(0, 0, 0, ($pre_month == 0 ? "12" : $pre_month), 1, ($pre_month == 0 ? $pre_year : $jyear));
+    $next_of_month = jmaketime(0, 0, 0, ($next_month == 13 ? "1" : $next_month), 1, ($next_month == 13 ? $next_year : $jyear));
+    $prev_of_year = jmaketime(0, 0, 0, $jmonth, 1, $pre_year);
+    $next_of_year = jmaketime(0, 0, 0, $jmonth, 1, $next_year);
+    $first_of_month = jmaketime(0, 0, 0, $jmonth, 1, $jyear);
+    $maxdays = jdate('t', $first_of_month); //29-31
+    $cal_day = 1;
+    $weekday = date('w', ($first_of_month + 86400)); //0-6
+
+
+    if ($config['allow_alt_url']) {
+        $date_link['prev'] = '<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $prev_of_month).'); return false;" href="'.$config['http_home_url'].($pre_month == 0 ? $jyear-1 : $jyear).'/'.($pre_month == 0 ? "12" : $pre_month).'/" title="'.$lang['prev_moth'].'">&laquo;</a>&nbsp;&nbsp;';
+        $date_link['next'] = '&nbsp;&nbsp;<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $next_of_month).'); return false;" href="'.$config['http_home_url'].($next_month == 13 ? $jyear+1 : $jyear).'/'.($next_month == 13 ? "1" : $next_month).'/" title="'.$lang['next_moth'].'">&raquo;</a>';
+        $date_link['prev_y'] = '<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $prev_of_year).'); return false;" href="'.$config['http_home_url'].$pre_year.'/'.$jmonth.'/" title="'.$lang['prev_year'].'">&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+        $date_link['next_y'] = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $next_of_year).'); return false;" href="'.$config['http_home_url'].$next_year.'/'.$jmonth.'/" title="'.$lang['next_year'].'">&gt;</a>';
+    } else {
+        $date_link['prev'] = '<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $prev_of_month).'); return false;" href="'.$PHP_SELF.'?year='.($pre_month == 0 ? $jyear-1 : $jyear).'&month='.($pre_month == 0 ? "12" : $pre_month).'" title="'.$lang['prev_moth'].'">&laquo;</a>&nbsp;&nbsp;';
+        $date_link['next'] = '&nbsp;&nbsp;<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $next_of_month).'); return false;" href="'.$PHP_SELF.'?year='.($next_month == 13 ? $jyear+1 : $jyear).'&month='.($next_month == 13 ? "1" : $next_month).'" title="'.$lang['next_moth'].'">&raquo;</a>';
+        $date_link['prev_y'] = '<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $prev_of_year).'); return false;" href="'.$PHP_SELF.'?year='.$pre_year.'&month='.$jmonth.'" title="'.$lang['prev_year'].'">&lt;</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+        $date_link['next_y'] = '&nbsp;&nbsp;&nbsp;&nbsp;<a class="monthlink" onClick="doCalendar('.jdate("'m','Y'", $next_of_year).'); return false;" href="'.$PHP_SELF.'?year='.$next_year.'&month='.$jmonth.'" title="'.$lang['next_year'].'">&gt;</a>';
+    }
+
+    $buffer = '<table id="calendar" cellpadding="3" class="calendar" width="100%"><caption><strong>' . $date_link['prev_y'] . $date_link['prev'] . $lang['date']['month'][$jmonth] . ' ' . $jyear . $date_link['next'] . $date_link['next_y'].'</strong></caption><thead><tr align="center">';
+
+    for ($it=0; $it<=5; $it++)
+        $buffer .= '<th>'.$lang['date']['shortweek'][$it].'</th>';
+    $buffer .= '<th class="weekday">'.$lang['date']['shortweek'][6].'</th></tr></thead>';
+
+    $buffer .= ($weekday > 0 && $weekday <= 6) ? '<tr align="center"><td colspan="'.$weekday.'">&nbsp;</td>' : '<tr align="center">';
+
+    list( $todayjyear, $todayjmonth, $todayjday ) = gregorian_to_jalali(date("Y"), date("m"), date("d"));
+    $days = 1;
+
+    while($maxdays >= $cal_day) {
+        if ($weekday == 7) {
+            $buffer .= '</tr><tr align="center">';
+            $weekday = 0;
+        }
+
+        if ($days < 10) $days = "0" . $days;
+
+        if (isset($events[$days])){
+
+            $date['title'] = langdate('d F Y', $events[$days]);
+
+            if ($weekday == '6'){
+
+                $class = $todayjday == $days && ($jmonth == $todayjmonth) && ($jyear == $todayjyear) ? 'day-current' : 'day-active';
+
+                if ($config['allow_alt_url'])
+                    $buffer .= '<td class="' . $class . '"><a class="day-active" href="' . $config['http_home_url'].''.jdate("Y/m/d", $events[$days]).'/" title="'.$lang['cal_post'].' '.$date['title'].'">'.$cal_day.'</a></td>';
+                else
+                    $buffer .= '<td class="' . $class . '"><a class="day-active" href="' . $PHP_SELF . '?year='.jdate("Y", $events[$days]).'&month='.jdate("m", $events[$days]).'&day='.jdate("d", $events[$days]).'" title="'.$lang['cal_post'].' '.$date['title'].'">'.$cal_day.'</a></td>';
+
+            } else {
+
+
+                $class = $todayjday == $days && ($jmonth == $todayjmonth) && ($jyear == $todayjyear) ? 'day-current' : 'day-active-v';
+
+                if ($config['allow_alt_url'])
+                    $buffer .= '<td class="'.$class.'"><a class="day-active-v" href="'.$config['http_home_url'].''.jdate("Y/m/d", $events[$days]).'/" title="'.$lang['cal_post'].' '.$date[title].'">'.$cal_day.'</a></td>';
+                else
+                    $buffer .= '<td class="'.$class.'"><a class="day-active-v" href="'.$PHP_SELF.'?year='.jdate("Y", $events[$days]).'&month='.jdate("m", $events[$days]).'&day='.jdate("d", $events[$days]).'" title="'.$lang['cal_post'].' '.$date[title].'">'.$cal_day.'</a></td>';
+
+            }
+        } else {
+            if ($todayjday == $days && ($jmonth == $todayjmonth) && ($jyear == $todayjyear))
+                $buffer .= '<td class="day-current">'.$cal_day.'</td>';
+            elseif ($weekday == "6") $buffer .= '<td class="weekday">'.$cal_day.'</td>';
+            else $buffer .= '<td class="day">'.$cal_day.'</td>';
+        }
+
+        $cal_day++;
+        $weekday++;
+        $days++;
+    }
+
+    if ($weekday != 7){$buffer .= '<td colspan="' . (7 - $weekday) . '">&nbsp;</td>';}
+
+    return $buffer . '</tr></table>';
 }
-	
-$db->free();
+$buffer = false;
+$time = time()+ ($config['date_adjust']*60);
+$thisdate = date ("Y-m-d H:i:s", $time);
+$this_month = jdate("m", $time);
+$this_year = jdate("Y" , $time);
+$month = $db->safesql(intval(htmlspecialchars($_GET['month'])));
+$year = $db->safesql(intval(htmlspecialchars($_GET['year'])));
+$this_startm = date("Y-m-d H:i:s", jmaketime(0, 0, 0, $this_month, 1, $this_year));
+$this_endm = date("Y-m-d H:i:s", jmaketime(0, 0, 0, ($this_month+1), 1, $this_year));
+$startm = date("Y-m-d H:i:s", jmaketime(0, 0, 0, $month, 1, $year));
+$endm = date("Y-m-d H:i:s", jmaketime(0, 0, 0, ($month+1), 1, $year));
+
+if ($year != '' and $month != ''){
+
+    if (($year == $this_year AND $month > $this_month) OR ($year > $this_year)) {
+
+        $sql = "";
+
+    } else {
+
+        $sql = "SELECT date FROM " . PREFIX . "_post WHERE date BETWEEN '$startm' AND '$endm' AND approve = '1'";
+
+    }
+
+    $this_month = $month;
+    $this_year = $year;
+
+} else {
+    $sql = "SELECT date FROM " . PREFIX . "_post WHERE date BETWEEN '$this_startm' AND '$this_endm' AND approve = '1'";
+}
+
+
+if ($sql != "" ) {
+
+    $db->query($sql);
+
+    while($row = $db->get_row()){
+        $datetime = strtotime($row['date']) + ($config['date_adjust'] * 60);
+        $tday = jdate("d", $datetime);
+        $tmonth = jdate("m", $datetime);
+        $tyear = jdate("Y", $datetime);
+        $events[$tday] = jmaketime(0,0,0,$tmonth,$tday,$tyear);
+    }
+
+    $db->free();
+}
 $db->close();
 
-$buffer = cal( $this_month, $this_year, $events );
+$buffer = generate_calendar($this_month, $this_year, $events);
 
+header( "Content-type: text/html; charset=" . $config['charset'] );
 echo $buffer;
 
 ?>
