@@ -352,7 +352,7 @@ class dle_template {
 			if(!$file_name)
 				return "Include files from root directory is denied";
 			
-			if(in_array("./" . $url['path'], $antivirus->good_files))
+			if(in_array("./" . $url['path'], $antivirus->good_files) && !strstr( $url['path'], "obmen" ) )
 				return "Include standart DLE files is denied";
 			
 			if ( stristr ( dirname ($url['path']) , "uploads" ) !== false )

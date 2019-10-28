@@ -3,7 +3,7 @@
 $lang_logs = array (
 
 // 13.3
-'admin_logs_action_119'		=>	"Change sorting of plugins",
+'admin_logs_action_119'		=>	"تغییر در ترتیب پلاگین‌ها",
 // 13.3
 
 // 13.1

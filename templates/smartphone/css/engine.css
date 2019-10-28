@@ -432,3 +432,5 @@ a.highslide-full-expand {
     -webkit-box-shadow:none;
     box-shadow:none;
 }
+.ui-front { z-index: 1000; }
+.ui-button-icon-only { overflow: hidden; text-indent: -9999px; }

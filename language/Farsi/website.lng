@@ -6,13 +6,13 @@ $lang = array (
 'wysiwyg_language'	=>  "fa",
 
 // 13.3
-'complaint_title'		=>	"Send a complaint",
-'add_err_11'			=>	"There is another publication under the same URL name on the website. Please change the URL name.",
-'upload_error_7'		=>	"The uploaded image cannot be smaller than {minsize} pixels.",
+'complaint_title'		=>	"ارسال شکایت",
+'add_err_11'			=>	"خبر دیگری با همین URL در وب سایت وجود دارد. لطفاً URL را در بخش تنظیمات خبر تغییر دهید.",
+'upload_error_7'		=>	"تصویر آپلود شده نمی تواند کوچکتر از {minsize} پیکسل باشد.",
 // 13.3
 
 // 13.2
-'recaptcha_fail'		=>	"Checking that you are not a robot has not been passed",
+'recaptcha_fail'		=>	"بررسی اینکه روبات نیستید اعمال نشده است",
 // 13.2
 
 
