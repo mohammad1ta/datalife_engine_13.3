@@ -191,7 +191,7 @@ document.getElementById( 'check-eula' ).onsubmit = check_eula;
 		<br /><br /><input type="checkbox" name="eula" id="eula" class="icheck"> <label for="eula"> می پذیرم</label>
 	</div>
 	<div class="panel-footer">
-	<button type="submit" class="btn bg-teal btn-sm btn-raised position-right">مرحله بعد<i class="fa fa-arrow-circle-o-left position-left"></i></button>
+	<button type="submit" class="btn bg-teal btn-sm btn-raised position-right">مرحله بعد<i class="fa fa-arrow-circle-o-left position-right"></i></button>
 	</div>
 </div>
 </form>
@@ -274,7 +274,7 @@ HTML;
 	if($errors) {
 	 $button= "<button onclick=\"location.reload(true); return false;\" class=\"btn bg-danger btn-sm btn-raised position-left\"><i class=\"fa fa-refresh position-left\"></i>بررسی مجدد</button>";
 	} else {
-	 $button = "<button type=\"submit\" class=\"btn bg-teal btn-sm btn-raised position-left\">مرحله بعد<i class=\"fa fa-arrow-circle-o-left position-left\"></i></button>";
+	 $button = "<button type=\"submit\" class=\"btn bg-teal btn-sm btn-raised position-left\">مرحله بعد<i class=\"fa fa-arrow-circle-o-left position-right\"></i></button>";
 	}
 	
 echo <<<HTML
@@ -390,7 +390,7 @@ echo <<<HTML
 	{$status_report}
   </div>
   <div class="panel-footer">
-	<button type="submit" class="btn bg-teal btn-sm btn-raised position-right">مرحله بعد<i class="fa fa-arrow-circle-o-left position-left"></i></button>
+	<button type="submit" class="btn bg-teal btn-sm btn-raised position-right">مرحله بعد<i class="fa fa-arrow-circle-o-left position-right"></i></button>
   </div>
 </div></form>
 HTML;
@@ -439,7 +439,7 @@ echo <<<HTML
 </table>
   </div>
   <div class="panel-footer">
-	<button type="submit" class="btn bg-teal btn-sm btn-raised position-right">نصب سیستم<i class="fa fa-arrow-circle-o-left position-left"></i></button>
+	<button type="submit" class="btn bg-teal btn-sm btn-raised position-right">نصب سیستم<i class="fa fa-arrow-circle-o-left position-right"></i></button>
   </div>
 </div></form>
 HTML;
@@ -537,7 +537,7 @@ $config = <<<HTML
 
 'langs' => "Farsi",
 
-'skin' => "News",
+'skin' => "Papercut",
 
 'allow_gzip' => "0",
 
@@ -2011,25 +2011,34 @@ $tableSchema[] = "INSERT INTO " . PREFIX . "_rss VALUES (1, 'http://datalifeengi
 $tableSchema[] = "INSERT INTO " . PREFIX . "_email values (8, 'newsletter', '<html>\r\n<head>\r\n<title>{%title%}</title>\r\n<meta content=\"text/html; charset={%charset%}\" http-equiv=Content-Type>\r\n<style type=\"text/css\">\r\nhtml,body{\r\n    font-family: Verdana;\r\n    word-spacing: 0.1em;\r\n    letter-spacing: 0;\r\n    line-height: 1.5em;\r\n    font-size: 11px;\r\n}\r\n\r\np {\r\n	margin:0px;\r\n	padding: 0px;\r\n}\r\n\r\na:active,\r\na:visited,\r\na:link {\r\n	color: #4b719e;\r\n	text-decoration:none;\r\n}\r\n\r\na:hover {\r\n	color: #4b719e;\r\n	text-decoration: underline;\r\n}\r\n</style>\r\n</head>\r\n<body>\r\n{%content%}\r\n</body>\r\n</html>', 0)";
 $tableSchema[] = "INSERT INTO " . PREFIX . "_email values (9, 'twofactor', '{%username%},\r\n\r\nاین ایمیل از سایت  $url ارسال شده است \r\n\r\nشما این ایمیل را دریافت کرده اید زیرا حساب شما دارای تایید ورود دو مرحله ای است. برای تأیید در سایت، شما باید کد پین خود را وارد کنید.\r\n\r\n------------------------------------------------\r\nکد پین:\r\n------------------------------------------------\r\n\r\n{%pin%}\r\n\r\n------------------------------------------------\r\nIf you are not authorized on our site, then your password is known to unauthorized persons. You need to immediately go to the site under your login and password, and change your password in your profile.\r\n\r\nآیپی ارسال کننده: {%ip%}\r\n\r\nС با تشکر,\r\n\r\nمدیریت $url', 0)";
 
-    $tableSchema[] = "INSERT INTO " . PREFIX . "_category (name, alt_name, keywords) values ('خبرها', 'main', '')";
-    $tableSchema[] = "INSERT INTO " . PREFIX . "_banners (banner_tag, descr, code, approve, short_place, bstick, main, category) values ('header', 'Top banner', '<div align=\"center\"><a href=\"http://www.datalifeengine.ir/\" target=\"_blank\"><img src=\"{$url}templates/News/images/_banner_.gif\" style=\"border: none;\" alt=\"\" /></a></div>', 1, 0, 0, 0, 0)";
+    $tableSchema[] = "INSERT INTO " . PREFIX . "_category (name, alt_name, keywords) values ('اخبار', 'main', ''), ('فیلم', 'film', ''), ('سریال', 'serial', ''), ('موزیک', 'music', ''), ('ورزش', 'sport', '')";
+    $tableSchema[] = "INSERT INTO " . PREFIX . "_banners (banner_tag, descr, code, approve, short_place, bstick, main, category) values ('header', 'Top banner', '<div align=\"center\"><a href=\"http://www.datalifeengine.ir/\" target=\"_blank\"><img src=\"{$url}templates/News/images/_banner_.gif\" style=\"border: none;\" alt=\"\" /></a></div>', 0, 0, 0, 0, 0)";
 
-$add_time = time();
-$thistime = date ("Y-m-d H:i:s", $add_time);
+    $add_time = time();
+    $thistimeold = date ("Y-m-d H:i:s", $add_time - 10);
+    $thistime = date ("Y-m-d H:i:s", $add_time);
 
     $tableSchema[] = "INSERT INTO " . PREFIX . "_static (`name`, `descr`, `template`, `allow_br`, `allow_template`, `grouplevel`, `tpl`, `metadescr`, `metakeys`, `views`, `template_folder`, `date`) VALUES ('dle-rules-page', 'قوانین عمومی سایت', '<b>قوانین عمومی طرز رفتار در سایت</b><br /><br />برای شروع سایت، با ارتباط برقرار کردن صدها نفر از مردم از ادیان و اعتقادات مختلف، و بسیاری از میهمانان سایت، شما موظف هستید که به یک سری از قوانین سایت عمل کنید. شما را توصیه به خواندن این قوانین می کنیم که در کل بیشتر از پنج دقیقه طول نمی کشد.<br /><br />1. این وب سایت تابع قوانین جمهوری اسلامی ایران می باشد.<br />2. کپی مطلب از این وب سایت با ذکر منبع بلامانع است.<br />3. نمایش مطالب هر عضو در سایت به معنای تایید آن نیست و مسئولیت آن بر عهده خود نویسنده مطلب می باشد.<br />4. توهین به هر شخص ،  نژاد ، قوم و زبانی در این سایت ممنوع می باشد.<br />5. در حد امکان از بحث ها تفرقه انگیز بین اقوام ایرانی و طرح مطالبی که موجب ایجاد تنش بین اعضای سایت می گردد خودداری شود.<br /><br /><b>در صورتی که شخصی از قوانین سایت خارج گردد نام کاربری ایشان مسدود خواهد شد.</b><br /><div align=\"center\">{ACCEPT-DECLINE}</div>', 1, 1, 'all', '', 'قوانین عمومی', 'قوانین عمومی', 0, '', '{$add_time}')";
-    $tableSchema[] = "INSERT INTO " . PREFIX . "_users (name, password, email, reg_date, lastdate, user_group, news_num, info, signature, favorites, xfields) values ('$reg_username', '$reg_password', '$reg_email', '$add_time', '$add_time', '1', '1', '', '', '', '')";
+    $tableSchema[] = "INSERT INTO " . PREFIX . "_users (name, password, email, reg_date, lastdate, user_group, news_num, info, signature, favorites, xfields) values ('$reg_username', '$reg_password', '$reg_email', '$add_time', '$add_time', '1', '6', '', '', '', '')";
     $tableSchema[] = "INSERT INTO " . PREFIX . "_vote (category, vote_num, date, title, body) VALUES ('all', '0', '$thistime', 'نظرشما در مورد سیستم؟', 'عالی<br />خوب<br />متوسط<br />بد')";
 
-    $title = "دیتالایف انجین فارسی نسخه 13.3";
-    $short_story = "با سلام خدمت شما کاربر گرامی؛<br /><br />از اینکه این سیستم را برای سایت خود در نظر گرفته اید متشکریم.<br /><br />خواهشمندیم در صورت برخورد با هر اشکالی در این سیستم و یا اگر پیشنهادی در بهتر سازی آن دارید ما را توسط ایمیل زیر با خبر فرمایید.<br /><br />برای دانلود قالب های فارسی و امکانات اضافی دیگر به سایت زیر مراجعه فرمایید.<br /><br /><br /><div align=\"left\">E-Mail: <a href=\"http://info@datalifeengine.ir\" target=\"_blank\">info@datalifeengine.ir</a><br /><br />Offical website: <a href=\"http://datalifeengine.ir\" target=\"_blank\">www.datalifeengine.ir</a><br /><br />Support forum: <a href=\"http://forum.datalifeengine.ir\" target=\"_blank\">www.forum.Datalifeengine.ir</a><br /><br />Free template: <a href=\"http://themes.datalifeengine.ir\" target=\"_blank\">www.themes.datalifeEngine.ir</a></div><br/><div align=\"center\"><img src=\"{$url}uploads/boxsmall.jpg\" width=\"330\" height=\"448\" align=\"center\" /></div><br />شاد و پیروز باشید.";
-    $full_story = "";
-
-    $tableSchema[] = "INSERT INTO " . PREFIX . "_post (date, autor, short_story, full_story, xfields, title, keywords, category, alt_name, allow_comm, approve, allow_main, tags) values ('$thistime', '$reg_username', '$short_story', '$full_story', '', '$title', '', '1', 'welcome', '1', '1', '1', 'Datalife, Engine, CMS')";
-
-    $tableSchema[] = "INSERT INTO " . PREFIX . "_post_extras (news_id, user_id) values ('1', '1')";
-
     $tableSchema[] = "INSERT INTO " . PREFIX . "_tags (news_id, tag) values ('1', 'DLE'), ('1', 'Datalife'), ('1', 'Engine'), ('1', 'CMS'), ('1', 'Farsi'), ('1', 'DatalifeEngine.ir')";
+
+    $tableSchema[] = "INSERT INTO `" . PREFIX . "_images` (`id`, `images`, `news_id`, `author`, `date`) VALUES (1, '2019-10/1572193752_1.jpg', 3, 'admin', '1572193725'), (2, '2019-10/1572193781_2.jpg', 2, 'admin', '1572193753'), (3, '2019-10/1572193809_3.jpg', 4, 'admin', '1572193798'), (4, '2019-10/1572368565_4.png', 5, 'admin', '1572368359'), (5, '2019-10/1572368565_5.jpg', 6, 'admin', '1572368542');";
+
+    $tableSchema[] = "INSERT INTO `" . PREFIX . "_post` (`autor`, `date`, `short_story`, `full_story`, `xfields`, `title`, `descr`, `keywords`, `category`, `alt_name`, `comm_num`, `allow_comm`, `allow_main`, `approve`, `fixed`, `allow_br`, `symbol`, `tags`, `metatitle`) VALUES
+        ('$reg_username', '$thistimeold', 'با سلام خدمت شما کاربر گرامی؛<br><br>از اینکه این سیستم را برای سایت خود در نظر گرفته اید متشکریم.<br><br>خواهشمندیم در صورت برخورد با هر اشکالی در این سیستم و یا اگر پیشنهادی در بهتر سازی آن دارید ما را توسط ایمیل زیر با خبر فرمایید.<br><br>برای دانلود قالب های فارسی و امکانات اضافی دیگر به سایت زیر مراجعه فرمایید.<br><br><br><div align=\"left\">E-Mail: <a href=\"http://datalifeengine.ir\" target=\"_blank\" rel=\"noopener external noreferrer\">info@datalifeengine.ir</a><br><br>Offical website: <a href=\"http://datalifeengine.ir\" target=\"_blank\" rel=\"noopener external noreferrer\">www.datalifeengine.ir</a><br><br>Support forum: <a href=\"http://forum.datalifeengine.ir\" target=\"_blank\" rel=\"noopener external noreferrer\">www.forum.Datalifeengine.ir</a><br><br>Free template: <a href=\"http://themes.datalifeengine.ir\" target=\"_blank\" rel=\"noopener external noreferrer\">www.themes.datalifeEngine.ir</a></div><br><div align=\"center\"><img src=\"{$url}uploads/boxsmall.jpg\" width=\"330\" height=\"448\" class=\"fr-fic fr-dii\" alt=\"\"></div><br>شاد و پیروز باشید.', '', '', 'دیتالایف انجین فارسی نسخه 13.3', 'با سلام خدمت شما کاربر گرامی؛ از اینکه این سیستم را برای سایت خود در نظر گرفته اید متشکریم. خواهشمندیم در صورت برخورد با هر اشکالی در این سیستم و یا اگر پیشنهادی در بهتر سازی آن دارید ما را توسط ایمیل زیر با خبر فرمایید. برای دانلود قالب های فارسی و امکانات اضافی دیگر به سایت زیر مراجعه فرمایید.', 'فرمایید, forum, سیستم, datalifeengine, Support, website, Offical, مراجعه, Datalifeengine, پیروز, باشید, datalifeEngine, themes, template, اضافی, فارسی, متشکریم, خواهشمندیم, گرفته, اینکه', '1', 'welcome', 0, 1, 1, 1, 0, 0, '', 'Datalife, Engine, CMS', ''),
+        ('$reg_username', '$thistime', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.<br><img src=\"{$url}uploads/posts/2019-10/1572193781_2.jpg\" alt=\"\" class=\"fr-dib\"><br>', '', '', 'خبر آزمایش اول', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و', 'طراحان, شرایط, استفاده, شناخت, موجود, ایجاد, دشواری, فارسی, فرهنگ, الخصوص, خلاقی, ارائه, رایانه, پیشرو, وزمان, پیوسته, دنیای, طراحی, اساسا, سوالات', '2', 'test-1', 0, 1, 1, 1, 0, 0, '', 'تست, تست اول', ''),
+        ('$reg_username', '$thistime', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.<br><img src=\"{$url}uploads/posts/2019-10/1572193752_1.jpg\" alt=\"\" class=\"fr-dib\"><br>', '', '', 'خبر آزمایشی دوم', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و', 'طراحان, شرایط, استفاده, شناخت, موجود, ایجاد, دشواری, فارسی, فرهنگ, الخصوص, خلاقی, ارائه, رایانه, پیشرو, وزمان, پیوسته, دنیای, طراحی, اساسا, سوالات', '3', 'test-2', 0, 1, 1, 1, 0, 0, '', 'تست, تست دوم', ''),
+        ('$reg_username', '$thistime', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.<br><img src=\"{$url}uploads/posts/2019-10/1572193809_3.jpg\" alt=\"\" class=\"fr-dib\"><br>', '', '', 'خبر آزمایشی سوم', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و', 'طراحان, شرایط, استفاده, شناخت, موجود, ایجاد, دشواری, فارسی, فرهنگ, الخصوص, خلاقی, ارائه, رایانه, پیشرو, وزمان, پیوسته, دنیای, طراحی, اساسا, سوالات', '4', 'test-3', 0, 1, 1, 1, 0, 0, '', 'تست, تست سوم', ''),
+        ('$reg_username', '$thistime', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.<br><img src=\"{$url}uploads/posts/2019-10/1572368565_4.png\" alt=\"\" class=\"fr-dib\"><br>', '', '', 'خبر آزمایشی سوم', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و', 'طراحان, شرایط, استفاده, شناخت, موجود, ایجاد, دشواری, فارسی, فرهنگ, الخصوص, خلاقی, ارائه, رایانه, پیشرو, وزمان, پیوسته, دنیای, طراحی, اساسا, سوالات', '5', 'test-4', 0, 1, 1, 1, 0, 0, '', 'تست, تست چهارم', ''),
+        ('$reg_username', '$thistime', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.<br><br><img src=\"{$url}uploads/posts/2019-10/1572368565_5.jpg\" alt=\"\" class=\"fr-dib\"><br>', '', '', 'خبر آزمایشی پنجم', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و', 'طراحان, شرایط, استفاده, شناخت, موجود, ایجاد, دشواری, فارسی, فرهنگ, الخصوص, خلاقی, ارائه, رایانه, پیشرو, وزمان, پیوسته, دنیای, طراحی, اساسا, سوالات', '2', 'test-5', 0, 1, 1, 1, 0, 0, '', 'تست, تست پنجم', '');";
+
+    $tableSchema[] = "INSERT INTO " . PREFIX . "_post_extras (news_id, user_id) values ('1', '1'), ('2', '1'), ('3', '1'), ('4', '1'), ('5', '1'), ('6', '1');";
+
+    $tableSchema[] = "INSERT INTO `" . PREFIX . "_images` (`images`, `news_id`, `author`, `date`) VALUES ('2019-10/1572193752_1.jpg', 3, '$reg_username', '1572193725'), ('2019-10/1572193781_2.jpg', 2, '$reg_username', '1572193753'), ('2019-10/1572193809_3.jpg', 4, '$reg_username', '1572193798'), ('2019-10/1572368565_4.png', 5, '$reg_username', '1572368359'), ('2019-10/1572368565_5.jpg', 6, '$reg_username', '1572368542');";
+
+
 
       foreach($tableSchema as $table) {
 
@@ -2051,7 +2060,7 @@ echo <<<HTML
 موفق باشید.<br>
   </div>
   <div class="panel-footer">
-	<a href="{$url}" class="btn bg-teal btn-sm btn-raised position-left">ورود به سایت<i class="fa fa-arrow-circle-o-left position-left"></i></a>
+	<a href="{$url}" class="btn bg-teal btn-sm btn-raised position-left">ورود به سایت<i class="fa fa-arrow-circle-o-left position-right"></i></a>
   </div>
 </div>
 HTML;
