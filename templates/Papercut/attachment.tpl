@@ -1,0 +1,2 @@
+[allow-download]<span class="attachment"><a href="{link}">{name}</a> [count] [حجم: {size}] (تعداد دانلود: {count})[/count]</span>[/allow-download]
+[not-allow-download]<span class="attachment">شما دسترسی لازم جهت دریافت این فایل را ندارید.</span>[/not-allow-download]

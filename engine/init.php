@@ -945,6 +945,10 @@ if ($config['allow_alt_url']) {
 
 }
 
+$tpl->set( '{main-link}', $config['http_home_url'] );
+$tpl->set( '{feedback-link}', $config['http_home_url'] . "?do=feedback" );
+$tpl->set( '{lastcomments-link}', $config['http_home_url'] . "?do=lastcomments" );
+
 if ($is_logged AND strpos( $tpl->copy_template, "[xfvalue_" ) !== false) {
 
 	$xfields = xfieldsload( true );

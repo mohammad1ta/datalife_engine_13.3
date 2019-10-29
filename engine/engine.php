@@ -300,7 +300,7 @@ switch ( $do ) {
 			$user_query = "do=cat&amp;category=" . $cat_info[$category_id]['alt_name'];
 			
 			if( $config['allow_alt_url'] ) $canonical = $url_page . "/"; else $canonical = $PHP_SELF."?do=cat&category=" . $cat_info[$category_id]['alt_name'];
-			
+
 			if ($config['allow_multi_category']) {
 		
 				$get_cats = str_replace ( "|", "','", $get_cats );
@@ -332,7 +332,7 @@ switch ( $do ) {
 				
 				if (isset ( $_SESSION['dle_sort_cat_'.$category_id] )) $news_sort_by = $_SESSION['dle_sort_cat_'.$category_id];
 				if (isset ( $_SESSION['dle_direction_cat_'.$category_id] )) $news_direction_by = $_SESSION['dle_direction_cat_'.$category_id];
-				
+
 				$sql_select = "SELECT p.id, p.autor, p.date, p.short_story, CHAR_LENGTH(p.full_story) as full_story, p.xfields, p.title, p.category, p.alt_name, p.comm_num, p.allow_comm, p.fixed, p.tags, e.news_read, e.allow_rate, e.rating, e.vote_num, e.votes, e.view_edit, e.editdate, e.editor, e.reason FROM " . PREFIX . "_post p {$join_category}LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) WHERE {$where_category}approve=1" . $where_date . " ORDER BY " . $fixed . $news_sort_by . " " . $news_direction_by . " LIMIT " . $cstart . "," . $config['news_number'];
 				$sql_count = "SELECT COUNT(*) as count FROM " . PREFIX . "_post p {$join_category}WHERE {$where_category}approve=1" . $where_date;
 			}
