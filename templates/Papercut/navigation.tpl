@@ -1,3 +1,4 @@
+<div class="clear"></div>
 <div class="page-navigation">
 	<div class="pages-arrows right">
 		[prev-link]< &nbsp; &nbsp; صفحه قبل[/prev-link]
