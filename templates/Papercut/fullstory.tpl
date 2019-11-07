@@ -16,6 +16,7 @@
 				[add-favorites]<i class="flaticon-heart-1" title="اضافه به علاقمندی ها"></i>[/add-favorites]
 				[del-favorites]<i class="flaticon-heart" title="حذف از علاقمندی ها"></i>[/del-favorites]
 				[edit]<i class="flaticon-edit-1" title="ویرایش خبر"></i>[/edit]
+				[complaint]<i class="flaticon-chat-1" title="گزارش به مدیر"></i>[/complaint]
 			</div>
 		</div>
 
