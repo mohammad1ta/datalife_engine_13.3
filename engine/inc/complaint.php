@@ -65,7 +65,7 @@ if ($_POST['action'] == "mass_delete") {
 }
 
 $found = false;
-if( !$langformatdatefull ) $langformatdatefull = "d.m.Y H:i";
+if( !$langformatdatefull ) $langformatdatefull = "Y/m/d - H:i";
 
 echoheader("<i class=\"fa fa-bullhorn position-left\"></i><span class=\"text-semibold\">{$lang['opt_complaint']}</span>", $lang['header_compl_1']);
 
@@ -122,7 +122,7 @@ while($row = $db->get_row()) {
 
 	$found = true;
 
-	if ( $row['date'] ) $date = date( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
+	if ( $row['date'] ) $date = jdate( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
 
 	$row['text'] = stripslashes($row['text']);
 
@@ -145,7 +145,7 @@ echo <<<HTML
 	</table>
 	
    </div>
-	<div class="panel-footer text-right">
+	<div class="panel-footer text-left">
 		<select class="uniform" name="action"><option value="">{$lang['edit_selact']}</option><option value="mass_delete">{$lang['edit_seldel']}</option></select>&nbsp;<input class="btn bg-slate-600 btn-sm btn-raised" type="submit" value="{$lang['b_start']}">
 	</div>	
 </div>
@@ -232,7 +232,7 @@ while($row = $db->get_row()) {
 	$found = true;
 
 	$row['text'] = stripslashes($row['text']);
-	if ( $row['date'] ) $date = date( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
+	if ( $row['date'] ) $date = jdate( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
 
 	if ($row['c_text']) {
 
@@ -308,7 +308,7 @@ echo <<<HTML
 	</table>
 	
    </div>
-	<div class="panel-footer text-right">
+	<div class="panel-footer text-left">
 		<select class="uniform" name="action"><option value="">{$lang['edit_selact']}</option><option value="mass_delete">{$lang['edit_seldel']}</option></select>&nbsp;<input class="btn bg-slate-600 btn-sm btn-raised" type="submit" value="{$lang['b_start']}">
 	</div>	
 </div>
@@ -417,7 +417,7 @@ while($row = $db->get_row()) {
 	$found = true;
 
 	$row['text'] = stripslashes($row['text']);
-	if ( $row['date'] ) $date = date( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
+	if ( $row['date'] ) $date = jdate( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
 
 	if ($row['post_id']) {
 
@@ -485,7 +485,7 @@ echo <<<HTML
 	</table>
 	
    </div>
-	<div class="panel-footer text-right">
+	<div class="panel-footer text-left">
 		<select class="uniform" name="action"><option value="">{$lang['edit_selact']}</option><option value="mass_delete">{$lang['edit_seldel']}</option></select>&nbsp;<input class="btn bg-slate-600 btn-sm btn-raised" type="submit" value="{$lang['b_start']}">
 	</div>	
 </div>
@@ -569,7 +569,7 @@ $entries = "";
 while($row = $db->get_row()) {
 
 	$found = true;
-	if ( $row['date'] ) $date = date( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
+	if ( $row['date'] ) $date = jdate( $langformatdatefull, $row['date'] )."<br /><br />"; else $date = "";
 
 	$row['text'] = stripslashes($row['text']);
 	
@@ -603,7 +603,7 @@ echo <<<HTML
 	</table>
 	
    </div>
-	<div class="panel-footer text-right">
+	<div class="panel-footer text-left">
 		<select class="uniform" name="action"><option value="">{$lang['edit_selact']}</option><option value="mass_delete">{$lang['edit_seldel']}</option></select>&nbsp;<input class="btn bg-slate-600 btn-sm btn-raised" type="submit" value="{$lang['b_start']}">
 	</div>	
 </div>
