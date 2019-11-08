@@ -20557,7 +20557,9 @@ textarea.classic:focus {
     text-decoration: none;
     border-bottom: 1px solid #cccccc;
     box-shadow: none!important;
-    background-color: #f6f6f6
+    background-color: #f6f6f6;
+    direction: ltr;
+    text-align: left;
 }
 
 textarea.editor {
