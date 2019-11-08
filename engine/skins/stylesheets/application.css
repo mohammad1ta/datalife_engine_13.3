@@ -17167,7 +17167,7 @@ body>.jGrowl {
 }
 
 .jGrowl.top-right {
-    right: 20px;
+    left: 20px;
     top: 20px
 }
 
@@ -17211,7 +17211,8 @@ body>.jGrowl {
     color: #333;
     margin-bottom: 10px;
     width: 300px;
-    text-align: left;
+    text-align: right;
+    direction: rtl;
     display: none;
     border-width: 0;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -17235,7 +17236,7 @@ body>.jGrowl {
     cursor: pointer;
     line-height: 1;
     padding: 0;
-    float: right;
+    float: left;
     color: inherit;
     outline: 0;
     margin-left: 10px;
