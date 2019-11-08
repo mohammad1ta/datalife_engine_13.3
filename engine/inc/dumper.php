@@ -695,7 +695,7 @@ class dumper {
 }
 
 function fn_int($num){
-	return number_format($num, 0, ',', ' ');
+	return number_format($num );
 }
 
 function tpl_page($content = '', $buttons = ''){

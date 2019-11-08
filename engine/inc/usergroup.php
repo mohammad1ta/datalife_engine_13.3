@@ -1100,7 +1100,7 @@ HTML;
 	$db->free();
 	
 	foreach ( $user_group as $group ) {
-		$count = number_format( intval( $count_list[$group['id']] ), 0, ',', ' ');
+		$count = number_format( intval( $count_list[$group['id']] ) );
 
 		if ( $group['id'] > 5 ) {
 			$dlink="<li><a href=\"?mod=usergroup&action=del&user_hash={$dle_login_hash}&id={$group['id']}\"><i class=\"fa fa-trash-o position-left text-danger\"></i>{$lang['group_sel2']}</a></li>";

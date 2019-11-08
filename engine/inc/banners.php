@@ -844,8 +844,8 @@ HTML;
 			$status = "<span title=\"{$lang['banners_off']}\" class=\"text-danger tip\"><b><i class=\"fa fa-exclamation-circle\"></i></b></span>";
 		}	
 		
-		if($row['allow_views']) $row['views'] = number_format($row['views'], 0, ',', ' '); else $row['views'] = "--";
-		if($row['allow_counts']) $row['clicks'] = number_format($row['clicks'], 0, ',', ' '); else $row['clicks'] = "--";
+		if($row['allow_views']) $row['views'] = number_format($row['views'] ); else $row['views'] = "--";
+		if($row['allow_counts']) $row['clicks'] = number_format($row['clicks'] ); else $row['clicks'] = "--";
 		
 		$menu_link = <<<HTML
         <div class="btn-group">

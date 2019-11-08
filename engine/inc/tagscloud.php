@@ -482,7 +482,7 @@ if ( count($tags) ) {
         </div>
 HTML;
 
-		$value['count'] = number_format( $value['count'], 0, ',', ' ');
+		$value['count'] = number_format( $value['count'] );
 
 		$entries .= "<tr>
         <td><div id=\"content_{$i}\">{$value['tag']}</div></td>

@@ -439,7 +439,7 @@ HTML;
 	
 	} elseif ($config['rating_type'] == "1") {
 		
-		if( $row['num'] ) $rating = number_format($row['rating'], 0, ',', ' '); else $rating = 0;
+		if( $row['num'] ) $rating = number_format($row['rating'] ); else $rating = 0;
 		
 		if( $row['num'] < 0 ) $rating = 0;
 		
@@ -447,7 +447,7 @@ HTML;
 		
 	} elseif ($config['rating_type'] == "2" OR $config['rating_type'] == "3" ) {
 
-		if( $row['num'] ) $rating = number_format($row['rating'], 0, ',', ' '); else $rating = 0;
+		if( $row['num'] ) $rating = number_format($row['rating'] ); else $rating = 0;
 
 		$extraclass = "ratingzero";
 		
@@ -502,7 +502,7 @@ HTML;
 	
 	} elseif ($config['comments_rating_type'] == "1") {
 		
-		if( $row['num'] ) $rating = number_format($row['rating'], 0, ',', ' '); else $rating = 0;
+		if( $row['num'] ) $rating = number_format($row['rating'] ); else $rating = 0;
 		
 		if( $rating < 0 ) $rating = 0;
 		
@@ -510,7 +510,7 @@ HTML;
 		
 	} elseif ($config['comments_rating_type'] == "2" OR $config['comments_rating_type'] == "3") {
 		
-		if( $row['num'] ) $rating = number_format($row['rating'], 0, ',', ' '); else $rating = 0;
+		if( $row['num'] ) $rating = number_format($row['rating'] ); else $rating = 0;
 
 		$extraclass = "ratingzero";
 		

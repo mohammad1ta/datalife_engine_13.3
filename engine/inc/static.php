@@ -205,7 +205,7 @@ if( $action == "list" ) {
 		if( $row['password'] ) $lock = "<i class=\"fa fa-lock position-left text-muted\"></i>"; else $lock = "";
 
 		
-		$row['views'] = number_format( $row['views'], 0, ',', ' ');
+		$row['views'] = number_format( $row['views'] );
 		
 		$entries .= "<tr>
         <td class=\"hidden-xs\">$itemdate - {$lock}<a title=\"{$lang['static_view']}\" class=\"tip\" href=\"{$vlink}\" target=\"_blank\">$title</a></td>

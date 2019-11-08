@@ -318,7 +318,7 @@ if( $action == "list" ) {
 
 		if( $row['comm_num'] > 0 ) {
 			
-			$row['comm_num'] = number_format( $row['comm_num'], 0, ',', ' ');
+			$row['comm_num'] = number_format( $row['comm_num'] );
 			
 			$comm_link = <<<HTML
 <div class="btn-group">
@@ -336,7 +336,7 @@ HTML;
 			$comm_link = $row['comm_num'];
 		}
 		
-		$row['news_read'] = number_format( $row['news_read'], 0, ',', ' ');
+		$row['news_read'] = number_format( $row['news_read'] );
 		
 		if( $row['fixed'] ) $entries .= "<span class=\"badge badge-danger position-left\">{$lang['edit_fix']}</span>";
 

@@ -623,7 +623,7 @@ HTML;
 				
 			}
 			
-			$row['news_num'] = number_format( $row['news_num'], 0, ',', ' ');
+			$row['news_num'] = number_format( $row['news_num'] );
 			
 			$news_link = <<<HTML
 				<div class="btn-group">
@@ -645,7 +645,7 @@ HTML;
 			$comms_link = $row['comm_num'];
 		} else {
 			
-			$row['comm_num'] = number_format( $row['comm_num'], 0, ',', ' ');
+			$row['comm_num'] = number_format( $row['comm_num'] );
 			
 			$comms_link = <<<HTML
 				<div class="btn-group">
@@ -1454,8 +1454,8 @@ HTML;
 
 }
 
-$row['news_num'] = number_format( $row['news_num'], 0, ',', ' ');
-$row['comm_num'] = number_format( $row['comm_num'], 0, ',', ' ');
+$row['news_num'] = number_format( $row['news_num'] );
+$row['comm_num'] = number_format( $row['comm_num'] );
 
 echo <<<HTML
 				<div class="form-group">

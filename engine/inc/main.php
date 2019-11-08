@@ -82,25 +82,25 @@ if ( $config['allow_cache'] AND !$config['cache_type'] ) {
 if ( !count($stats_arr) ) {
 
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_post" );
-	$stats_arr['stats_news'] = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['stats_news'] = number_format( $row['count'] );
 	
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_subscribe" );
-	$stats_arr['count_subscribe'] = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['count_subscribe'] = number_format( $row['count'] );
 	
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_comments" );
-	$stats_arr['count_comments'] = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['count_comments'] = number_format( $row['count'] );
 	
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_comments WHERE approve ='0'" );
-	$stats_arr['count_c_app'] = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['count_c_app'] = number_format( $row['count'] );
 	
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . USERPREFIX . "_users" );
-	$stats_arr['stats_users'] = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['stats_users'] = number_format( $row['count'] );
 	
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . USERPREFIX . "_users WHERE banned='yes'" );
-	$stats_arr['stats_banned'] = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['stats_banned'] = number_format( $row['count'] );
 	
 	$row = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_post where approve = '0'" );
-	$stats_arr['approve']  = number_format( $row['count'], 0, ',', ' ');
+	$stats_arr['approve']  = number_format( $row['count'] );
 	
 	
 	$db->query( "SHOW TABLE STATUS FROM `" . DBNAME . "`" );
