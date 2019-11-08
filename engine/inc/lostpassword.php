@@ -76,7 +76,7 @@ var filebtntext    = '';
 	<div class="panel panel-default" style="margin-top: 100px;">
 
       <div class="panel-heading">
-        {$lang['skin_title']} DataLife Engine
+        بازیابی رمز عبور 
       </div>
 	  
       <div class="panel-body">
@@ -86,7 +86,7 @@ var filebtntext    = '';
 			<a href="?mod=main" class="text-right">{$lang['lost_pass_3']}</a>
 	   </div>
     </div>
-	<div class="text-muted text-size-small text-center">Copyright 2006-{$year}<br>&copy; <a href="http://www.datalifeengine.ir/" target="_blank">Datalife Engine Farsi</a> All rights reserved.</div>
+	<div class="text-muted text-size-small text-center">&copy; سیستم قدرت گرفته از <a href="http://www.datalifeengine.ir/" target="_blank">دیتالایف انجین فارسی</a></div>
 
 	 <!--MAIN area-->
   </div>
