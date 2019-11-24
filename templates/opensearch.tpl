@@ -9,7 +9,7 @@
 	<Image height="16" width="16" type="image/vnd.microsoft.icon">{path}favicon.ico</Image>
 	<Developer>DataLife Engine Farsi (http://datalifeengine.ir)</Developer>
 	<Attribution>
-		Copyright 2006-2017 DataLife Engine Farsi - All Rights Reserved.
+		Copyright 2006-2019 DataLife Engine Farsi - All Rights Reserved.
 	</Attribution>
 	<SyndicationRight>open</SyndicationRight>
 	<AdultContent>false</AdultContent>
