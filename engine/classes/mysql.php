@@ -286,7 +286,7 @@ class db
 <style type="text/css">
 <!--
 body {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Tahoma;
 	font-size: 11px;
 	font-style: normal;
 	color: #000000;
