@@ -97,7 +97,7 @@ $ver = $config['jquery_version'] ? $config['jquery_version'] : "";
 
 echo <<<HTML
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 <head>
 <meta charset="{$config['charset']}">
 <link media="screen" href="{$config['http_home_url']}engine/classes/html5player/player.css" type="text/css" rel="stylesheet" />
