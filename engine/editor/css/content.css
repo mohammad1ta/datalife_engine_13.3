@@ -1,5 +1,5 @@
 body {
-	font-family: Verdana;
+	font-family: vazir, tahoma;
 	word-spacing: 0.1em;
 	letter-spacing: 0;
 	line-height: 1.5;
@@ -44,7 +44,7 @@ p {margin: 0; padding: 0;}
 img {padding: 5px;}
 
 td {
-    font-family: Verdana;
+    font-family: vazir, tahoma;
     word-spacing: 0.1em;
     letter-spacing: 0;
     line-height: 1.5em;
