@@ -737,7 +737,7 @@ HTML;
 		<div class="form-group">
 		  <label class="control-label col-md-2">{$lang['static_tpl']}</label>
 		  <div class="col-md-10">
-			<input type="text" name="static_tpl" class="form-control position-left" style="width:220px;">.tpl<i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-html="true" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stpl']}" ></i>
+			tpl.<input type="text" name="static_tpl" class="form-control position-left" style="width:220px;"><i class="help-button visible-lg-inline-block text-primary-600 fa fa-question-circle position-right position-left" data-rel="popover" data-html="true" data-trigger="hover" data-placement="right" data-content="{$lang['hint_stpl']}" ></i>
 		  </div>
 		 </div>	
 		<div class="form-group">
