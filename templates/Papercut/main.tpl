@@ -13,16 +13,6 @@
 <body>
 {AJAX}
 
-{*<div class="modal">*}
-{*	<div class="modal-bg"></div>*}
-{*	<div class="modal-box">*}
-{*		<div class="modal-title"><div>ورود به سایت</div><span class="modal-close"></span></div>*}
-{*		<div class="modal-content">تست</div>*}
-{*	</div>*}
-{*</div>*}
-
-
-
 <header class="header">
 
 	<div class="wrapper relative">
@@ -133,7 +123,7 @@
 		<div class="wrapper">
 
 			<div class="copyright">
-				Copyright © 2019 {site-name}. Powered by <a href="http://www.datalifeengine.ir/?utm_source=customers&utm_medium=cpc&utm_campaign=copyright" target="_blank">Datalife Engine</a>
+				Copyright © 2020 {site-name}. Powered by <a href="http://www.datalifeengine.ir/?utm_source=customers&utm_medium=cpc&utm_campaign=copyright" target="_blank">Datalife Engine</a>
 			</div>
 
 			<div class="footer-separator"></div>
