@@ -188,7 +188,7 @@
 			</div>
 
 			<div class="left">
-				Copyright &copy; 2019 by Datalife Engine, All rights reserved.
+				Copyright &copy; 2020 by Datalife Engine, All rights reserved.
 			</div>
 
 		</div>
